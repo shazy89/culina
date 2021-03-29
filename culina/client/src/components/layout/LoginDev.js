@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Form, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 const LoginDev = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -27,13 +27,21 @@ const LoginDev = ({ login, isAuthenticated }) => {
   return (
     <section className="login">
       <div className="culina__auth--card">
-        <div>
+        <div className="culina__auth--header-div">
           <h1 className="culina__auth--header">Sign Into Culina Dev</h1>
         </div>
         <div>
           <form className="culina__auth--form" onSubmit={onSubmit}>
             <div className="culina__auth--form-group">
+              <label
+                type="text"
+                name="email"
+                className="culina__auth--form-label"
+              >
+                Email Address
+              </label>
               <input
+                className="culina__auth--form-input"
                 type="email"
                 placeholder="Email Address"
                 name="email"
@@ -43,7 +51,11 @@ const LoginDev = ({ login, isAuthenticated }) => {
               />
             </div>
             <div className="culina__auth--form-group">
+              <label type="text" name="password">
+                Password
+              </label>
               <input
+                className="culina__auth--form-input"
                 type="password"
                 placeholder="Password"
                 name="password"
@@ -52,7 +64,12 @@ const LoginDev = ({ login, isAuthenticated }) => {
                 minLength="6"
               />
             </div>
-            <Button type="submit" variant="primary" className="btn btn-primary">
+            <Button
+              type="submit"
+              variant="primary"
+              size="lg"
+              className="btn btn-primary"
+            >
               Log In
             </Button>
           </form>
