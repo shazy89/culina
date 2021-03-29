@@ -49,4 +49,17 @@ exports.allCompanies = async function (req, res) {
   }
 };
 
-// Create Or Update
+// Get Company profile by id
+exports.companyProfile = async function ({ params: { id } }, res) {
+  try {
+    const company = await Company.findOne({ id });
+    console.log(id);
+    if (!company) return res.status(400).json({ msg: "Company not found" });
+
+    return res.json(company);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+};
+// 605de5263651642d07d6de66
