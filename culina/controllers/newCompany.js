@@ -1,8 +1,10 @@
 const Company = require("../models/newCompany");
+const mongoose = require("mongoose");
 
 // Create Or Update
 exports.newOrUpdate = async function (req, res) {
   const { name, adress, phone, email, timeZone, logo } = req.body;
+  console.log(req);
   const companyFields = {};
   companyFields.name = name;
   if (email) companyFields.email = email;
@@ -13,15 +15,15 @@ exports.newOrUpdate = async function (req, res) {
 
   try {
     const findCompany = await Company.findOne({ name });
-
+    // Remember to integrate Id check thats the only way you can make sure that this will work 100 %
     if (findCompany) {
       // Update
-      profile = await Profile.findOneAndUpdate(
-        { user: req.user.id },
-        { $set: profileFields },
+      company = await Company.findOneAndUpdate(
+        { name: name }, // filter
+        { $set: companyFields }, // update
         { new: true }
       );
-      return res.json(profile);
+      return res.json(company);
     }
 
     const companyNew = new Company(companyFields);
