@@ -43,30 +43,14 @@ exports.culinaSignup = async function (req, res) {
     const salt = await bcrypt.genSalt(10);
     newUser.password = await bcrypt.hash(password, salt);
 
-    const payload = {
-      user: {
-        id: newUser.id,
-      },
-    };
-
-    jwt.sign(
-      payload,
-      process.env.JET_SECRET,
-      { expiresIn: 10060000 },
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      }
-    );
+    const token = jwt.sign({ userId: newUser.id }, process.env.JET_SECRET);
+    res.send({ token });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server error");
+    return res.status(422).send({ error: "Invalid password or email" });
   }
-
-  // If a user with email does exits, return error
-  //if a user with email does not exist, create and save user record
-  //Respond to request indicating the user was created
 };
+
 //Sign in
 exports.culinaSignin = async (req, res) => {
   const { email, password } = req.body;
@@ -88,7 +72,6 @@ exports.culinaSignin = async (req, res) => {
     const token = jwt.sign({ userId: user._id }, process.env.JET_SECRET);
     res.send({ token });
   } catch (err) {
-    console.log(err);
     return res.status(422).send({ error: "Invalid password or email" });
   }
 };

@@ -23,6 +23,7 @@ exports.newCompany = async function (req, res) {
 
     res.json({ companyNew });
   } catch (error) {
+    console.log(error);
     res.status(500).send("Server error");
   }
 };
