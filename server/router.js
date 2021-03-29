@@ -7,8 +7,8 @@ const passport = require("passport");
 const requireAuth = passport.authenticate("jwt", { session: false });
 
 module.exports = function (app) {
-  app.post("/employe/signup", Authentication.culinaSignup);
-  app.post("/employe/signin", Authentication.culinaSignin);
+  app.post("/company/signup", Authentication.culinaSignup);
+  app.post("/company/signin", Authentication.culinaSignin);
   app.post("/company/new", Company.newCompany);
   //  app.post("/api/todo", requireAuth, Todo.todo);
   //  app.post("/api/drink", requireAuth, Drink.newDrink);

@@ -1,6 +1,6 @@
 const User = require("../models/culinaAdmin");
 const jwt = require("jsonwebtoken");
-//const bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 require("dotenv").config();
 
 //Sign up
@@ -40,8 +40,8 @@ exports.culinaSignup = async function (req, res) {
 
     await newUser.save();
 
-    // const salt = await bcrypt.genSalt(10);
-    // newUser.password = await bcrypt.hash(password, salt);
+    const salt = await bcrypt.genSalt(10);
+    newUser.password = await bcrypt.hash(password, salt);
 
     const payload = {
       user: {
@@ -73,15 +73,22 @@ exports.culinaSignin = async (req, res) => {
   if (!email || !password) {
     return res.status(422).send({ error: "Must provide email and password" });
   }
+
   const user = await User.findOne({ email: email });
+
   if (!user) {
     return res.status(422).send({ error: "Invalid password or email" });
   }
   try {
-    await user.comparePassword(password);
-    const token = jwt.sign({ userId: user._id }, process.env.MY_SECRET_KEY);
+    const ismatch = await bcrypt.compare(password, user.password);
+
+    if (!ismatch) {
+      return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
+    }
+    const token = jwt.sign({ userId: user._id }, process.env.JET_SECRET);
     res.send({ token });
   } catch (err) {
+    console.log(err);
     return res.status(422).send({ error: "Invalid password or email" });
   }
 };
