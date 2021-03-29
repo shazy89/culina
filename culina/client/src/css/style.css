@@ -51,7 +51,6 @@ body {
   position: relative;
   background-size: cover;
   background-position: top;
-  z-index: -1;
   -webkit-clip-path: polygon(0 0, 100% 20%, 100% 89%, 0% 100%);
   clip-path: polygon(0 0, 100% 20%, 100% 89%, 0% 100%);
   -webkit-filter: hue-rotate(299deg);
@@ -70,7 +69,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%); }
 
-.culina__login--card {
+.culina__auth--card {
   height: 70%;
   width: 45rem;
   background-color: rgba(226, 226, 226, 0.8);
@@ -78,4 +77,9 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center; }
+  text-align: center;
+  box-shadow: 7px 6px 35px 6px rgba(78, 78, 78, 0.877); }
+
+.culina__auth--header {
+  margin-top: 3rem;
+  font-size: 4rem; }
