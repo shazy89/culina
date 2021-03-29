@@ -1,8 +1,9 @@
 const User = require("../models/culinaAdmin");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+//const bcrypt = require("bcryptjs");
 require("dotenv").config();
 
+//Sign up
 exports.culinaSignup = async function (req, res) {
   const {
     email,
@@ -13,7 +14,7 @@ exports.culinaSignup = async function (req, res) {
     salary,
     position,
   } = req.body;
-  // see if we are getting email and password
+
   const userFields = {};
   userFields.name = name;
   userFields.email = email;
@@ -65,4 +66,22 @@ exports.culinaSignup = async function (req, res) {
   // If a user with email does exits, return error
   //if a user with email does not exist, create and save user record
   //Respond to request indicating the user was created
+};
+//Sign in
+exports.culinaSignin = async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(422).send({ error: "Must provide email and password" });
+  }
+  const user = await User.findOne({ email: email });
+  if (!user) {
+    return res.status(422).send({ error: "Invalid password or email" });
+  }
+  try {
+    await user.comparePassword(password);
+    const token = jwt.sign({ userId: user._id }, process.env.MY_SECRET_KEY);
+    res.send({ token });
+  } catch (err) {
+    return res.status(422).send({ error: "Invalid password or email" });
+  }
 };
