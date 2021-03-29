@@ -1,10 +1,8 @@
 const Company = require("../models/newCompany");
-const mongoose = require("mongoose");
 
-// Create Or Update
 exports.newOrUpdate = async function (req, res) {
   const { name, adress, phone, email, timeZone, logo } = req.body;
-  console.log(req);
+  console.log(req.body);
   const companyFields = {};
   companyFields.name = name;
   if (email) companyFields.email = email;
@@ -36,3 +34,19 @@ exports.newOrUpdate = async function (req, res) {
     res.status(500).send("Server error");
   }
 };
+
+//All companies
+exports.allCompanies = async function (req, res) {
+  try {
+    // from user collection array of fields [name and avatar]
+    console.log(req);
+    const companies = await Company.find();
+
+    res.json(companies);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+};
+
+// Create Or Update

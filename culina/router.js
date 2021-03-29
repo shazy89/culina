@@ -8,7 +8,8 @@ const requireAuth = require("./services/requireAuth");
 module.exports = function (app) {
   app.post("/company/signup", Authentication.culinaSignup);
   app.post("/company/signin", Authentication.culinaSignin);
-  app.post("/company/new", requireAuth, Company.newOrUpdate);
+  app.post("/companies", requireAuth, Company.newOrUpdate);
+  app.get("/companies/all", Company.allCompanies);
   //  app.post("/api/todo", requireAuth, Todo.todo);
   //  app.post("/api/drink", requireAuth, Drink.newDrink);
   //  app.get("/api/drinks", requireAuth, Drink.getDrinks);

@@ -4,8 +4,7 @@ const User = require("../models/culinaAdmin");
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
-  // authorization === 'Bearer asjdkasjdkaskdkasd...'
-  console.log(authorization);
+
   if (!authorization) {
     return res.status(401).send({ error: "You must be logged in" });
   }
