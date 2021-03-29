@@ -1,21 +1,28 @@
 const Company = require("../models/newCompany");
 
-exports.newCompany = async function (req, res) {
+// Create Or Update
+exports.newOrUpdate = async function (req, res) {
   const { name, adress, phone, email, timeZone, logo } = req.body;
+  const companyFields = {};
+  companyFields.name = name;
+  if (email) companyFields.email = email;
+  if (adress) companyFields.adress = adress;
+  if (logo) companyFields.logo = logo;
+  if (phone) companyFields.phone = phone;
+  if (timeZone) companyFields.timeZone = timeZone;
 
   try {
-    //  let findCompany = await Company.findOne({ name });
+    const findCompany = await Company.findOne({ name });
 
-    //  if (findCompany) {
-    //    return res.status(422).send({ error: "Email in use" });
-    //  }
-    const companyFields = {};
-    companyFields.name = name;
-    if (email) companyFields.email = email;
-    if (adress) companyFields.adress = adress;
-    if (logo) companyFields.logo = logo;
-    if (phone) companyFields.phone = phone;
-    if (timeZone) companyFields.timeZone = timeZone;
+    if (findCompany) {
+      // Update
+      profile = await Profile.findOneAndUpdate(
+        { user: req.user.id },
+        { $set: profileFields },
+        { new: true }
+      );
+      return res.json(profile);
+    }
 
     const companyNew = new Company(companyFields);
 
