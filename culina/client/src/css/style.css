@@ -44,3 +44,16 @@ body {
 
 .u-margin-top-huge {
   margin-top: 10rem !important; }
+
+.culina__spinner {
+  position: relative;
+  height: 90vh; }
+
+.culina__image {
+  width: 10vw; }
+
+.culina__center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
