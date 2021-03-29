@@ -1,0 +1,10 @@
+.culina__login {
+    
+    &--card {
+        height: 70%;
+        width: 45rem;
+        background-color: rgba($color-light-grey, .8);
+        @include absCenter;
+        text-align: center;
+    }
+}

@@ -1,15 +1,23 @@
-import React from "react";
-import { Button } from "react-bootstrap";
-
-import Spinner from "./components/layout/Spinner";
+import React, { Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import LoginDev from "./components/layout/LoginDev";
+//import Routes from "./components/routes/Routes";
 
 const App = () => {
   return (
-    <div>
-      <h1>Hello World</h1>
-      <Button className="button">Click ME</Button>
-      <Spinner />
-    </div>
+    <Router>
+      <Fragment>
+        {
+          // <Navbar />
+        }
+        <Switch>
+          <Route exact path="/" component={LoginDev} />
+          {
+            //<Route component={Routes} />
+          }
+        </Switch>
+      </Fragment>
+    </Router>
   );
 };
 
