@@ -38,8 +38,6 @@ exports.newOrUpdate = async function (req, res) {
 //All companies
 exports.allCompanies = async function (req, res) {
   try {
-    // from user collection array of fields [name and avatar]
-    console.log(req);
     const companies = await Company.find();
 
     res.json(companies);
@@ -62,4 +60,13 @@ exports.companyProfile = async function ({ params: { id } }, res) {
     res.status(500).send("Server Error");
   }
 };
-// 605de5263651642d07d6de66
+// Remove Company profile by id
+exports.removeCompany = async function ({ params: { id } }, res) {
+  try {
+    await Company.findOneAndRemove({ _id: id });
+    res.json({ msg: "Comopany deleted" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+};
