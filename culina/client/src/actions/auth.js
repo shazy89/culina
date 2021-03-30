@@ -48,7 +48,7 @@ export const login = (email, password) => async (dispatch) => {
 
 // LOGOUT
 
-export const logout = (history) => (dispatch) => {
+export const logout = () => (dispatch) => {
   dispatch({ type: LOGOUT });
-  history.push("/");
+  // history.push("/");
 };

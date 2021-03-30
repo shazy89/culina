@@ -14,9 +14,6 @@ const App = ({ loadUser }) => {
   return (
     <Router>
       <Fragment>
-        {
-          // <Navbar />
-        }
         <Switch>
           <Route exact path="/" component={LoginDev} />
           {<Route component={Routes} />}

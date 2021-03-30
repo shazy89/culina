@@ -10,7 +10,7 @@ html {
 
 body {
   box-sizing: border-box;
-  padding: 3rem; }
+  padding: 2rem; }
 
 @font-face {
   font-family: 'Lato-Italic';
@@ -124,3 +124,7 @@ body {
 .alerts {
   text-align: center !important;
   font-size: 1.3rem; }
+
+.navbarCulina {
+  font-size: 1.8rem;
+  padding: 1.5rem; }
