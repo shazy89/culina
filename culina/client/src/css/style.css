@@ -120,3 +120,7 @@ body {
 
 .button__main {
   display: flex; }
+
+.alerts {
+  text-align: center !important;
+  font-size: 1.3rem; }

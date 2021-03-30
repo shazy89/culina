@@ -5,7 +5,7 @@ import { Alert } from "react-bootstrap";
 
 const Alerts = ({ alerts }) =>
   alerts.map(({ id, msg, alertType }) => (
-    <Alert key={id} variant={alertType}>
+    <Alert key={id} className="alerts" variant={alertType}>
       {msg}
     </Alert>
   ));
