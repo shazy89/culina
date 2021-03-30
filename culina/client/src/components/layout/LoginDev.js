@@ -30,7 +30,7 @@ const LoginDev = ({ login, isAuthenticated }) => {
         <div className="culina__auth--header-div">
           <h1 className="culina__auth--header">Sign Into Culina Dev</h1>
         </div>
-        <div>
+        <div className="u-margin-top-big">
           <form className="culina__auth--form" onSubmit={onSubmit}>
             <div className="culina__auth--form-group">
               <label
@@ -51,7 +51,11 @@ const LoginDev = ({ login, isAuthenticated }) => {
               />
             </div>
             <div className="culina__auth--form-group">
-              <label type="text" name="password">
+              <label
+                className="culina__auth--form-label"
+                type="text"
+                name="password"
+              >
                 Password
               </label>
               <input
@@ -64,12 +68,7 @@ const LoginDev = ({ login, isAuthenticated }) => {
                 minLength="6"
               />
             </div>
-            <Button
-              type="submit"
-              variant="primary"
-              size="lg"
-              className="btn btn-primary"
-            >
+            <Button type="submit" size="lg">
               Log In
             </Button>
           </form>

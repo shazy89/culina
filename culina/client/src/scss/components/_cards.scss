@@ -1,61 +1,63 @@
 .culina__auth {
- 
     &--card {
         height: 70%;
         width: 45rem;
-        background-color: rgba($color-light-grey, .8);
+        background-color: rgba($color-light-grey, 0.8);
         @include absCenter;
-  
+        font-family: "Lato-Italic";
         box-shadow: 7px 6px 35px 6px rgba(78, 78, 78, 0.877);
         border-radius: 1rem;
-
     }
     &--header-div {
         margin-top: 4rem;
         text-align: center;
     }
     &--header {
-
         font-size: 4rem;
     }
     &--form {
-        margin-top: 10rem;
 
+       button {
+           display: block !important;
+           width: 50%;
+           margin: 0 auto;
+
+       }
         &-group {
             margin: 3rem;
-
         }
         &-input {
-            font-family: 'Lato-Italic';
+     
             width: 100%;
             display: block;
-            
+
             height: 5rem;
             border: none;
             border-bottom: 3px solid transparent;
-            border-radius: .5rem;
-            padding: .5rem;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
             font-size: 1.5rem;
-            transition: all .4s;
-            
+            transition: all 0.4s;
+
             &:hover {
-              transform: scale(1.1);
-               
+                transform: scale(1.1);
             }
             &:focus {
                 outline: none;
-                box-shadow: 0 1rem 2rem rgba(green, .1);
+                box-shadow: 0 1rem 2rem rgba(green, 0.1);
                 border-bottom: 3px solid green;
             }
-    
+
             &:focus:invalid {
                 border-bottom: 3px solid green;
             }
-    
+
             &::-webkit-input-placeholder {
                 color: rgb(179, 179, 179);
             }
         }
-
+        &-label {
+            font-size: 1.3rem;
+        }
     }
 }

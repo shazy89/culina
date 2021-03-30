@@ -77,6 +77,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-family: "Lato-Italic";
   box-shadow: 7px 6px 35px 6px rgba(78, 78, 78, 0.877);
   border-radius: 1rem; }
 
@@ -87,28 +88,37 @@ body {
 .culina__auth--header {
   font-size: 4rem; }
 
-.culina__auth--form {
-  margin-top: 10rem; }
-  .culina__auth--form-group {
-    margin: 3rem; }
-  .culina__auth--form-input {
-    font-family: 'Lato-Italic';
-    width: 100%;
-    display: block;
-    height: 5rem;
-    border: none;
-    border-bottom: 3px solid transparent;
-    border-radius: .5rem;
-    padding: .5rem;
-    font-size: 1.5rem;
-    transition: all .4s; }
-    .culina__auth--form-input:hover {
-      transform: scale(1.1); }
-    .culina__auth--form-input:focus {
-      outline: none;
-      box-shadow: 0 1rem 2rem rgba(0, 128, 0, 0.1);
-      border-bottom: 3px solid green; }
-    .culina__auth--form-input:focus:invalid {
-      border-bottom: 3px solid green; }
-    .culina__auth--form-input::-webkit-input-placeholder {
-      color: #b3b3b3; }
+.culina__auth--form button {
+  display: block !important;
+  width: 50%;
+  margin: 0 auto; }
+
+.culina__auth--form-group {
+  margin: 3rem; }
+
+.culina__auth--form-input {
+  width: 100%;
+  display: block;
+  height: 5rem;
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  transition: all 0.4s; }
+  .culina__auth--form-input:hover {
+    transform: scale(1.1); }
+  .culina__auth--form-input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(0, 128, 0, 0.1);
+    border-bottom: 3px solid green; }
+  .culina__auth--form-input:focus:invalid {
+    border-bottom: 3px solid green; }
+  .culina__auth--form-input::-webkit-input-placeholder {
+    color: #b3b3b3; }
+
+.culina__auth--form-label {
+  font-size: 1.3rem; }
+
+.button__main {
+  display: flex; }
