@@ -28,7 +28,6 @@ PrivateRoute.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  debugger;
   return {
     auth: state.auth,
   };
