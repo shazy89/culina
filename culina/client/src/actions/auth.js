@@ -1,5 +1,5 @@
 import api from "../utils/api";
-import { LOGIN_SUCCESS, USER_LOADED } from "./types";
+import { LOGIN_SUCCESS, USER_LOADED, CLEAR_PROFILE, LOGOUT } from "./types";
 
 // Load User
 export const loadUser = () => async (dispatch) => {
@@ -42,4 +42,12 @@ export const login = (email, password) => async (dispatch) => {
     //     type: LOGIN_FAIL,
     //   });
   }
+};
+
+// LOGOUT
+
+export const logout = (history) => (dispatch) => {
+  // dispatch({ type: CLEAR_PROFILE });
+  dispatch({ type: LOGOUT });
+  history.push("/");
 };
