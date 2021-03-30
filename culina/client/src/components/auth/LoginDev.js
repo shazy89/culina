@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 import { login } from "../../actions/auth";
+import Alert from "../layout/Alerts";
 
-const LoginDev = ({ login, isAuthenticated }) => {
+const LoginDev = ({ login, isAuthenticated, alerts }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -32,6 +33,7 @@ const LoginDev = ({ login, isAuthenticated }) => {
           <h1 className="culina__auth--header">Sign Into Culina Dev</h1>
         </div>
         <div className="u-margin-top-big">
+          {alerts && <Alert />}
           <form className="culina__auth--form" onSubmit={onSubmit}>
             <div className="culina__auth--form-group">
               <label
@@ -86,6 +88,7 @@ LoginDev.propTypes = {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.isAuthenticated,
+    alerts: state.alert,
   };
 };
 

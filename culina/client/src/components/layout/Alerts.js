@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import { Alert } from "react-bootstrap";
 
 const Alerts = ({ alerts }) =>
-  alerts.map(({ id, msg, type }) => (
-    <Alert key={id} variant={type}>
+  alerts.map(({ id, msg, alertType }) => (
+    <Alert key={id} variant={alertType}>
       {msg}
     </Alert>
   ));
@@ -13,7 +13,10 @@ Alerts.propTypes = {
   alerts: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  alerts: state.alert,
-});
+const mapStateToProps = (state) => {
+  return {
+    alerts: state.alert,
+  };
+};
+
 export default connect(mapStateToProps)(Alerts);
