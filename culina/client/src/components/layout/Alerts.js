@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { Alert } from "react-bootstrap";
 
 const Alerts = ({ alerts }) =>
-  alerts.map((alert) => (
-    <Alert key={alert.id} className={`alert alert-${alert.alertType}`}>
-      {alert.msg}
+  alerts.map(({ id, msg, type }) => (
+    <Alert key={id} variant={type}>
+      {msg}
     </Alert>
   ));
 Alerts.propTypes = {

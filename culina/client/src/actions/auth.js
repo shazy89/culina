@@ -1,5 +1,12 @@
 import api from "../utils/api";
-import { LOGIN_SUCCESS, USER_LOADED, CLEAR_PROFILE, LOGOUT } from "./types";
+import {
+  LOGIN_SUCCESS,
+  USER_LOADED,
+  //  CLEAR_PROFILE,
+  LOGOUT,
+  //  LOGIN_FAIL,
+} from "./types";
+import { setAlert } from "./alert";
 
 // Load User
 export const loadUser = () => async (dispatch) => {
@@ -31,24 +38,17 @@ export const login = (email, password) => async (dispatch) => {
 
     dispatch(loadUser());
   } catch (err) {
-    console.error(err);
-    debugger;
-    const errors = err.response.data.errors;
+    let error = err.response.data.error;
 
-    //   if (errors) {
-    //     errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
-    //   }
-
-    //   dispatch({
-    //     type: LOGIN_FAIL,
-    //   });
+    if (error) {
+      dispatch(setAlert(error, "danger"));
+    }
   }
 };
 
 // LOGOUT
 
 export const logout = (history) => (dispatch) => {
-  // dispatch({ type: CLEAR_PROFILE });
   dispatch({ type: LOGOUT });
   history.push("/");
 };
