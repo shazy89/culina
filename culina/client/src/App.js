@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import LoginDev from "./components/layout/LoginDev";
+import LoginDev from "./components/auth/LoginDev";
 import Routes from "./components/routes/Routes";
 import { loadUser } from "./actions/auth";
 
