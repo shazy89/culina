@@ -1,9 +1,16 @@
 import React, { Fragment, useEffect } from "react";
+import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginDev from "./components/layout/LoginDev";
 import Routes from "./components/routes/Routes";
+import { loadUser } from "./actions/auth";
 
-const App = () => {
+const App = ({ loadUser }) => {
+  useEffect(() => {
+    if (localStorage.token) {
+      loadUser();
+    }
+  });
   return (
     <Router>
       <Fragment>
@@ -19,4 +26,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default connect(null, { loadUser })(App);
