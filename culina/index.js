@@ -15,12 +15,25 @@ const app = express();
 // App setup
 app.use(morgan("combined"));
 app.use(bodyParser.json());
-const corsOptions = {
-  origin: "http://localhost:3000/",
-  optionsSuccessStatus: 200,
-};
 
-app.use(cors(corsOptions));
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+//const corsOptions = {
+//  origin: "http://localhost:3000/",
+//  optionsSuccessStatus: 200,
+//};
+
+// app.use(cors(corsOptions));
 
 router(app);
 

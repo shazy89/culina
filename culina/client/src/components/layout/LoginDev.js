@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
+import { login } from "../../actions/auth";
 
 const LoginDev = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -17,13 +18,13 @@ const LoginDev = ({ login, isAuthenticated }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    alert(email);
-    // login(email, password);
+
+    login(email, password);
   };
 
-  //if (isAuthenticated) {
-  //  return <Redirect to="/dashboard" />;
-  //}
+  // if (isAuthenticated) {
+  //   return <Redirect to="/dashboard" />;
+  // }
   return (
     <section className="login">
       <div className="culina__auth--card">
@@ -80,7 +81,12 @@ const LoginDev = ({ login, isAuthenticated }) => {
 
 LoginDev.propTypes = {
   login: PropTypes.func.isRequired,
-  //  isAuthenticated: PropTypes.bool,
+  isAuthenticated: PropTypes.bool,
+};
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated,
+  };
 };
 
-export default LoginDev;
+export default connect(mapStateToProps, { login })(LoginDev);
