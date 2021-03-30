@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginDev from "./components/layout/LoginDev";
-//import Routes from "./components/routes/Routes";
+import Routes from "./components/routes/Routes";
 
 const App = () => {
   return (
@@ -12,9 +12,7 @@ const App = () => {
         }
         <Switch>
           <Route exact path="/" component={LoginDev} />
-          {
-            //<Route component={Routes} />
-          }
+          {<Route component={Routes} />}
         </Switch>
       </Fragment>
     </Router>
