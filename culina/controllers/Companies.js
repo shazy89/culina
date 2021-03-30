@@ -2,7 +2,7 @@ const Company = require("../models/newCompany");
 
 exports.newOrUpdate = async function (req, res) {
   const { name, adress, phone, email, timeZone, logo } = req.body;
-  console.log(req.body);
+
   const companyFields = {};
   companyFields.name = name;
   if (email) companyFields.email = email;
@@ -37,6 +37,7 @@ exports.newOrUpdate = async function (req, res) {
 
 //All companies
 exports.allCompanies = async function (req, res) {
+  console.log(req.user);
   try {
     const companies = await Company.find();
 

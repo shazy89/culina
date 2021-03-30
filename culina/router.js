@@ -7,8 +7,10 @@ const requireAuth = require("./services/requireAuth");
 
 module.exports = function (app) {
   //culina admin users
-  app.post("/company/signup", Authentication.culinaSignup);
-  app.post("/company/signin", Authentication.culinaSignin);
+  app.post("/auth/signup", Authentication.culinaSignup);
+  app.post("/auth/signin", Authentication.culinaSignin);
+  app.get("/auth", requireAuth, Authentication.getUser);
+
   // companies
   app.post("/companies", requireAuth, Company.newOrUpdate);
   app.get("/companies/all", requireAuth, Company.allCompanies);

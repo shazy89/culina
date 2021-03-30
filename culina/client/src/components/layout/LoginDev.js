@@ -22,9 +22,9 @@ const LoginDev = ({ login, isAuthenticated }) => {
     login(email, password);
   };
 
-  // if (isAuthenticated) {
-  //   return <Redirect to="/dashboard" />;
-  // }
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <section className="login">
       <div className="culina__auth--card">
