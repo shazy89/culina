@@ -1,6 +1,7 @@
 const User = require("../models/culinaAdmin");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const normalizeData = require("../services/normalizeData");
 require("dotenv").config();
 
 //Sign up
@@ -20,7 +21,9 @@ exports.culinaSignup = async function (req, res) {
   userFields.email = email;
   userFields.password = password;
   if (lastName) userFields.lastName = lastName;
-  if (mobileNumber) userFields.mobileNumber = mobileNumber;
+  if (mobileNumber) {
+    userFields.mobileNumber = normalizeData.normalizePhoneNumber(mobileNumber);
+  }
   if (salary) userFields.salary = salary;
   if (position) userFields.position = position;
 

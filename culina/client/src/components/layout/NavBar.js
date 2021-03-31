@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Navbar, NavDropdown, Nav } from "react-bootstrap";
 import { logout } from "../../actions/auth";
 
-const NavBar = ({ logout, history }) => {
+const NavBar = ({ logout, history, currentUser }) => {
   return (
     <Navbar
       collapseOnSelect
@@ -42,4 +42,10 @@ const NavBar = ({ logout, history }) => {
   );
 };
 
-export default connect(null, { logout })(NavBar);
+const mapStateToProps = (store) => {
+  return {
+    currentUser: store.auth.user,
+  };
+};
+
+export default connect(mapStateToProps, { logout })(NavBar);

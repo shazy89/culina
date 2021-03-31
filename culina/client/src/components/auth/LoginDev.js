@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 import { login } from "../../actions/auth";
+import { Formik, Field, Form } from "formik";
 import Alert from "../layout/Alerts";
 
 const LoginDev = ({ login, isAuthenticated, alerts }) => {
@@ -19,7 +20,6 @@ const LoginDev = ({ login, isAuthenticated, alerts }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     login(email, password);
   };
 

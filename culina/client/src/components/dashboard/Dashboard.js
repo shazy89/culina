@@ -2,15 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 
 import PropTypes from "prop-types";
-import { logout } from "../../actions/auth";
 
-const Dashboard = ({ logout, isAuthenticated, history }) => {
-  const onClick = () => logout(history);
-
+const Dashboard = ({ isAuthenticated }) => {
   return (
     <div>
       <h1>HellO there</h1>
-      <button onClick={onClick}>LOGOUT</button>
     </div>
   );
 };
@@ -22,4 +18,4 @@ const mapStateToProps = (state) => {
     isAuthenticated: state.auth.isAuthenticated,
   };
 };
-export default connect(mapStateToProps, { logout })(Dashboard);
+export default connect(mapStateToProps)(Dashboard);
