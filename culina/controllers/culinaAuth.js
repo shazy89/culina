@@ -72,7 +72,7 @@ exports.culinaSignin = async (req, res) => {
     const ismatch = await bcrypt.compare(password, user.password);
 
     if (!ismatch) {
-      return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
+      return res.status(400).json({ error: "Invalid Credentials" });
     }
     const token = jwt.sign({ userId: user._id }, process.env.JET_SECRET);
     res.send({ token });
