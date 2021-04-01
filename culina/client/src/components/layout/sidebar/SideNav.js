@@ -1,5 +1,5 @@
 import React from "react";
-import { FilePlus } from "react-feather";
+import { FilePlus, Database } from "react-feather";
 import SideNavItem from "./SideNavItem";
 
 const SideNav = () => {
@@ -7,7 +7,8 @@ const SideNav = () => {
   return (
     <div className="sidebar">
       <ul className="side-nav">
-        <SideNavItem icon={FilePlus} content="New Company" to={"company/new"} />
+        <SideNavItem icon={Database} content="All Companies" to="/companies" />
+        <SideNavItem icon={FilePlus} content="New Company" to="/company/new" />
       </ul>
     </div>
   );
