@@ -7,17 +7,17 @@ import SideNav from "../layout/SideNav";
 
 const Routes = () => {
   return (
-    <section className="routes">
+    <div className="culina__container">
       <Navbar />
       <div className="culina__content">
         <SideNav />
-        <Switch>
-          <main className="main">
+        <main className="main">
+          <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          </main>
-        </Switch>
+          </Switch>
+        </main>
       </div>
-    </section>
+    </div>
   );
 };
 

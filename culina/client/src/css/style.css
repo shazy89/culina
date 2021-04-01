@@ -69,9 +69,11 @@ body {
 
 .culina__content {
   background-color: white;
-  max-width: 110rem;
+  max-width: 150rem;
+  height: 90vh;
   margin: 0 auto;
-  display: flex; }
+  display: flex;
+  box-shadow: 0px 7px 34px -4px black; }
 
 .culina__auth--card {
   height: 70%;
@@ -135,16 +137,25 @@ body {
   font-size: 1.8rem;
   padding: 1.5rem; }
 
-.sidenav {
+.sidebar {
+  padding: .5rem;
   position: -webkit-sticky;
   position: static;
   z-index: 1000;
-  height: calc(100vh - 4rem);
   border-right: 1px solid #ececec;
   display: flex !important;
   flex-direction: column;
   max-width: 20%;
-  flex: 0 0 18%; }
+  flex: 0 0 18%;
+  box-shadow: 3px 2px 15px -2px grey; }
+
+.side-nav {
+  font-size: 1.4rem;
+  list-style: none;
+  margin-top: 3.5rem; }
+  .side-nav__item {
+    position: relative; }
 
 .main {
-  flex: 1; }
+  flex: 1;
+  padding: 2rem; }

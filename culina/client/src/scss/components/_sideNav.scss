@@ -1,14 +1,25 @@
-.sidenav {
+.sidebar {
+    padding: .5rem;
     position: -webkit-sticky;
     position: static;
     z-index: 1000;
-    height: calc(100vh - 4rem);
+ //   height: calc(100vh - 4rem);
     border-right: 1px solid #ececec;
     display: flex !important;
     flex-direction: column;
     max-width: 20%;
     flex: 0 0 18%;
+    box-shadow: 3px 2px 15px -2px grey;
+}
+.side-nav {
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 3.5rem;
+    &__item {
+        position: relative;
+    }
 }
 .main {
     flex: 1;
+    padding: 2rem;
 }
