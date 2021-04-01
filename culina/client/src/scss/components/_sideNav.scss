@@ -17,7 +17,49 @@
     margin-top: 3.5rem;
     &__item {
         position: relative;
+        &:not(:last-child) {
+            margin-bottom: .5rem;
+        }
     }
+    &__item {
+      transition: all .4s;
+    }
+    &__item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 3px;
+    } 
+
+  &__item:hover {
+      background-color: #e4e4e49a;
+  }
+
+    &__link:link,
+    &__link:visited {
+        color: black;
+        text-decoration: none;
+        text-transform: uppercase;
+        display: block;
+        padding: 1.5rem 3rem;
+        position: relative;
+        z-index: 10;
+
+        display: flex;
+        align-items: center;
+    }
+
+    &__link--active {
+        background-color: #c7c7c79a;
+    }
+ 
+    &__icon {
+        width: 2.3rem;
+        height: 2.3rem;
+        margin-right: 2rem;
+    }   
 }
 .main {
     flex: 1;
