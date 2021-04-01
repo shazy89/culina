@@ -1,14 +1,27 @@
-import React from "react";
-import { FilePlus, Database } from "react-feather";
+import React, { useState } from "react";
+import { FilePlus, FileText } from "react-feather";
 import SideNavItem from "./SideNavItem";
 
 const SideNav = () => {
+  const [selectedItem, setSelectedItem] = useState("");
   // side-nav__link--active
   return (
     <div className="sidebar">
       <ul className="side-nav">
-        <SideNavItem icon={Database} content="All Companies" to="/companies" />
-        <SideNavItem icon={FilePlus} content="New Company" to="/company/new" />
+        <SideNavItem
+          selectedItem={selectedItem}
+          setSelectedItem={setSelectedItem}
+          icon={FileText}
+          content="All Restaurants"
+          to="/restaurants"
+        />
+        <SideNavItem
+          selectedItem={selectedItem}
+          setSelectedItem={setSelectedItem}
+          icon={FilePlus}
+          content="New Restaurants"
+          to="/restaurant/new"
+        />
       </ul>
     </div>
   );

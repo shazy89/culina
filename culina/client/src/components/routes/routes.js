@@ -16,8 +16,12 @@ const Routes = () => {
         <main className="main">
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            <PrivateRoute exact path="/company/new" component={CompanyForm} />
-            <PrivateRoute exact path="/companies" component={AllCompanies} />
+            <PrivateRoute
+              exact
+              path="/restaurant/new"
+              component={CompanyForm}
+            />
+            <PrivateRoute exact path="/restaurants" component={AllCompanies} />
           </Switch>
         </main>
       </div>
