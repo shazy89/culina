@@ -1,16 +1,13 @@
 import React from "react";
 import { FilePlus } from "react-feather";
+import SideNavItem from "./SideNavItem";
 
 const SideNav = () => {
   // side-nav__link--active
   return (
     <div className="sidebar">
       <ul className="side-nav">
-        <li className="side-nav__item">
-          <a className="side-nav__link" href="#">
-            <FilePlus className="side-nav__icon" /> Click
-          </a>
-        </li>
+        <SideNavItem icon={FilePlus} content="New Company" />
       </ul>
     </div>
   );

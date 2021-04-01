@@ -17,13 +17,13 @@
     margin-top: 3.5rem;
     &__item {
         position: relative;
+        transition: all .4s;
         &:not(:last-child) {
             margin-bottom: .5rem;
+            border-bottom: 2px solid black;
         }
     }
-    &__item {
-      transition: all .4s;
-    }
+
     &__item::before {
         content: "";
         position: absolute;
@@ -53,6 +53,7 @@
 
     &__link--active {
         background-color: #c7c7c79a;
+
     }
  
     &__icon {
