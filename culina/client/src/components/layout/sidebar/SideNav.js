@@ -7,7 +7,7 @@ const SideNav = () => {
   return (
     <div className="sidebar">
       <ul className="side-nav">
-        <SideNavItem icon={FilePlus} content="New Company" />
+        <SideNavItem icon={FilePlus} content="New Company" to={"company/new"} />
       </ul>
     </div>
   );
