@@ -4,7 +4,7 @@ import SideNavItem from "./SideNavItem";
 
 const SideNav = () => {
   const [selectedItem, setSelectedItem] = useState("");
-  // side-nav__link--active
+
   return (
     <div className="sidebar">
       <ul className="side-nav">

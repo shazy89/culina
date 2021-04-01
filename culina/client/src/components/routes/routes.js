@@ -4,6 +4,7 @@ import { Switch } from "react-router";
 import Dashboard from "../dashboard/Dashboard";
 import CompanyForm from "../companies/CompanyForm";
 import AllCompanies from "../companies/AllCompanies";
+import Company from "../companies/Company";
 import Navbar from "../layout/NavBar";
 import SideNav from "../layout/sidebar/SideNav";
 
@@ -22,6 +23,7 @@ const Routes = () => {
               component={CompanyForm}
             />
             <PrivateRoute exact path="/restaurants" component={AllCompanies} />
+            <PrivateRoute exact path="/restaurants/:id" component={Company} />
           </Switch>
         </main>
       </div>
