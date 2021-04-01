@@ -9,7 +9,8 @@ html {
   font-size: 62.5%; }
 
 body {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background-color: #cccccc; }
 
 @font-face {
   font-family: 'Lato-Italic';
@@ -65,6 +66,12 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); }
+
+.culina__content {
+  background-color: white;
+  max-width: 110rem;
+  margin: 0 auto;
+  display: flex; }
 
 .culina__auth--card {
   height: 70%;
@@ -127,3 +134,17 @@ body {
 .navbarCulina {
   font-size: 1.8rem;
   padding: 1.5rem; }
+
+.sidenav {
+  position: -webkit-sticky;
+  position: static;
+  z-index: 1000;
+  height: calc(100vh - 4rem);
+  border-right: 1px solid #ececec;
+  display: flex !important;
+  flex-direction: column;
+  max-width: 20%;
+  flex: 0 0 18%; }
+
+.main {
+  flex: 1; }
