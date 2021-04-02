@@ -1,12 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Navbar, NavDropdown, Nav } from "react-bootstrap";
 import { logout } from "../../actions/auth";
 import PropTypes from "prop-types";
 
-const NavBar = ({ logout, history, currentUser }) => {
-  console.log(currentUser);
+const NavBar = ({ logout, history, currentUser, isAuthenticated }) => {
+  if (!isAuthenticated) {
+    return <Redirect to="/" />;
+  }
   return (
     <Navbar
       collapseOnSelect
@@ -45,6 +47,7 @@ NavBar.propTypes = {
 const mapStateToProps = (store) => {
   return {
     currentUser: store.auth.user,
+    isAuthenticated: store.auth.isAuthenticated,
   };
 };
 
