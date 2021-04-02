@@ -1,14 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import Spinner from "../layout/Spinner";
 
-const Company = (props) => {
+const Company = ({ location: { company }, loading }) => {
+  if (!company) {
+    return <Redirect to="/restaurants" />;
+  }
   return (
-    <div>
-      <h1>I'm the Path</h1>
-    </div>
+    <>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div>
+          <h1>{company.email}</h1>
+        </div>
+      )}
+    </>
   );
 };
 
-Company.propTypes = {};
+const mapStateProps = (state) => ({
+  loading: state.company.loading,
+});
 
-export default Company;
+export default connect(mapStateProps)(Company);

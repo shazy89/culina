@@ -1,11 +1,23 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { getCompanies } from "../../actions/companies";
 import Spinner from "../layout/Spinner";
 
 const AllCompanies = ({ companies, getCompanies, loading }) => {
-  let displayCompanies = companies.map((company) => <h3>{company.name}</h3>);
+  let displayCompanies = companies.map((company) => (
+    <Link
+      key={company._id}
+      to={{
+        pathname: `/restaurants/${company._id}`,
+        company,
+      }}
+    >
+      {company.name}
+    </Link>
+  ));
+
   useEffect(() => {
     if (!companies.length) {
       getCompanies();
