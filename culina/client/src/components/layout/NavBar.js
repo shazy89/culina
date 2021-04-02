@@ -3,8 +3,10 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Navbar, NavDropdown, Nav } from "react-bootstrap";
 import { logout } from "../../actions/auth";
+import PropTypes from "prop-types";
 
 const NavBar = ({ logout, history, currentUser }) => {
+  console.log(currentUser);
   return (
     <Navbar
       collapseOnSelect
@@ -21,6 +23,13 @@ const NavBar = ({ logout, history, currentUser }) => {
           <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
         <Nav>
+          <NavDropdown title={`Hi ${currentUser.name}`} id="nav-dropdown">
+            <NavDropdown.Item eventKey="4.1">Action</NavDropdown.Item>
+            <NavDropdown.Item eventKey="4.2">Another action</NavDropdown.Item>
+            <NavDropdown.Item eventKey="4.3">
+              Something else here
+            </NavDropdown.Item>
+          </NavDropdown>
           <Nav.Link eventKey={2} onClick={logout} href="/">
             Log Out
           </Nav.Link>
@@ -28,6 +37,9 @@ const NavBar = ({ logout, history, currentUser }) => {
       </Navbar.Collapse>
     </Navbar>
   );
+};
+NavBar.propTypes = {
+  logout: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (store) => {
