@@ -2,7 +2,7 @@ const Company = require("../models/newCompany");
 
 exports.newOrUpdate = async function (req, res) {
   const { name, adress, phone, email, timeZone, logo } = req.body;
-
+  console.log(name);
   const companyFields = {};
   companyFields.name = name;
   if (email) companyFields.email = email;

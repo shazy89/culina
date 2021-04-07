@@ -21,6 +21,12 @@ body {
   font-weight: 400;
   line-height: 1; }
 
+.company__header-text {
+  font-size: 180% !important; }
+
+.company__paragraph-text {
+  font-size: 140% !important; }
+
 .u-center-text {
   text-align: center !important; }
 
@@ -125,6 +131,9 @@ body {
 
 .culina__auth--form-label {
   font-size: 1.3rem; }
+
+.card__text {
+  text-align: center; }
 
 .button__main {
   display: flex; }

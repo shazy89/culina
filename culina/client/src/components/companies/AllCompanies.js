@@ -4,18 +4,11 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getCompanies } from "../../actions/companies";
 import Spinner from "../layout/Spinner";
+import CompanyCard from "./CompanyInfoCard";
 
 const AllCompanies = ({ companies, getCompanies, loading }) => {
   let displayCompanies = companies.map((company) => (
-    <Link
-      key={company._id}
-      to={{
-        pathname: `/companies/${company._id}`,
-        company,
-      }}
-    >
-      {company.name}
-    </Link>
+    <CompanyCard key={company._id} company={company} />
   ));
 
   useEffect(() => {
@@ -25,23 +18,25 @@ const AllCompanies = ({ companies, getCompanies, loading }) => {
   }, [getCompanies, companies.length]);
 
   return (
-    <div>
+    <>
       <h1>All Companies</h1>
-      {loading && <Spinner />}
-      {!loading && displayCompanies}
-    </div>
+      <div>
+        {loading && <Spinner />}
+        {!loading && displayCompanies}
+      </div>
+    </>
   );
 };
 
 AllCompanies.propTypes = {
   companies: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => {
   return {
     companies: state.company.companies,
-    loading: state.company.loading,
+    loading: state.company.loading
   };
 };
 
