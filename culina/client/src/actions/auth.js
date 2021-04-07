@@ -30,6 +30,7 @@ export const login = (email, password) => async (dispatch) => {
 
   try {
     const res = await api.post("auth/signin", body);
+
     await localStorage.setItem("token", res.data.token);
     dispatch({
       type: LOGIN_SUCCESS,
@@ -38,6 +39,7 @@ export const login = (email, password) => async (dispatch) => {
 
     dispatch(loadUser());
   } catch (err) {
+    console.error(err);
     let error = err.response.data.error;
 
     if (error) {

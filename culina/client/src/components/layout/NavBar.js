@@ -5,10 +5,11 @@ import { Navbar, NavDropdown, Nav } from "react-bootstrap";
 import { logout } from "../../actions/auth";
 import PropTypes from "prop-types";
 
-const NavBar = ({ logout, history, currentUser, isAuthenticated }) => {
+const NavBar = ({ logout, history, currentUser, isAuthenticated, loading }) => {
   if (!isAuthenticated) {
     return <Redirect to="/" />;
   }
+
   return (
     <Navbar
       collapseOnSelect
@@ -25,7 +26,10 @@ const NavBar = ({ logout, history, currentUser, isAuthenticated }) => {
           <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
         <Nav>
-          <NavDropdown title={`Hi ${currentUser.name}`} id="nav-dropdown">
+          <NavDropdown
+            title={`Hi ${currentUser && currentUser.name} `}
+            id="nav-dropdown"
+          >
             <NavDropdown.Item eventKey="4.1">Action</NavDropdown.Item>
             <NavDropdown.Item eventKey="4.2">Another action</NavDropdown.Item>
             <NavDropdown.Item eventKey="4.3">
@@ -48,6 +52,7 @@ const mapStateToProps = (store) => {
   return {
     currentUser: store.auth.user,
     isAuthenticated: store.auth.isAuthenticated,
+    loading: store.auth.loading,
   };
 };
 

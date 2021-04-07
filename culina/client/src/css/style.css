@@ -137,6 +137,9 @@ body {
   font-size: 1.8rem;
   padding: 1.5rem; }
 
+.blue {
+  color: blue; }
+
 .sidebar {
   padding: .5rem;
   position: -webkit-sticky;

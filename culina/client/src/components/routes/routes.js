@@ -19,11 +19,11 @@ const Routes = () => {
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute
               exact
-              path="/restaurant/new"
+              path="/companie/new"
               component={CompanyForm}
             />
-            <PrivateRoute exact path="/restaurants" component={AllCompanies} />
-            <PrivateRoute exact path="/restaurants/:id" component={Company} />
+            <PrivateRoute exact path="/companies" component={AllCompanies} />
+            <PrivateRoute exact path="/companies/:id" component={Company} />
           </Switch>
         </main>
       </div>

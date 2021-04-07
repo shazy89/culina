@@ -12,14 +12,14 @@ const SideNav = () => {
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
           icon={FileText}
-          content="All Restaurants"
+          content="All Companies"
           to="/restaurants"
         />
         <SideNavItem
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
           icon={FilePlus}
-          content="New Restaurants"
+          content="New Companie"
           to="/restaurant/new"
         />
       </ul>

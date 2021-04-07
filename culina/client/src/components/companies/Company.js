@@ -7,13 +7,17 @@ const Company = ({ location: { company }, loading }) => {
   if (!company) {
     return <Redirect to="/restaurants" />;
   }
+  // const getId = () => {
+  //   let id = document.getElementById("hey");
+  //   id.className = "blue";
+  // };
   return (
     <>
       {loading ? (
         <Spinner />
       ) : (
         <div>
-          <h1>{company.email}</h1>
+          <h1 id="hey">{company.email}</h1>
         </div>
       )}
     </>
