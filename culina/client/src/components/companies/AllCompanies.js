@@ -10,7 +10,7 @@ const AllCompanies = ({ companies, getCompanies, loading }) => {
     <Link
       key={company._id}
       to={{
-        pathname: `/restaurants/${company._id}`,
+        pathname: `/companies/${company._id}`,
         company,
       }}
     >

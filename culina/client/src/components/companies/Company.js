@@ -5,7 +5,7 @@ import Spinner from "../layout/Spinner";
 
 const Company = ({ location: { company }, loading }) => {
   if (!company) {
-    return <Redirect to="/restaurants" />;
+    return <Redirect to="/companies" />;
   }
   // const getId = () => {
   //   let id = document.getElementById("hey");
