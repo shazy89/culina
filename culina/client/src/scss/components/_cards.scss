@@ -63,4 +63,35 @@
 }
 .card__text {
     text-align: center;
+    background-image: linear-gradient(to left bottom, #f1f1f1, #fde3e3);
+}
+.card__link {
+
+    &:link,
+    &:visited {
+        display: inline-block;
+        border: none;
+        background: none;
+        text-decoration: none;
+        color: black;
+        outline: none;
+        transition: all 0.3s;
+        margin-left: 2rem;
+        margin-top: 2rem;
+        width: 30%;
+    }
+ 
+  
+    &:hover,
+    &:active {
+     
+        box-shadow: 0 1rem 2rem rgba(black, .4);
+        transform: rotate(1deg) ske(1.1);
+   
+      }
+}
+.flex__container {
+    display: flex;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
 }

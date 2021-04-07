@@ -20,7 +20,7 @@ const AllCompanies = ({ companies, getCompanies, loading }) => {
   return (
     <>
       <h1>All Companies</h1>
-      <div>
+      <div className="flex__container">
         {loading && <Spinner />}
         {!loading && displayCompanies}
       </div>

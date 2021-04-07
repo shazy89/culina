@@ -1,14 +1,18 @@
 const Company = require("../models/newCompany");
+const normalizeData = require("../services/normalizeData");
 
 exports.newOrUpdate = async function (req, res) {
   const { name, adress, phone, email, timeZone, logo } = req.body;
-  console.log(name);
+
   const companyFields = {};
   companyFields.name = name;
   if (email) companyFields.email = email;
   if (adress) companyFields.adress = adress;
   if (logo) companyFields.logo = logo;
-  if (phone) companyFields.phone = phone;
+  if (phone) {
+    //format the mobileNumber
+    companyFields.phone = normalizeData.normalizePhoneNumber(phone);
+  }
   if (timeZone) companyFields.timeZone = timeZone;
 
   try {

@@ -24,7 +24,6 @@ exports.culinaSignup = async function (req, res) {
   if (mobileNumber) {
     //format the mobileNumber
     userFields.mobileNumber = normalizeData.normalizePhoneNumber(mobileNumber);
-    console.log(normalizeData.normalizePhoneNumber(mobileNumber));
   }
   if (salary) userFields.salary = salary;
   if (position) userFields.position = position;

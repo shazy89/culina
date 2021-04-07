@@ -7,6 +7,7 @@ const CompanyInfoCard = ({ company }) => {
   console.log(company);
   return (
     <Link
+      className="card__link"
       key={company._id}
       to={{
         pathname: `/companies/${company._id}`,
@@ -15,9 +16,11 @@ const CompanyInfoCard = ({ company }) => {
     >
       <Card className="card__text">
         <Card.Body>
-          <Card.Title className="company__header-text">Card Title</Card.Title>
+          <Card.Title className="company__header-text">
+            {company.name}
+          </Card.Title>
           <Card.Text className="company__paragraph-text">
-            Some quick example text to build on the
+            {company.email}
           </Card.Text>
         </Card.Body>
       </Card>

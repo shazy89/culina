@@ -133,7 +133,29 @@ body {
   font-size: 1.3rem; }
 
 .card__text {
-  text-align: center; }
+  text-align: center;
+  background-image: linear-gradient(to left bottom, #f1f1f1, #fde3e3); }
+
+.card__link:link, .card__link:visited {
+  display: inline-block;
+  border: none;
+  background: none;
+  text-decoration: none;
+  color: black;
+  outline: none;
+  transition: all 0.3s;
+  margin-left: 2rem;
+  margin-top: 2rem;
+  width: 30%; }
+
+.card__link:hover, .card__link:active {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+  transform: rotate(1deg) ske(1.1); }
+
+.flex__container {
+  display: flex;
+  /* justify-content: space-between; */
+  flex-wrap: wrap; }
 
 .button__main {
   display: flex; }
