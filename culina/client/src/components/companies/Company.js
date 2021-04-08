@@ -11,21 +11,27 @@ const Company = ({ location: { company }, loading }) => {
   //   let id = document.getElementById("hey");
   //   id.className = "blue";
   // };
+  console.log(company);
   return (
     <>
       {loading ? (
         <Spinner />
       ) : (
-        <div>
-          <h1 id="hey">{company.email}</h1>
-        </div>
+        <>
+          <div className="company__features--box">
+            <h1 id="hey">{company.email}</h1>
+          </div>
+          <div className="company__display--box">
+
+          </div>
+        </>
       )}
     </>
   );
 };
 
 const mapStateProps = (state) => ({
-  loading: state.company.loading,
+  loading: state.company.loading
 });
 
 export default connect(mapStateProps)(Company);

@@ -64,6 +64,9 @@
 .card__text {
     text-align: center;
     background-image: linear-gradient(to left bottom, #f1f1f1, #fde3e3);
+    height: 100%;
+    box-shadow: 0 .5rem 1rem rgba(black, .4);
+    transition: all .3s;
 }
 .card__link {
 
@@ -79,6 +82,7 @@
         margin-left: 2rem;
         margin-top: 2rem;
         width: 30%;
+        min-height: 10rem;
     }
  
   

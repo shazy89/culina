@@ -4,7 +4,6 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const CompanyInfoCard = ({ company }) => {
-  console.log(company);
   return (
     <Link
       className="card__link"

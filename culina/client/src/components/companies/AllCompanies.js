@@ -7,7 +7,7 @@ import Spinner from "../layout/Spinner";
 import CompanyCard from "./CompanyInfoCard";
 
 const AllCompanies = ({ companies, getCompanies, loading }) => {
-  let displayCompanies = companies.map((company) => (
+  const displayCompanies = companies.map((company) => (
     <CompanyCard key={company._id} company={company} />
   ));
 
@@ -19,7 +19,9 @@ const AllCompanies = ({ companies, getCompanies, loading }) => {
 
   return (
     <>
-      <h1>All Companies</h1>
+      <div className="companies__header">
+        <h1>All Companies</h1>
+      </div>
       <div className="flex__container">
         {loading && <Spinner />}
         {!loading && displayCompanies}
