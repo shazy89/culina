@@ -74,8 +74,12 @@ body {
   transform: translate(-50%, -50%); }
 
 .company {
-  background-color: #8a8a8a65;
   height: 100%; }
+  .company__features--box {
+    padding: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 10%; }
 
 .culina__content {
   background-color: white;

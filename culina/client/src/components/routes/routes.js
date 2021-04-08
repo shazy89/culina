@@ -19,7 +19,7 @@ const Routes = () => {
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute
               exact
-              path="/companie/new"
+              path="/company/new"
               component={CompanyForm}
             />
             <PrivateRoute exact path="/companies" component={AllCompanies} />
