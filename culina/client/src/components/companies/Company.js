@@ -17,14 +17,15 @@ const Company = ({ location: { company }, loading }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <>
+        <div className="company">
           <div className="company__features--box">
             <h1 id="hey">{company.email}</h1>
           </div>
-          <div className="company__display--box">
-
+          <div>
+            <div className="company__display--box-1"></div>
+            <div className="company__display--box-2"></div>
           </div>
-        </>
+        </div>
       )}
     </>
   );
