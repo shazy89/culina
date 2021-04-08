@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Spinner from "../layout/Spinner";
+import FeaturesNav from './FeaturesNav';
 
 const Company = ({ location: { company }, loading }) => {
   if (!company) {
@@ -19,7 +20,7 @@ const Company = ({ location: { company }, loading }) => {
       ) : (
         <div className="company">
           <div className="company__features--box">
-            <h1 id="hey">{company.email}</h1>
+            <FeaturesNav />
           </div>
           <div>
             <div className="company__display--box-1"></div>
