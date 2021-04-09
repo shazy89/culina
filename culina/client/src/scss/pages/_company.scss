@@ -11,16 +11,27 @@
     }
     &__display{
         height: 82%;
-        padding: 2rem;
+        padding: 1rem;
         display: flex;
     }
     &__display--box {
+        
         &-1 {
-            border: 1px solid black;
+      
             height: 100%;
             width: 35%;
             border-radius: 1rem;
+            box-shadow: 4px 5px 26px 0px #80808078;;
         }
+    }
+    &__info {
+        padding: 1rem;
+        text-align: center;
+        &--header {
+            font-size: 3rem;
+
+        }
+        
     }
 }
 .btn-features {

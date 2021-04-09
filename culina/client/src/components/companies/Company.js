@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import Spinner from "../layout/Spinner";
 import FeaturesNav from "./FeaturesNav";
 import Back from "../reusable/Back";
+import CompanyInfo from "./CompanyInfo";
 
 const Company = ({ location: { company }, loading, history }) => {
   if (!company) {
@@ -13,7 +14,7 @@ const Company = ({ location: { company }, loading, history }) => {
   //   let id = document.getElementById("hey");
   //   id.className = "blue";
   // };
-
+  console.log(company);
   return (
     <>
       {loading ? (
@@ -25,7 +26,9 @@ const Company = ({ location: { company }, loading, history }) => {
           </div>
           <Back history={history} />
           <div className="company__display">
-            <div className="company__display--box-1"></div>
+            <div className="company__display--box-1">
+              <CompanyInfo company={company} />
+            </div>
             <div className="company__display--box-2"></div>
           </div>
         </div>
