@@ -27,6 +27,9 @@ body {
 .company__paragraph-text {
   font-size: 140% !important; }
 
+.text-center {
+  text-align: center; }
+
 .u-center-text {
   text-align: center !important; }
 
@@ -272,3 +275,8 @@ body {
   .navigate__back-btn {
     font-size: 2rem;
     background-color: white; }
+
+.edit--form--section {
+  display: flex;
+  flex-flow: column;
+  text-align: center; }

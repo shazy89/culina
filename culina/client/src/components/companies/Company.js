@@ -36,7 +36,7 @@ const Company = ({ location: { company }, loading, history }) => {
               {!edit ? (
                 <CompanyInfo company={company} />
               ) : (
-                <h1>Company Form</h1>
+                <EditCompanyCard company={company} />
               )}
             </div>
             <div className="company__display--box-2"></div>

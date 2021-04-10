@@ -19,6 +19,7 @@ const initialState = {
 
 const CompanyForm = (props) => {
   const [formData, setFormData] = useState(initialState);
+  console.log(props);
   return <div>HEY THERE</div>;
 };
 
