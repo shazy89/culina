@@ -5,6 +5,7 @@ import Spinner from "../layout/Spinner";
 import FeaturesNav from "./FeaturesNav";
 import Back from "../reusable/Back";
 import CompanyInfo from "./CompanyInfo";
+import EditCompanyCard from "./forms/EditCompanyCard";
 
 const Company = ({ location: { company }, loading, history }) => {
   const [edit, setEdit] = useState(false);
