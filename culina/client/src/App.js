@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginDev from "./components/auth/LoginDev";
-import Routes from "./components/routes/Routes";
+import Routes from "./components/routes/routes";
 import { loadUser } from "./actions/auth";
 
 const App = ({ loadUser }) => {

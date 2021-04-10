@@ -4,18 +4,16 @@ import { connect } from "react-redux";
 import { Formik, Field, Form, useField, useFormikContext } from "formik";
 
 const initialState = {
-  company: "",
-  website: "",
-  location: "",
-  status: "",
-  skills: "",
-  githubusername: "",
-  bio: "",
-  twitter: "",
-  facebook: "",
-  linkedin: "",
-  youtube: "",
-  instagram: ""
+  name: "",
+  email: "",
+  adress: "",
+  phone: "",
+  timeZone: ""
+  //  twitter: "",
+  //  facebook: "",
+  //  linkedin: "",
+  //  youtube: "",
+  //  instagram: ""
 };
 
 const CompanyForm = (props) => {
