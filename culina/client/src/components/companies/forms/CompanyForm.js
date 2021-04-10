@@ -8,7 +8,8 @@ const initialState = {
   email: "",
   adress: "",
   phone: "",
-  timeZone: ""
+  timeZone: "",
+  logo: ""
   //  twitter: "",
   //  facebook: "",
   //  linkedin: "",
@@ -17,9 +18,14 @@ const initialState = {
 };
 
 const CompanyForm = (props) => {
+  const [formData, setFormData] = useState(initialState);
   return <div>HEY THERE</div>;
 };
 
 CompanyForm.propTypes = {};
 
-export default CompanyForm;
+const mapStateToProps = (state) => ({
+  company: state.company
+});
+
+export default connect(mapStateToProps)(CompanyForm);

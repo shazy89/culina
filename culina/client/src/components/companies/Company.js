@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Spinner from "../layout/Spinner";
@@ -7,6 +7,8 @@ import Back from "../reusable/Back";
 import CompanyInfo from "./CompanyInfo";
 
 const Company = ({ location: { company }, loading, history }) => {
+  const [edit, setEdit] = useState(false);
+
   if (!company) {
     return <Redirect to="/companies" />;
   }
@@ -28,7 +30,13 @@ const Company = ({ location: { company }, loading, history }) => {
           <Back history={history} />
           <div className="company__display">
             <div className="company__display--box-1">
-              <CompanyInfo company={company} />
+              {!edit && <button onClick={() => setEdit(true)}>edit</button>}
+              {edit && <button onClick={() => setEdit(false)}>Company</button>}
+              {!edit ? (
+                <CompanyInfo company={company} />
+              ) : (
+                <h1>Company Form</h1>
+              )}
             </div>
             <div className="company__display--box-2"></div>
           </div>
