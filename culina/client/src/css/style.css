@@ -280,3 +280,16 @@ body {
   display: flex;
   flex-flow: column;
   text-align: center; }
+
+.edit__input--field {
+  border: none;
+  border-bottom: 1px solid greenyellow;
+  padding: 1.5rem 2rem;
+  transition: all .3s;
+  font-size: 1.5rem;
+  font-family: inherit; }
+  .edit__input--field:hover {
+    font-size: 1.7rem; }
+  .edit__input--field:focus {
+    outline: none;
+    border-color: green; }
