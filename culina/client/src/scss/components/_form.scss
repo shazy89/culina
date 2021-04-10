@@ -15,7 +15,7 @@
     font-family: inherit;
     &:hover {
         transform: scale(1.05);
-        background-color: rgba(255, 244, 244, 0.801);
+        background-color: rgba(241, 241, 241, 0.596);
     }
     &:focus {
         outline: none;
@@ -24,7 +24,8 @@
     &:focus:invalid {
         border-bottom: 3px solid #ff4f30;
     }
-  } 
+  }
+
 }
 .display_form {
     -webkit-animation: fadeIn .5s ease-in; 

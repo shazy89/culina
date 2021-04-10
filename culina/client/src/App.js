@@ -10,7 +10,7 @@ const App = ({ loadUser }) => {
     if (localStorage.token) {
       loadUser();
     }
-  });
+  }, [loadUser]);
   return (
     <Router>
       <Fragment>

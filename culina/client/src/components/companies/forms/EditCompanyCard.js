@@ -38,14 +38,18 @@ const EditCompanyCard = ({ company, className }) => {
       }
       setFormData(companyData);
     }
-  }, []);
+  }, [company]);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    debugger;
+  };
 
   return (
     <div className="company__info">
       {" "}
       <Formik
         initialValues={formData}
-        onSubmit={async (values) => alert(JSON.stringify(values, null, 2))}
+        onSubmit={async (values) => console.log(values)}
       >
         <div>
           <Form className={"edit--form--section " + className}>

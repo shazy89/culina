@@ -6,6 +6,7 @@ import FeaturesNav from "./FeaturesNav";
 import Back from "../reusable/Back";
 import CompanyInfo from "./CompanyInfo";
 import EditCompanyCard from "./forms/EditCompanyCard";
+import { Edit, X } from "react-feather";
 
 const Company = ({ location: { company }, loading, history }) => {
   const [edit, setEdit] = useState(false);
@@ -31,8 +32,21 @@ const Company = ({ location: { company }, loading, history }) => {
           <Back history={history} />
           <div className="company__display">
             <div className="company__display--box-1">
-              {!edit && <button onClick={() => setEdit(true)}>edit</button>}
-              {edit && <button onClick={() => setEdit(false)}>Company</button>}
+              <div className="company__edit">
+                {!edit && (
+                  <Edit
+                    className="company__edit--button"
+                    onClick={() => setEdit(true)}
+                  ></Edit>
+                )}
+
+                {edit && (
+                  <X
+                    className="company__edit--button"
+                    onClick={() => setEdit(false)}
+                  ></X>
+                )}
+              </div>
               {!edit ? (
                 <CompanyInfo company={company} />
               ) : (
