@@ -10,6 +10,7 @@ const Company = ({ location: { company }, loading, history }) => {
   if (!company) {
     return <Redirect to="/companies" />;
   }
+  const name = false;
   // const getId = () => {
   //   let id = document.getElementById("hey");
   //   id.className = "blue";

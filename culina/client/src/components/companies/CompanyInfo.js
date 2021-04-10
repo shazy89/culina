@@ -12,14 +12,17 @@ const CompanyInfo = ({ company: { name, email, adress, phone, timeZone } }) => {
           {email}
         </a>
       </div>
-      <div>
-        <p>
-          {phone}
+      <div className="u-margin-top">
+        <p className="font-size-normal">
+          Contact Number: {phone}
+          <br />
           <br />
           {timeZone}
         </p>
       </div>
-      <adress>{adress}</adress>
+      <adress>
+        <p className="font-size-normal"> {adress}</p>
+      </adress>
     </div>
   );
 };
