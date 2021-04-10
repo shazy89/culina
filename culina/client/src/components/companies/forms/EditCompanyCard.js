@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
   Formik,
@@ -23,11 +23,23 @@ const initialState = {
   //  instagram: ""
 };
 
-const EditCompanyCard = ({
-  company: { name, email, adress, phone, timeZone }
-}) => {
+const EditCompanyCard = ({ company, className }) => {
   const [formData, setFormData] = useState(initialState);
-  const onChange = () => {};
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const { name, email, adress, phone, timeZone } = formData;
+  useEffect(() => {
+    if (company) {
+      const companyData = { ...initialState };
+
+      for (const key in company) {
+        if (key in companyData) companyData[key] = company[key];
+      }
+      setFormData(companyData);
+    }
+  }, []);
+
   return (
     <div className="company__info">
       {" "}
@@ -36,14 +48,14 @@ const EditCompanyCard = ({
         onSubmit={async (values) => alert(JSON.stringify(values, null, 2))}
       >
         <div>
-          <Form className="edit--form--section">
+          <Form className={"edit--form--section " + className}>
             <div className="u-margin-top">
-              <label className="company__info--header">
+              <label>
                 {" "}
                 <Field
                   onChange={onChange}
-                  className="text-center edit__input--field"
-                  name="textA"
+                  className="text-center edit__input--field company__info--header"
+                  name="name"
                   placeholder="Name"
                   value={name}
                 />
@@ -62,14 +74,15 @@ const EditCompanyCard = ({
               </label>
             </div>
             <div className="u-margin-top font-size-normal">
-              <label className="font-size-normal">Contact Number:</label>
-              <Field
-                onChange={onChange}
-                className="edit__input--field"
-                value={phone}
-                placeholder="Phone"
-                name="phone"
-              />
+              <label className="font-size-normal">
+                <Field
+                  onChange={onChange}
+                  className="edit__input--field text-center"
+                  value={phone}
+                  placeholder="Phone"
+                  name="phone"
+                />
+              </label>
               <br />
               <br />
               <label className="font-size-normal">
@@ -78,7 +91,7 @@ const EditCompanyCard = ({
                   value={timeZone}
                   className="text-center edit__input--field"
                   placeholder="TimeZone"
-                  name="TimeZone"
+                  name="timeZone"
                 />
               </label>
             </div>
@@ -89,7 +102,7 @@ const EditCompanyCard = ({
                   className="text-center edit__input--field"
                   value={adress}
                   placeholder="Adress"
-                  name="Adress"
+                  name="adress"
                 />
               </label>
             </div>

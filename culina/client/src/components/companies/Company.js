@@ -9,11 +9,11 @@ import EditCompanyCard from "./forms/EditCompanyCard";
 
 const Company = ({ location: { company }, loading, history }) => {
   const [edit, setEdit] = useState(false);
-
+  const className = edit ? "display_form" : "";
   if (!company) {
     return <Redirect to="/companies" />;
   }
-  const name = false;
+
   // const getId = () => {
   //   let id = document.getElementById("hey");
   //   id.className = "blue";
@@ -36,7 +36,7 @@ const Company = ({ location: { company }, loading, history }) => {
               {!edit ? (
                 <CompanyInfo company={company} />
               ) : (
-                <EditCompanyCard company={company} />
+                <EditCompanyCard company={company} className={className} />
               )}
             </div>
             <div className="company__display--box-2"></div>
