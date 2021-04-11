@@ -28,16 +28,17 @@ export const createOrUpdate = (formData, history, edit = false) => async (
       payload: res.data
     });
 
-    dispatch(setAlert(edit ? "Profile Updated" : "Profile Created", "success"));
+    dispatch(setAlert(edit ? "Company Updated" : "Company Created", "success"));
 
     if (!edit) {
       history.push(`companies/${formData._id}`);
     }
   } catch (err) {
-    const errors = err.response.data.errors;
+    console.error(err);
+    let error = err.response.data.error;
 
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    if (error) {
+      dispatch(setAlert(error, "danger"));
     }
 
     //   dispatch({

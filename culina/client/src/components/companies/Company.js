@@ -7,8 +7,9 @@ import Back from "../reusable/Back";
 import CompanyInfo from "./CompanyInfo";
 import EditCompanyCard from "./forms/EditCompanyCard";
 import { Edit, X } from "react-feather";
+import Alert from "../layout/Alerts";
 
-const Company = ({ location: { company }, loading, history }) => {
+const Company = ({ location: { company }, loading, history, alerts }) => {
   const [edit, setEdit] = useState(false);
   const className = edit ? "display_form" : "";
   if (!company) {
@@ -30,6 +31,7 @@ const Company = ({ location: { company }, loading, history }) => {
             <FeaturesNav />
           </div>
           <Back history={history} />
+          {alerts && <Alert />}
           <div className="company__display">
             <div className="company__display--box-1">
               <div className="company__edit">
@@ -62,7 +64,8 @@ const Company = ({ location: { company }, loading, history }) => {
 };
 
 const mapStateProps = (state) => ({
-  loading: state.company.loading
+  loading: state.company.loading,
+  alerts: state.alert
 });
 
-export default connect(mapStateProps)(Company);
+export default connect(mapStateProps, {})(Company);

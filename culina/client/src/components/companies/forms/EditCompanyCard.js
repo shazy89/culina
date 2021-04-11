@@ -1,14 +1,5 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import {
-  Formik,
-  Field,
-  Form,
-  useField,
-  useFormikContext,
-  MyField
-} from "formik";
-import { useForm } from "react-hook-form";
 import { Button } from "react-bootstrap";
 const initialState = {
   _id: "",
