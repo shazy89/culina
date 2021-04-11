@@ -15,7 +15,7 @@ const AllCompanies = ({ companies, getCompanies, loading }) => {
     if (!companies.length) {
       getCompanies();
     }
-  }, [getCompanies, companies.length]);
+  }, [getCompanies, companies]);
 
   return (
     <>

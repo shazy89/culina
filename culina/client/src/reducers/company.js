@@ -14,7 +14,9 @@ export default function (state = initialState, action) {
     case COMPANIES:
       return {
         ...state,
-        companies: [...state.companies, payload],
+        companies: state.companies.map((company) =>
+          company._id === payload._id ? payload : company
+        ),
         loading: false
       };
 

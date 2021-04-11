@@ -9,10 +9,20 @@ import EditCompanyCard from "./forms/EditCompanyCard";
 import { Edit, X } from "react-feather";
 import Alert from "../layout/Alerts";
 
-const Company = ({ location: { company }, loading, history, alerts }) => {
+const Company = ({
+  match: {
+    params: { id }
+  },
+
+  loading,
+  history,
+  alerts,
+  companies
+}) => {
   const [edit, setEdit] = useState(false);
+  const findCompany = companies.find((company) => id === company._id);
   const className = edit ? "display_form" : "";
-  if (!company) {
+  if (!findCompany) {
     return <Redirect to="/companies" />;
   }
 
@@ -20,7 +30,7 @@ const Company = ({ location: { company }, loading, history, alerts }) => {
   //   let id = document.getElementById("hey");
   //   id.className = "blue";
   // };
-  console.log(company);
+  console.log(findCompany);
   return (
     <>
       {loading ? (
@@ -50,9 +60,13 @@ const Company = ({ location: { company }, loading, history, alerts }) => {
                 )}
               </div>
               {!edit ? (
-                <CompanyInfo company={company} />
+                <CompanyInfo company={findCompany} />
               ) : (
-                <EditCompanyCard company={company} className={className} />
+                <EditCompanyCard
+                  company={findCompany}
+                  className={className}
+                  setEdit={setEdit}
+                />
               )}
             </div>
             <div className="company__display--box-2"></div>
@@ -65,6 +79,7 @@ const Company = ({ location: { company }, loading, history, alerts }) => {
 
 const mapStateProps = (state) => ({
   loading: state.company.loading,
+  companies: state.company.companies,
   alerts: state.alert
 });
 

@@ -9,8 +9,8 @@ const CompanyInfoCard = ({ company }) => {
       className="card__link"
       key={company._id}
       to={{
-        pathname: `/companies/${company._id}`,
-        company
+        pathname: `/companies/${company._id}`
+        //  company
       }}
     >
       <Card className="card__text">

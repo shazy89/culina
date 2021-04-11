@@ -18,7 +18,13 @@ const initialState = {
   //  instagram: ""
 };
 
-const EditCompanyCard = ({ company, className, createOrUpdate, history }) => {
+const EditCompanyCard = ({
+  company,
+  className,
+  createOrUpdate,
+  history,
+  setEdit
+}) => {
   const [formData, setFormData] = useState(initialState);
 
   const { name, email, adress, phone, timeZone } = formData;
@@ -39,6 +45,7 @@ const EditCompanyCard = ({ company, className, createOrUpdate, history }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     createOrUpdate(formData, true, history);
+    setEdit(false);
   };
 
   return (
