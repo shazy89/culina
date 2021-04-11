@@ -42,7 +42,7 @@ export const createOrUpdate = (formData, history, edit = false) => async (
     }
 
     //   dispatch({
-    //     type: PROFILE_ERROR,
+    //     type: COMPANY_ERROR,
     //     payload: { msg: err.response.statusText, status: err.response.status }
     //   });
   }

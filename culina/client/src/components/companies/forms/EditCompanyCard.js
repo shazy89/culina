@@ -35,6 +35,7 @@ const EditCompanyCard = ({ company, className }) => {
     }
   }, [company]);
   const onSubmit = (e) => {
+    //   edit = true !!!!
     e.preventDefault();
   };
 

@@ -2,10 +2,11 @@ const Company = require("../models/newCompany");
 const normalizeData = require("../services/normalizeData");
 
 exports.newOrUpdate = async function (req, res) {
-  const { name, adress, phone, email, timeZone, logo } = req.body;
+  const { _id, name, adress, phone, email, timeZone, logo, ...rest } = req.body;
 
   const companyFields = {};
-  companyFields.name = name;
+  if (_id) companyFields._id = _id;
+  if (name) companyFields.name = name;
   if (email) companyFields.email = email;
   if (adress) companyFields.adress = adress;
   if (logo) companyFields.logo = logo;
@@ -16,16 +17,18 @@ exports.newOrUpdate = async function (req, res) {
   if (timeZone) companyFields.timeZone = timeZone;
 
   try {
-    const findCompany = await Company.findOne({ name });
-    // Remember to integrate Id check thats the only way you can make sure that this will work 100 %
-    if (findCompany) {
-      // Update
-      company = await Company.findOneAndUpdate(
-        { name: name }, // filter
-        { $set: companyFields }, // update
-        { new: true }
-      );
-      return res.json(company);
+    if (_id) {
+      const findCompany = await Company.findOne({ _id });
+      // use upsert: true option and cleare the code  ----  Using upsert option (creates new doc if no match is found):
+      if (findCompany) {
+        // Update
+        company = await Company.findOneAndUpdate(
+          { _id: _id }, // filter
+          { $set: companyFields }, // update
+          { new: true }
+        );
+        return res.json(company);
+      }
     }
 
     const companyNew = new Company(companyFields);
