@@ -12,7 +12,7 @@ module.exports = function (app) {
   app.get("/auth", requireAuth, Authentication.getUser);
 
   // companies
-  app.post("/companies/new", requireAuth, Company.newOrUpdate);
+  app.post("/companies", requireAuth, Company.newOrUpdate);
   app.get("/companies/all", requireAuth, Company.allCompanies);
   app.get("/companies/:id", requireAuth, Company.companyProfile);
   app.delete("/companies/:id", requireAuth, Company.removeCompany);

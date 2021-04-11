@@ -11,6 +11,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Button } from "react-bootstrap";
 const initialState = {
+  _id: "",
   name: "",
   email: "",
   adress: "",
@@ -54,16 +55,13 @@ const EditCompanyCard = ({ company, className }) => {
           className={"edit--form--section " + className}
         >
           <div className="u-margin-top">
-            <label>
-              {" "}
-              <input
-                onChange={onChange}
-                className="text-center edit__input--field company__info--header"
-                name="name"
-                placeholder="Name"
-                value={name}
-              />
-            </label>
+            <input
+              onChange={onChange}
+              className="text-center edit__input--field company__info--header"
+              name="name"
+              placeholder="Name"
+              value={name}
+            />
           </div>
           <div className="u-margin-top-big font-size-normal">
             <label>

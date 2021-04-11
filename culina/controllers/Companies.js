@@ -35,7 +35,7 @@ exports.newOrUpdate = async function (req, res) {
     res.json({ companyNew });
   } catch (error) {
     console.log(error);
-    res.status(500).send("Server error");
+    res.status(500).send({ error: "Server error" });
   }
 };
 
@@ -48,7 +48,7 @@ exports.allCompanies = async function (req, res) {
     res.json(companies);
   } catch (err) {
     console.error(err);
-    res.status(500).send("Server Error");
+    res.status(500).send({ error: "Server error" });
   }
 };
 
@@ -62,7 +62,7 @@ exports.companyProfile = async function ({ params: { id } }, res) {
     return res.json(company);
   } catch (err) {
     console.error(err);
-    res.status(500).send("Server Error");
+    res.status(500).send({ error: "Server error" });
   }
 };
 // Remove Company profile by id
@@ -72,6 +72,6 @@ exports.removeCompany = async function ({ params: { id } }, res) {
     res.json({ msg: "Comopany deleted" });
   } catch (err) {
     console.error(err);
-    res.status(500).send("Server Error");
+    res.status(500).send({ error: "Server error" });
   }
 };
