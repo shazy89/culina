@@ -17,7 +17,7 @@ export const getCompanies = () => async (dispatch) => {
 };
 
 // Create or update company
-export const createOrUpdate = (formData, history, edit = false) => async (
+export const createOrUpdate = (formData, edit = false, history) => async (
   dispatch
 ) => {
   try {

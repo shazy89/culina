@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
+import { connect } from "react-redux";
+import { createOrUpdate } from "../../../actions/companies";
 const initialState = {
   _id: "",
   name: "",
@@ -16,7 +18,7 @@ const initialState = {
   //  instagram: ""
 };
 
-const EditCompanyCard = ({ company, className }) => {
+const EditCompanyCard = ({ company, className, createOrUpdate, history }) => {
   const [formData, setFormData] = useState(initialState);
 
   const { name, email, adress, phone, timeZone } = formData;
@@ -35,8 +37,8 @@ const EditCompanyCard = ({ company, className }) => {
     }
   }, [company]);
   const onSubmit = (e) => {
-    //   edit = true !!!!
     e.preventDefault();
+    createOrUpdate(formData, true, history);
   };
 
   return (
@@ -118,4 +120,4 @@ EditCompanyCard.propTypes = {
   company: PropTypes.object.isRequired
 };
 
-export default EditCompanyCard;
+export default connect(null, { createOrUpdate })(EditCompanyCard);
