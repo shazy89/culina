@@ -1,6 +1,6 @@
 import api from "../utils/api";
 import { setAlert } from "./alert";
-import { GET_COMPANIES, COMPANIES } from "./types";
+import { GET_COMPANIES, COMPANIES, NEW_COMPANY } from "./types";
 
 // Fetch all companies
 export const getCompanies = () => async (dispatch) => {
@@ -17,22 +17,24 @@ export const getCompanies = () => async (dispatch) => {
 };
 
 // Create or update company
-export const createOrUpdate = (formData, edit = false, history) => async (
-  dispatch
-) => {
+export const createOrUpdate = (formData, edit, history) => async (dispatch) => {
   try {
-    debugger;
     const res = await api.post("/companies", formData);
-
-    dispatch({
-      type: COMPANIES,
-      payload: res.data
-    });
-
-    dispatch(setAlert(edit ? "Company Updated" : "Company Created", "success"));
+    if (edit) {
+      dispatch({
+        type: COMPANIES,
+        payload: res.data
+      });
+      dispatch(setAlert("Company Updated", "success"));
+    }
 
     if (!edit) {
-      history.push(`companies/${formData._id}`);
+      dispatch({
+        type: NEW_COMPANY,
+        payload: res.data.companyNew
+      });
+      dispatch(setAlert("Company Created", "success"));
+      history.push(`/companies`);
     }
   } catch (err) {
     console.error(err);

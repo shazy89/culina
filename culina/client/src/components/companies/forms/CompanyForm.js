@@ -29,7 +29,7 @@ const CompanyForm = ({ history, alerts, createOrUpdate }) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    createOrUpdate(formData, history);
+    createOrUpdate(formData, false, history);
   };
 
   return (
@@ -39,7 +39,7 @@ const CompanyForm = ({ history, alerts, createOrUpdate }) => {
         <Container>
           {alerts && <Alert />}
           <form onSubmit={onSubmit} className="newCompany">
-            <FormInput onSubmit={onSubmit} />
+            <FormInput onChange={onChange} />
             <div className="button-box">
               <Button
                 type="submit"
