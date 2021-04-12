@@ -4,10 +4,11 @@ import { Link, Redirect } from "react-router-dom";
 import { Navbar, NavDropdown, Nav } from "react-bootstrap";
 import { logout } from "../../actions/auth";
 import PropTypes from "prop-types";
+import SI from "../PleaseSignin";
 
 const NavBar = ({ logout, history, currentUser, isAuthenticated, loading }) => {
   if (!isAuthenticated) {
-    return <Redirect to="/" />;
+    return <SI />;
   }
 
   return (
@@ -45,14 +46,14 @@ const NavBar = ({ logout, history, currentUser, isAuthenticated, loading }) => {
   );
 };
 NavBar.propTypes = {
-  logout: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (store) => {
   return {
     currentUser: store.auth.user,
     isAuthenticated: store.auth.isAuthenticated,
-    loading: store.auth.loading,
+    loading: store.auth.loading
   };
 };
 

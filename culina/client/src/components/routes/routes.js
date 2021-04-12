@@ -1,12 +1,13 @@
 import React from "react";
 import PrivateRoute from "./PrivateRoute";
-import { Switch } from "react-router";
+import { Route, Switch } from "react-router";
 import Dashboard from "../dashboard/Dashboard";
 import CompanyForm from "../companies/forms/CompanyForm";
 import AllCompanies from "../companies/AllCompanies";
 import Company from "../companies/Company";
 import Navbar from "../layout/NavBar";
 import SideNav from "../layout/sidebar/SideNav";
+import NotFound from "../NotFound";
 
 const Routes = () => {
   return (
@@ -20,6 +21,7 @@ const Routes = () => {
             <PrivateRoute exact path="/company/new" component={CompanyForm} />
             <PrivateRoute exact path="/companies" component={AllCompanies} />
             <PrivateRoute exact path="/companies/:id" component={Company} />
+            <Route component={NotFound} />
           </Switch>
         </main>
       </div>

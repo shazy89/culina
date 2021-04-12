@@ -4,8 +4,8 @@ import axios from "axios";
 const api = axios.create({
   baseURL: "http://localhost:3090/",
   headers: {
-    "Content-Type": "application/json",
-  },
+    "Content-Type": "application/json"
+  }
 });
 
 api.interceptors.request.use(
@@ -13,6 +13,7 @@ api.interceptors.request.use(
     const token = await localStorage.getItem("token");
     if (token) {
       // asign token to the headers
+
       config.headers.Authorization = token;
     }
     return config;
