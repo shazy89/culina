@@ -333,3 +333,37 @@ body {
   -webkit-animation: fadeIn .5s ease-in;
   animation: fadeIn .5s ease-in;
   opacity: 1; }
+
+.newCompany {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem; }
+
+.input--field {
+  border: none;
+  border-bottom: 1px solid greenyellow;
+  padding: .5rem 1rem;
+  width: 80%;
+  transition: all .3s;
+  font-size: 1.6rem;
+  font-family: inherit;
+  text-align: center; }
+  .input--field:hover {
+    transform: scale(1.05);
+    background-color: rgba(241, 241, 241, 0.596); }
+  .input--field:focus {
+    outline: none;
+    border-color: green; }
+  .input--field:focus:invalid {
+    border-bottom: 3px solid #ff4f30; }
+
+.input--label {
+  font-size: 2rem;
+  text-transform: capitalize; }
+
+.button-box {
+  display: flex;
+  justify-content: center; }
+
+.button-btn {
+  width: 40%; }
