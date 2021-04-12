@@ -84,4 +84,4 @@ const mapStateProps = (state) => ({
   alerts: state.alert
 });
 
-export default connect(mapStateProps, {})(Company);
+export default connect(mapStateProps)(Company);

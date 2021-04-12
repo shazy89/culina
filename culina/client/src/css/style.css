@@ -366,4 +366,5 @@ body {
   justify-content: center; }
 
 .button-btn {
-  width: 40%; }
+  width: 40%;
+  font-size: 1.4rem; }

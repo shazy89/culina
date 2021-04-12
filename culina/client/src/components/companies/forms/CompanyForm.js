@@ -1,8 +1,11 @@
 import React, { useState, useMemo } from "react";
-import { Container } from "react-bootstrap";
+import { connect } from "react-redux";
+import { Container, Row, Col } from "react-bootstrap";
 import FormInput from "./FormInput";
 import { v4 as uuidv4 } from "uuid";
 import { Button } from "react-bootstrap";
+import { createOrUpdate } from "../../../actions/companies";
+import Alert from "../../layout/Alerts";
 
 const initialState = {
   name: "",
@@ -12,42 +15,37 @@ const initialState = {
   timeZone: "",
   logo: ""
 };
-const inputData = [
-  { name: "name", type: "text" },
-  { name: "email", type: "email" },
-  { name: "adress", type: "text" },
-  { name: "phone", type: "text" },
-  { name: "timeZone", type: "text" },
-  { name: "logo", type: "file" }
-];
 
-const CompanyForm = () => {
+const CompanyForm = ({ history, alerts, createOrUpdate }) => {
   const [formData, setFormData] = useState(initialState);
 
   const onChange = (e) => {
+    e.preventDefault();
+
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
-
-  const displayInputs = useMemo(
-    () =>
-      inputData.map((info) => (
-        <FormInput key={uuidv4()} info={info} onChange={onChange} />
-      )),
-    [inputData]
-  );
+  const onSubmit = (e) => {
+    e.preventDefault();
+    createOrUpdate(formData, history);
+  };
 
   return (
     <div>
       <h1>New Company</h1>
       <div>
         <Container>
-          <form action="" className="newCompany">
-            {displayInputs}
+          {alerts && <Alert />}
+          <form onSubmit={onSubmit} className="newCompany">
+            <FormInput onSubmit={onSubmit} />
             <div className="button-box">
-              <Button type="submit" className="u-margin-top button-btn">
+              <Button
+                type="submit"
+                variant="success"
+                className="u-margin-top-small button-btn"
+              >
                 Submit
               </Button>
             </div>
@@ -57,5 +55,7 @@ const CompanyForm = () => {
     </div>
   );
 };
-
-export default CompanyForm;
+const mapStateProps = (state) => ({
+  alerts: state.alert
+});
+export default connect(mapStateProps, { createOrUpdate })(CompanyForm);

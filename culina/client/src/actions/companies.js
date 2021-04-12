@@ -21,6 +21,7 @@ export const createOrUpdate = (formData, edit = false, history) => async (
   dispatch
 ) => {
   try {
+    debugger;
     const res = await api.post("/companies", formData);
 
     dispatch({
