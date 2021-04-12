@@ -3,13 +3,17 @@ import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginDev from "./components/auth/LoginDev";
 import Routes from "./components/routes/routes";
-import { loadUser } from "./actions/auth";
+import { loadUser, logout } from "./actions/auth";
 
-const App = ({ loadUser }) => {
+const App = ({ loadUser, logout }) => {
   useEffect(() => {
     if (localStorage.token) {
       loadUser();
     }
+    // handle logout if no token
+    window.addEventListener("storage", () => {
+      if (!localStorage.token) logout();
+    });
   }, [loadUser]);
   return (
     <Router>
@@ -23,4 +27,4 @@ const App = ({ loadUser }) => {
   );
 };
 
-export default connect(null, { loadUser })(App);
+export default connect(null, { loadUser, logout })(App);

@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 import { login } from "../../actions/auth";
-import { Formik, Field, Form } from "formik";
 import Alert from "../layout/Alerts";
 
 const LoginDev = ({ login, isAuthenticated, alerts }) => {
   const [formData, setFormData] = useState({
     email: "",
-    password: "",
+    password: ""
   });
 
   const { email, password } = formData;
@@ -83,12 +82,12 @@ const LoginDev = ({ login, isAuthenticated, alerts }) => {
 
 LoginDev.propTypes = {
   login: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool,
+  isAuthenticated: PropTypes.bool
 };
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.isAuthenticated,
-    alerts: state.alert,
+    alerts: state.alert
   };
 };
 

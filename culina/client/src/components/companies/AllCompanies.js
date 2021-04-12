@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { getCompanies } from "../../actions/companies";
 import Spinner from "../layout/Spinner";
 import CompanyCard from "./CompanyInfoCard";
