@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 import { getCompanies } from "../../actions/companies";
 import Spinner from "../layout/Spinner";
 import CompanyCard from "./CompanyInfoCard";
+import Alert from "../layout/Alerts";
 
-const AllCompanies = ({ companies, getCompanies, loading }) => {
+const AllCompanies = ({ companies, getCompanies, loading, alert }) => {
   const displayCompanies = companies.map((company) => (
     <CompanyCard key={company._id} company={company} />
   ));
@@ -21,6 +22,7 @@ const AllCompanies = ({ companies, getCompanies, loading }) => {
       <div className="companies__header">
         <h1>All Companies</h1>
       </div>
+      {alert && <Alert />}
       <div className="flex__container">
         {loading && <Spinner />}
         {!loading && displayCompanies}
@@ -37,7 +39,8 @@ AllCompanies.propTypes = {
 const mapStateToProps = (state) => {
   return {
     companies: state.company.companies,
-    loading: state.company.loading
+    loading: state.company.loading,
+    alert: state.alert
   };
 };
 

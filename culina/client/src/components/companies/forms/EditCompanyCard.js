@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
+import { compose } from "redux";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
-import { connect } from "react-redux";
 import { createOrUpdate, deleteCopany } from "../../../actions/companies";
 const initialState = {
   _id: "",
@@ -50,9 +52,9 @@ const EditCompanyCard = ({
   };
   const onDelete = (e) => {
     e.preventDefault();
-    deleteCopany(formData._id);
+    deleteCopany(formData._id, history);
   };
-  console.log(formData);
+
   return (
     <div className="company__info">
       <form onSubmit={onSubmit} className={"edit--form--section " + className}>
@@ -130,4 +132,7 @@ EditCompanyCard.propTypes = {
   company: PropTypes.object.isRequired
 };
 
-export default connect(null, { createOrUpdate, deleteCopany })(EditCompanyCard);
+export default compose(
+  withRouter,
+  connect(null, { createOrUpdate, deleteCopany })
+)(EditCompanyCard);
