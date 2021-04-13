@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const company = new Schema({
   name: {
-    type: String,
+    type: String
   },
   adress: String,
   phone: String,
@@ -14,25 +14,28 @@ const company = new Schema({
   date: { type: Date, default: Date.now },
   users: [
     {
-      user: {
-        type: Schema.Types.ObjectId,
+      userId: {
+        type: Schema.Types.ObjectId
       },
-    },
+      firstName: String,
+      lastName: String,
+      avatar: String
+    }
   ],
   stores: [
     {
       store: {
-        type: Schema.Types.ObjectId,
-      },
-    },
+        type: Schema.Types.ObjectId
+      }
+    }
   ],
   vendors: [
     {
       vendor: {
-        type: Schema.Types.ObjectId,
-      },
-    },
-  ],
+        type: Schema.Types.ObjectId
+      }
+    }
+  ]
 });
 
 module.exports = Company = mongoose.model("company", company);

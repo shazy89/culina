@@ -12,7 +12,11 @@ const adminSchema = new Schema({
   mobileNumber: String,
   salary: String,
   position: String,
-  date: { type: Date, default: Date.now },
+  admin: {
+    type: Boolean,
+    default: true
+  },
+  date: { type: Date, default: Date.now }
 });
 
 //On Save Hook , encrypt password

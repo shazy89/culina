@@ -1,8 +1,8 @@
 const Authentication = require("./controllers/CulinaAuth");
 const Company = require("./controllers/Companies");
-// const Drink = require("./controllers/drink");
+const CompanyUser = require("./controllers/CompanyUser");
 // const pasportService = require("./services/pasport");
-const passport = require("passport");
+
 const requireAuth = require("./services/requireAuth");
 
 module.exports = function (app) {
@@ -16,6 +16,8 @@ module.exports = function (app) {
   app.get("/companies/all", requireAuth, Company.allCompanies);
   app.get("/companies/:id", requireAuth, Company.companyProfile);
   app.delete("/companies/:id", requireAuth, Company.removeCompany);
+  app.put("/companies/:id/user", requireAuth, Company.addCompanyUser);
+  app.post("/companies/:id/user", requireAuth, Company.addCompanyUser);
   //  app.post("/api/drink", requireAuth, Drink.newDrink);
   //  app.get("/api/drinks", requireAuth, Drink.getDrinks);
   //  app.get("/api/drink/:name", requireAuth, Drink.getSelectedDrink);

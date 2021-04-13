@@ -78,3 +78,29 @@ exports.removeCompany = async function ({ params: { id } }, res) {
     res.status(500).send({ error: "Server error" });
   }
 };
+
+// PUT Add company user
+exports.addCompanyUser = async function (
+  { params: { id }, user: { admin, position, company }, body },
+  res
+) {
+  const { _id, firstName, lastName, avatar } = body;
+  const userFields = {
+    userId: _id,
+    firstName,
+    lastName,
+    avatar
+  };
+  //if its not a admin must have a comp user
+  try {
+    if (admin || (!admin && position === "Manager" && company === id)) {
+      const company = await Company.findOne({ _id: id });
+      company.users.unshift(userFields);
+      await company.save();
+      req.json(company);
+    }
+  } catch (error) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
