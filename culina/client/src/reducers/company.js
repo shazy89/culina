@@ -33,9 +33,7 @@ export default function (state = initialState, action) {
     case DELETE_COMPANY:
       return {
         ...state,
-        companies: state.companies.filter(
-          (company) => company._id !== payload._id
-        ),
+        companies: state.companies.filter((company) => company._id !== payload),
         loading: false
       };
 

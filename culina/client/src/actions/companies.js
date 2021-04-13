@@ -52,12 +52,13 @@ export const createOrUpdate = (formData, edit, history) => async (dispatch) => {
 };
 
 // Delete company
-export const deleteCopany = (id) => async (dispatch) => {
+export const deleteCopany = (id, history) => async (dispatch) => {
   if (window.confirm("Are you sure? This can NOT be undone!")) {
     try {
       const res = await api.delete(`/companies/${id}`);
 
-      dispatch({ type: DELETE_COMPANY });
+      dispatch({ type: DELETE_COMPANY, payload: id });
+      history.push("/companies");
       //   dispatch({ type: ACCOUNT_DELETED });
 
       dispatch(setAlert("Company has been permanently deleted", "danger"));

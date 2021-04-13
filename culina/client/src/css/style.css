@@ -57,6 +57,9 @@ body {
 .font-size-normal {
   font-size: 1.6rem; }
 
+.w-60 {
+  width: 60%; }
+
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
