@@ -1,4 +1,4 @@
-const Authentication = require("./controllers/culinaAuth");
+const Authentication = require("./controllers/CulinaAuth");
 const Company = require("./controllers/Companies");
 // const Drink = require("./controllers/drink");
 // const pasportService = require("./services/pasport");
