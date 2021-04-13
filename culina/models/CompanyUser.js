@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require("bcryptjs");
 
 const companyUserSchema = new Schema({
   company: {
@@ -22,6 +23,7 @@ const companyUserSchema = new Schema({
   position: String,
   state: String,
   city: String,
+  address: String,
   zipCode: String,
   birthday: String,
   gender: String,

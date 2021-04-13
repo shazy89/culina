@@ -16,8 +16,8 @@ module.exports = function (app) {
   app.get("/companies/all", requireAuth, Company.allCompanies);
   app.get("/companies/:id", requireAuth, Company.companyProfile);
   app.delete("/companies/:id", requireAuth, Company.removeCompany);
-  app.put("/companies/:id/user", requireAuth, Company.addCompanyUser);
-  app.post("/companies/:id/user", requireAuth, Company.addCompanyUser);
+
+  app.post("/companies/:id/user/new", requireAuth, CompanyUser.newCompanyUser);
   //  app.post("/api/drink", requireAuth, Drink.newDrink);
   //  app.get("/api/drinks", requireAuth, Drink.getDrinks);
   //  app.get("/api/drink/:name", requireAuth, Drink.getSelectedDrink);

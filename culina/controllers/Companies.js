@@ -2,7 +2,7 @@ const Company = require("../models/newCompany");
 const normalizeData = require("../services/normalizeData");
 
 exports.newOrUpdate = async function (req, res) {
-  const { _id, name, adress, phone, email, timeZone, logo, ...rest } = req.body;
+  const { _id, name, adress, phone, email, timeZone, logo } = req.body;
 
   const companyFields = {};
   if (_id) companyFields._id = _id;
@@ -76,31 +76,5 @@ exports.removeCompany = async function ({ params: { id } }, res) {
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Server error" });
-  }
-};
-
-// PUT Add company user
-exports.addCompanyUser = async function (
-  { params: { id }, user: { admin, position, company }, body },
-  res
-) {
-  const { _id, firstName, lastName, avatar } = body;
-  const userFields = {
-    userId: _id,
-    firstName,
-    lastName,
-    avatar
-  };
-  //if its not a admin must have a comp user
-  try {
-    if (admin || (!admin && position === "Manager" && company === id)) {
-      const company = await Company.findOne({ _id: id });
-      company.users.unshift(userFields);
-      await company.save();
-      req.json(company);
-    }
-  } catch (error) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
   }
 };
