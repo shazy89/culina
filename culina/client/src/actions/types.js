@@ -10,3 +10,4 @@ export const REMOVE_ALERT = "REMOVE_ALERT";
 export const GET_COMPANIES = "GET_COMPANIES";
 export const NEW_COMPANY = "NEW_COMPANY";
 export const COMPANIES = "COMPANIES"; //create or update
+export const DELETE_COMPANY = "DELETE_COMPANY";

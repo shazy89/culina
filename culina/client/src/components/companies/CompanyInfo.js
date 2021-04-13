@@ -20,9 +20,9 @@ const CompanyInfo = ({ company: { name, email, adress, phone, timeZone } }) => {
           {timeZone}
         </p>
       </div>
-      <adress>
+      <div>
         <p className="font-size-normal"> {adress}</p>
-      </adress>
+      </div>
     </div>
   );
 };

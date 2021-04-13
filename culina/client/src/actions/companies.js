@@ -1,6 +1,6 @@
 import api from "../utils/api";
 import { setAlert } from "./alert";
-import { GET_COMPANIES, COMPANIES, NEW_COMPANY } from "./types";
+import { GET_COMPANIES, COMPANIES, NEW_COMPANY, DELETE_COMPANY } from "./types";
 
 // Fetch all companies
 export const getCompanies = () => async (dispatch) => {
@@ -34,7 +34,7 @@ export const createOrUpdate = (formData, edit, history) => async (dispatch) => {
         payload: res.data.companyNew
       });
       dispatch(setAlert("Company Created", "success"));
-      history.push(`/companies`);
+      history.push(`/companies/${res.data.companyNew._id}`);
     }
   } catch (err) {
     console.error(err);
@@ -48,5 +48,25 @@ export const createOrUpdate = (formData, edit, history) => async (dispatch) => {
     //     type: COMPANY_ERROR,
     //     payload: { msg: err.response.statusText, status: err.response.status }
     //   });
+  }
+};
+
+// Delete company
+export const deleteCopany = (id) => async (dispatch) => {
+  if (window.confirm("Are you sure? This can NOT be undone!")) {
+    try {
+      const res = await api.delete(`/companies/${id}`);
+
+      dispatch({ type: DELETE_COMPANY });
+      //   dispatch({ type: ACCOUNT_DELETED });
+
+      dispatch(setAlert("Company has been permanently deleted", "danger"));
+    } catch (err) {
+      console.error(err);
+      //   dispatch({
+      //     type: PROFILE_ERROR,
+      //     payload: { msg: err.response.statusText, status: err.response.status }
+      //   });
+    }
   }
 };
