@@ -1,16 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-const AddStore = props => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+const AddStore = (props) => {
+  return <div></div>;
+};
 
-AddStore.propTypes = {
+AddStore.propTypes = {};
 
-}
-
-export default AddStore
+export default AddStore;
