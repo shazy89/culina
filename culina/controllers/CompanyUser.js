@@ -5,18 +5,30 @@ exports.newCompanyUser = async function (
   { params: { id }, user: { admin, position, company }, body },
   res
 ) {
-  const { ...rest } = body;
+  const { _id, ...rest } = body;
 
   const userFields = {
     company: id,
     ...rest
   };
-  console.log(userFields);
 
   try {
     if (admin || (position === "Manager" && company === id)) {
       // TODO make sure you handle this on a bettr way
       // think of posible options that can crash the app
+      // There is shorter way to handle user updates and the new user
+      const compUser = await CompanyUser.findOne({ _id });
+      console.log(compUser);
+      if (compUser) {
+        const existingUser = await CompanyUser.findOneAndUpdate(
+          { _id: _id }, // filter
+          { $set: userFields }, // update
+          { new: true }
+        );
+        //return the updated user
+        return res.json(existingUser);
+      }
+
       const newUser = await new CompanyUser(userFields);
       const company = await Company.findOne({ _id: id });
 

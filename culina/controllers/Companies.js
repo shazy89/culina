@@ -3,7 +3,7 @@ const normalizeData = require("../services/normalizeData");
 
 exports.newOrUpdate = async function (req, res) {
   const { _id, name, adress, phone, email, timeZone, logo } = req.body;
-
+  // NOTE Clear the code
   const companyFields = {};
   if (_id) companyFields._id = _id;
   if (name) companyFields.name = name;
