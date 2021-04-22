@@ -78,16 +78,17 @@ exports.removeCompanyUser = async function (
 ) {
   try {
     await CompanyUser.findOneAndRemove({ _id: userId });
-    const company = await Company.findOne({ _id: companyId });
+    const company = await Company.findById({ _id: companyId });
 
     if (!company) {
       return res.status(404).json({ msg: "Company does not exist" });
     }
-    company.users.filter((user) => user._id !== userId);
+
+    company.users = company.users.filter((user) => user.userId != userId);
 
     await company.save();
 
-    res.json({ msg: "User deleted" });
+    res.json({ msg: "USER deleted" });
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Server error" });
