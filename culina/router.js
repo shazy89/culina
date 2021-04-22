@@ -22,9 +22,9 @@ module.exports = function (app) {
     requireAuth,
     CompanyUser.companyUserById
   );
-
-  //  app.post("/api/drink", requireAuth, Drink.newDrink);
-  //  app.get("/api/drinks", requireAuth, Drink.getDrinks);
-  //  app.get("/api/drink/:name", requireAuth, Drink.getSelectedDrink);
-  //  app.delete("/api/drink/:name", requireAuth, Drink.removeSelectedDrink);
+  app.delete(
+    "/companies/:companyId/user/:userId",
+    requireAuth,
+    CompanyUser.removeCompanyUser
+  );
 };

@@ -1,4 +1,5 @@
 const CompanyUser = require("../models/CompanyUser");
+const Company = require("../models/newCompany");
 
 // Post - Add a new user to :id company
 exports.newCompanyUser = async function (
@@ -64,6 +65,29 @@ exports.companyUserById = async function (
       if (!user) return res.status(400).json({ msg: "User not found" });
       return res.json(user);
     }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: "Server error" });
+  }
+};
+
+// Remove Company profile by id
+exports.removeCompanyUser = async function (
+  { params: { companyId, userId }, user: { admin, position, company }, body },
+  res
+) {
+  try {
+    await CompanyUser.findOneAndRemove({ _id: userId });
+    const company = await Company.findOne({ _id: companyId });
+
+    if (!company) {
+      return res.status(404).json({ msg: "Company does not exist" });
+    }
+    company.users.filter((user) => user._id !== userId);
+
+    await company.save();
+
+    res.json({ msg: "User deleted" });
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Server error" });
