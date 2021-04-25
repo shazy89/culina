@@ -3,14 +3,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const company = new Schema({
-  name: {
-    type: String
-  },
+  name: String,
   adress: String,
   phone: String,
   email: String,
   timeZone: String,
   logo: String,
+
   date: { type: Date, default: Date.now },
   users: [
     {
@@ -24,9 +23,11 @@ const company = new Schema({
   ],
   vendors: [
     {
-      vendor: {
+      vendorId: {
         type: Schema.Types.ObjectId
-      }
+      },
+      name: String,
+      email: String
     }
   ]
 });

@@ -79,20 +79,22 @@ exports.removeCompanyUser = async function (
   try {
     // NOTE: only amin user can remove users and Manager user
     // Check if admin or manager
-    if (admin || (position === "Manager" && company === companyId)) {
-      await CompanyUser.findOneAndRemove({ _id: userId });
-      const company = await Company.findById({ _id: companyId });
-
-      if (!company) {
-        return res.status(404).json({ msg: "Company does not exist" });
-      }
-
-      company.users = company.users.filter((user) => user.userId != userId);
-
-      await company.save();
-
-      res.json({ msg: "USER deleted" });
+    if (!admin || (position !== "Manager" && company !== companyId)) {
+      res.json({ msg: "You are not allowed to complete this task" });
     }
+
+    await CompanyUser.findOneAndRemove({ _id: userId });
+    const company = await Company.findById({ _id: companyId });
+
+    if (!company) {
+      return res.status(404).json({ msg: "Company does not exist" });
+    }
+
+    company.users = company.users.filter((user) => user.userId != userId);
+
+    await company.save();
+
+    res.json({ msg: "USER deleted" });
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Server error" });
