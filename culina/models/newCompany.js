@@ -22,13 +22,6 @@ const company = new Schema({
       avatar: String
     }
   ],
-  stores: [
-    {
-      store: {
-        type: Schema.Types.ObjectId
-      }
-    }
-  ],
   vendors: [
     {
       vendor: {
