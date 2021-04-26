@@ -2,13 +2,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const projectSchema = new Schema({
+  companyId: Schema.Types.ObjectId,
   state: String,
   city: String,
   address: String,
   zipCode: String,
   startDate: Date,
   deadLine: Date,
-  completed: Date,
+  completed: {
+    type: Boolean,
+    default: false
+  },
   contract: String,
   email: String,
   contactName: String,

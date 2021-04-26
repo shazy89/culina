@@ -1,6 +1,7 @@
 const Authentication = require("./controllers/CulinaAuth");
 const Company = require("./controllers/Companies");
 const CompanyUser = require("./controllers/CompanyUser");
+const Project = require("./controllers/Project");
 // const pasportService = require("./services/pasport");
 
 const requireAuth = require("./services/requireAuth");
@@ -27,4 +28,5 @@ module.exports = function (app) {
     requireAuth,
     CompanyUser.removeCompanyUser
   );
+  app.post("/culina/:company/project", requireAuth, Project.newOrUpdate);
 };
