@@ -23,11 +23,17 @@ const company = new Schema({
   ],
   vendors: [
     {
-      vendorId: {
-        type: Schema.Types.ObjectId
-      },
+      vendorId: Schema.Types.ObjectId,
       name: String,
       email: String
+    }
+  ],
+  projets: [
+    {
+      projectId: Schema.Types.ObjectId,
+      projectName: String,
+      email: String,
+      contactName: String
     }
   ]
 });

@@ -19,7 +19,7 @@ exports.newCompanyUser = async function (
       // think of posible options that can crash the app
       // There is shorter way to handle user updates and the new user
       const compUser = await CompanyUser.findOne({ _id });
-      console.log(compUser);
+
       if (compUser) {
         const existingUser = await CompanyUser.findOneAndUpdate(
           { _id: _id }, // filter

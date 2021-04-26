@@ -16,6 +16,7 @@ export default function (state = initialState, action) {
         companies: payload,
         loading: false
       };
+
     case NEW_COMPANY:
       return {
         ...state,

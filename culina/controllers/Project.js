@@ -12,8 +12,9 @@ exports.newOrUpdate = async function (
     companyId: company,
     ...rest
   };
-  console.log(userFields);
+
   try {
+    //Note to do later if its not a company user cannot create a new project for this company!!
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");

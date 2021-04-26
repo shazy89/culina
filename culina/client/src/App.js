@@ -15,6 +15,7 @@ const App = ({ loadUser, logout }) => {
       if (!localStorage.token) logout();
     });
   }, [loadUser, logout]);
+
   return (
     <Router>
       <Fragment>

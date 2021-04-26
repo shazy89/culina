@@ -31,7 +31,7 @@ const Company = ({
   //   let id = document.getElementById("hey");
   //   id.className = "blue";
   // };
-  console.log(findCompany);
+
   return (
     <>
       {loading ? (

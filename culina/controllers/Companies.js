@@ -37,14 +37,13 @@ exports.newOrUpdate = async function (req, res) {
 
     res.json({ companyNew });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).send({ error: "Server error" });
   }
 };
 
 //All companies
 exports.allCompanies = async function (req, res) {
-  console.log(req.user);
   try {
     const companies = await Company.find();
 

@@ -6,5 +6,5 @@ import alert from "./alert";
 export default combineReducers({
   company,
   auth,
-  alert,
+  alert
 });
