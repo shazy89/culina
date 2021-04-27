@@ -18,6 +18,7 @@ exports.newOrUpdate = async function (
     //Note to do later if its not a company user cannot create a new project for this company!!
     if (user.admin || (position === "Manager" && companyId === user.company)) {
       const project = await Project.findOne({ _id });
+      const companyProject = await Company.findOne({ _id: companyId });
 
       if (project) {
         const existingUser = await Project.findOneAndUpdate(
@@ -25,21 +26,21 @@ exports.newOrUpdate = async function (
           { $set: projectFields }, // update
           { new: true }
         );
+
         //return the updated user
         return res.json(existingUser);
       }
       const newProject = await new Project(projectFields);
-      const companyProject = await Company.findOne({ _id: companyId });
 
       await newProject.save();
 
       const companyProjectFields = {
         projectId: newProject._id,
-        projectName: newProject.firstName,
-        email: newProject.lastName,
-        contactName: newProject.avatar
+        projectName: newProject.projectName,
+        email: newProject.email,
+        contactName: newProject.contactName
       };
-      console.log(companyProject);
+
       companyProject.projects.unshift(companyProjectFields);
       await companyProject.save();
       //return the updated company Note decide what should be the return
