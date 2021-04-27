@@ -52,3 +52,23 @@ exports.newProject = async function (
     res.status(500).send("Server Error");
   }
 };
+// edit the project
+// culina/:companuId/project/edit
+exports.editProject = async function (
+  { params: { companyId }, user, body },
+  res
+) {
+  const { _id, ...rest } = body;
+
+  const projectFields = {
+    companyId,
+    ...rest
+  };
+  try {
+    if (user.admin || (position === "Manager" && companyId === user.company)) {
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
