@@ -31,7 +31,7 @@ const company = new Schema({
   projects: [
     {
       projectId: Schema.Types.ObjectId,
-      projectName: String,
+      projectName: { type: String, required: true, unique: true },
       email: String,
       contactName: String
     }

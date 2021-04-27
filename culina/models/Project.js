@@ -3,7 +3,11 @@ const Schema = mongoose.Schema;
 
 const projectSchema = new Schema({
   companyId: Schema.Types.ObjectId,
-  projectName: String,
+  projectName: {
+    type: String,
+    required: true,
+    unique: true
+  },
   state: String,
   city: String,
   address: String,

@@ -28,18 +28,19 @@ exports.newProject = async function (
       };
 
       companyProject.projects.unshift(companyProjectFields);
+      await newProject.save();
       await companyProject.save();
 
       // if (!project) res.json({ msg: "Something went wrong please try again" });
 
       res.json({ companyProject, newProject });
     }
-    res.json({ msg: "You are not allowed to complete this task" });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 };
+// PUT
 // edit the project
 // culina/:companuId/project/edit
 exports.editProject = async function (
