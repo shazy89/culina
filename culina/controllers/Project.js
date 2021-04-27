@@ -15,36 +15,24 @@ exports.newOrUpdate = async function (
   };
 
   try {
-    //Note to do later if its not a company user cannot create a new project for this company!!
+    // Note to do later if its not a company user cannot create a new project for this company!!
     if (user.admin || (position === "Manager" && companyId === user.company)) {
-      const project = await Project.findOne({ _id });
-      const companyProject = await Company.findOne({ _id: companyId });
+      let companyProject = await Company.findOne({ _id: companyId });
 
-      if (project) {
-        const existingUser = await Project.findOneAndUpdate(
-          { _id: _id }, // filter
-          { $set: projectFields }, // update
-          { new: true }
-        );
+      const project = await Project.findOneAndUpdate(
+        { _id: _id }, // filter
+        { $set: projectFields }, // update
+        { new: true, upsert: true, setDefaultsOnInsert: true }
+      );
 
-        //return the updated user
-        return res.json(existingUser);
-      }
-      const newProject = await new Project(projectFields);
+      //     const companyProjectFields = {
+      //       projectId: existingProject._id,
+      //       projectName: existingProject.projectName,
+      //       email: existingProject.email,
+      //       contactName: existingProject.contactName
+      //     };
 
-      await newProject.save();
-
-      const companyProjectFields = {
-        projectId: newProject._id,
-        projectName: newProject.projectName,
-        email: newProject.email,
-        contactName: newProject.contactName
-      };
-
-      companyProject.projects.unshift(companyProjectFields);
-      await companyProject.save();
-      //return the updated company Note decide what should be the return
-      res.json(companyProject);
+      res.json(project);
     }
     res.json({ msg: "You are not allowed to complete this task" });
   } catch (err) {
