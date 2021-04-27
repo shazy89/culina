@@ -35,7 +35,7 @@ exports.newCompanyUser = async function (
 
       await newUser.save();
 
-      const companyUserFields = await {
+      const companyUserFields = {
         userId: newUser._id,
         firstName: newUser.firstName,
         lastName: newUser.lastName,

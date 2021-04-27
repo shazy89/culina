@@ -29,17 +29,21 @@ exports.newOrUpdate = async function (
         return res.json(existingUser);
       }
       const newProject = await new CompanyUser(userFields);
-      const company = await Company.findOne({ _id: id });
+      const companyProject = await Company.findOne({ _id: company });
 
       await newProject.save();
 
-      const companyUserFields = await {
-        userId: newUser._id,
-        firstName: newUser.firstName,
-        lastName: newUser.lastName,
-        avatar: newUser.avatar,
-        position: newUser.position
+      const companyProjectFields = {
+        projectId: newProject._id,
+        projectName: newProject.firstName,
+        email: newProject.lastName,
+        contactName: newProject.avatar
       };
+
+      companyProject.projects.unshift(companyProjectFields);
+      await companyProject.save();
+      //return the updated company Note decide what should be the return
+      res.json(companyProject);
     }
   } catch (err) {
     console.error(err.message);
