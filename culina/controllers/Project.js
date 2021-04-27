@@ -24,15 +24,27 @@ exports.newOrUpdate = async function (
         { $set: projectFields }, // update
         { new: true, upsert: true, setDefaultsOnInsert: true }
       );
+      const companyProjectFields = {
+        projectId: project._id,
+        projectName: project.projectName,
+        email: project.email,
+        contactName: project.contactName
+      };
+      // add projects to the company
+      if (companyProject.projects.length) {
+        companyProject.projects = companyProject.projects.filter(
+          (post) => post.projectId.toString() !== project._id.toString()
+        );
+        companyProject.projects.unshift(companyProjectFields);
+        await companyProject.save();
+        res.json({ companyProject, project });
+      }
+      companyProject.projects.unshift(companyProjectFields);
+      await companyProject.save();
 
-      //     const companyProjectFields = {
-      //       projectId: existingProject._id,
-      //       projectName: existingProject.projectName,
-      //       email: existingProject.email,
-      //       contactName: existingProject.contactName
-      //     };
+      if (!project) res.json({ msg: "Something went wrong please try again" });
 
-      res.json(project);
+      res.json(companyProject);
     }
     res.json({ msg: "You are not allowed to complete this task" });
   } catch (err) {
