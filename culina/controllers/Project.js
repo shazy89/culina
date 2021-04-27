@@ -3,7 +3,7 @@ const Company = require("../models/newCompany");
 const normalizeData = require("../services/normalizeData");
 
 // New Project  culina/companyId/project
-exports.newOrUpdate = async function (
+exports.newProject = async function (
   { params: { companyId }, user, body },
   res
 ) {
@@ -22,7 +22,7 @@ exports.newOrUpdate = async function (
       const project = await Project.findOneAndUpdate(
         { _id: _id }, // filter
         { $set: projectFields }, // update
-        { new: true, upsert: true, setDefaultsOnInsert: true }
+        { new: true }
       );
       const companyProjectFields = {
         projectId: project._id,
