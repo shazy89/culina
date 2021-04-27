@@ -29,4 +29,5 @@ module.exports = function (app) {
     CompanyUser.removeCompanyUser
   );
   app.post("/culina/:companyId/project/new", requireAuth, Project.newProject);
+  app.put("/culina/:companyId/project/edit", requireAuth, Project.editProject);
 };

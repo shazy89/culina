@@ -13,7 +13,6 @@ exports.newProject = async function (
     companyId,
     ...rest
   };
-
   try {
     // Note to do later if its not a company user cannot create a new project for this company!!
     if (user.admin || (position === "Manager" && companyId === user.company)) {
@@ -31,8 +30,6 @@ exports.newProject = async function (
       await newProject.save();
       await companyProject.save();
 
-      // if (!project) res.json({ msg: "Something went wrong please try again" });
-
       res.json({ companyProject, newProject });
     }
   } catch (err) {
@@ -40,6 +37,7 @@ exports.newProject = async function (
     res.status(500).send("Server Error");
   }
 };
+
 // PUT
 // edit the project
 // culina/:companuId/project/edit
