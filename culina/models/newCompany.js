@@ -28,7 +28,7 @@ const company = new Schema({
       email: String
     }
   ],
-  projets: [
+  projects: [
     {
       projectId: Schema.Types.ObjectId,
       projectName: String,

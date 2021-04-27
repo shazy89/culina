@@ -4,19 +4,19 @@ const normalizeData = require("../services/normalizeData");
 
 // New Project  culina/companyId/project
 exports.newOrUpdate = async function (
-  { params: { company }, user, body },
+  { params: { companyId }, user, body },
   res
 ) {
-  const { companyId, ...rest } = body;
+  const { _id, ...rest } = body;
 
   const projectFields = {
-    companyId: company,
+    companyId,
     ...rest
   };
 
   try {
     //Note to do later if its not a company user cannot create a new project for this company!!
-    if (user.admin || (position === "Manager" && company === user.company)) {
+    if (user.admin || (position === "Manager" && companyId === user.company)) {
       const project = await Project.findOne({ _id });
 
       if (project) {
@@ -28,8 +28,8 @@ exports.newOrUpdate = async function (
         //return the updated user
         return res.json(existingUser);
       }
-      const newProject = await new CompanyUser(userFields);
-      const companyProject = await Company.findOne({ _id: company });
+      const newProject = await new Project(projectFields);
+      const companyProject = await Company.findOne({ _id: companyId });
 
       await newProject.save();
 
@@ -39,12 +39,13 @@ exports.newOrUpdate = async function (
         email: newProject.lastName,
         contactName: newProject.avatar
       };
-
+      console.log(companyProject);
       companyProject.projects.unshift(companyProjectFields);
       await companyProject.save();
       //return the updated company Note decide what should be the return
       res.json(companyProject);
     }
+    res.json({ msg: "You are not allowed to complete this task" });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
