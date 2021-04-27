@@ -17,34 +17,22 @@ exports.newProject = async function (
   try {
     // Note to do later if its not a company user cannot create a new project for this company!!
     if (user.admin || (position === "Manager" && companyId === user.company)) {
-      let companyProject = await Company.findOne({ _id: companyId });
+      const companyProject = await Company.findOne({ _id: companyId });
+      const newProject = await new Project(projectFields);
 
-      const project = await Project.findOneAndUpdate(
-        { _id: _id }, // filter
-        { $set: projectFields }, // update
-        { new: true }
-      );
       const companyProjectFields = {
-        projectId: project._id,
-        projectName: project.projectName,
-        email: project.email,
-        contactName: project.contactName
+        projectId: newProject._id,
+        projectName: newProject.projectName,
+        email: newProject.email,
+        contactName: newProject.contactName
       };
-      // add projects to the company
-      if (companyProject.projects.length) {
-        companyProject.projects = companyProject.projects.filter(
-          (post) => post.projectId.toString() !== project._id.toString()
-        );
-        companyProject.projects.unshift(companyProjectFields);
-        await companyProject.save();
-        res.json({ companyProject, project });
-      }
+
       companyProject.projects.unshift(companyProjectFields);
       await companyProject.save();
 
-      if (!project) res.json({ msg: "Something went wrong please try again" });
+      // if (!project) res.json({ msg: "Something went wrong please try again" });
 
-      res.json(companyProject);
+      res.json({ companyProject, newProject });
     }
     res.json({ msg: "You are not allowed to complete this task" });
   } catch (err) {
@@ -66,6 +54,28 @@ exports.editProject = async function (
   };
   try {
     if (user.admin || (position === "Manager" && companyId === user.company)) {
+      let companyProject = await Company.findOne({ _id: companyId });
+      const project = await Project.findOneAndUpdate(
+        { _id: _id }, // filter
+        { $set: projectFields }, // update
+        { new: true }
+      );
+
+      const companyProjectFields = {
+        projectId: project._id,
+        projectName: project.projectName,
+        email: project.email,
+        contactName: project.contactName
+      };
+      // add projects to the company
+      if (companyProject.projects.length) {
+        companyProject.projects = companyProject.projects.filter(
+          (post) => post.projectId.toString() !== project._id.toString()
+        );
+        companyProject.projects.unshift(companyProjectFields);
+        await companyProject.save();
+        res.json({ companyProject, project });
+      }
     }
   } catch (err) {
     console.error(err.message);
