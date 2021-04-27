@@ -48,12 +48,12 @@ exports.editProject = async function (
   const { _id, ...rest } = body;
 
   const projectFields = {
-    companyId,
     ...rest
   };
   try {
     if (user.admin || (position === "Manager" && companyId === user.company)) {
       let companyProject = await Company.findOne({ _id: companyId });
+
       const project = await Project.findOneAndUpdate(
         { _id: _id }, // filter
         { $set: projectFields }, // update
@@ -67,14 +67,13 @@ exports.editProject = async function (
         contactName: project.contactName
       };
       // add projects to the company
-      if (companyProject.projects.length) {
-        companyProject.projects = companyProject.projects.filter(
-          (post) => post.projectId.toString() !== project._id.toString()
-        );
-        companyProject.projects.unshift(companyProjectFields);
-        await companyProject.save();
-        res.json({ companyProject, project });
-      }
+
+      companyProject.projects = companyProject.projects.filter(
+        (post) => post.projectId.toString() !== project._id.toString()
+      );
+      companyProject.projects.unshift(companyProjectFields);
+      await companyProject.save();
+      res.json({ companyProject, project });
     }
   } catch (err) {
     console.error(err.message);
