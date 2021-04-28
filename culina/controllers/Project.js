@@ -89,6 +89,13 @@ exports.projectById = async function (
   res
 ) {
   try {
+    if (user.admin || (position === "Manager" && companyId === user.company)) {
+      const project = await Project.findOne({ _id: projectId });
+
+      if (!project) return res.status(400).json({ msg: "Project not found" });
+
+      return res.json(project);
+    }
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Server error" });
