@@ -30,4 +30,9 @@ module.exports = function (app) {
   );
   app.post("/culina/:companyId/project/new", requireAuth, Project.newProject);
   app.put("/culina/:companyId/project/edit", requireAuth, Project.editProject);
+  app.get(
+    "/culina/:companyId/project/:projectId",
+    requireAuth,
+    Project.projectById
+  );
 };
