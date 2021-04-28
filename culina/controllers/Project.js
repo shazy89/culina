@@ -80,3 +80,18 @@ exports.editProject = async function (
     res.status(500).send("Server Error");
   }
 };
+
+//
+// culina/:companyId/project/:projectId
+// GET  project by :id
+exports.projectById = async function (
+  { params: { companyId, projectId }, body, user },
+  res
+) {
+  try {
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: "Server error" });
+  }
+};
+// remove the project by the :id
