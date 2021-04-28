@@ -111,21 +111,17 @@ exports.removeProject = async function (
   res
 ) {
   try {
-    if (
-      !user.admin ||
-      (user.position !== "Manager" && user.company !== companyId)
-    ) {
-      res.json({ msg: "You are not allowed to complete this task" });
-    }
-    await Project.findOneAndRemove({ _id: projectId });
-    const companyProject = await Company.findOne({ _id: companyId });
+    if (user.admin || (position === "Manager" && companyId === user.company)) {
+      await Project.findOneAndRemove({ _id: projectId });
+      const companyProject = await Company.findOne({ _id: companyId });
 
-    // remove the project from the company projects array
-    companyProject.projects = companyProject.projects.filter(
-      (proj) => proj.projectId.toString() !== projectId.toString()
-    );
-    await companyProject.save();
-    res.json({ msg: "Project deleted" });
+      // remove the project from the company projects array
+      companyProject.projects = companyProject.projects.filter(
+        (proj) => proj.projectId.toString() !== projectId.toString()
+      );
+      await companyProject.save();
+      res.json({ msg: "Project deleted" });
+    }
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Server error" });

@@ -35,4 +35,9 @@ module.exports = function (app) {
     requireAuth,
     Project.projectById
   );
+  app.delete(
+    "/culina/:companyId/project/:projectId",
+    requireAuth,
+    Project.removeProject
+  );
 };
