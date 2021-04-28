@@ -69,7 +69,7 @@ exports.editProject = async function (
       // add projects to the company
 
       companyProject.projects = companyProject.projects.filter(
-        (post) => post.projectId.toString() !== project._id.toString()
+        (proj) => proj.projectId.toString() !== project._id.toString()
       );
       companyProject.projects.unshift(companyProjectFields);
       await companyProject.save();
@@ -85,11 +85,14 @@ exports.editProject = async function (
 // culina/:companyId/project/:projectId
 // GET  project by :id
 exports.projectById = async function (
-  { params: { companyId, projectId }, body, user },
+  { params: { companyId, projectId }, user },
   res
 ) {
   try {
-    if (user.admin || (position === "Manager" && companyId === user.company)) {
+    if (
+      user.admin ||
+      (user.position === "Manager" && companyId === user.company)
+    ) {
       const project = await Project.findOne({ _id: projectId });
 
       if (!project) return res.status(400).json({ msg: "Project not found" });
@@ -102,3 +105,29 @@ exports.projectById = async function (
   }
 };
 // remove the project by the :id
+// DEL culina/:companyId/project/:projectId
+exports.removeProject = async function (
+  { params: { companyId, projectId }, user },
+  res
+) {
+  try {
+    if (
+      !user.admin ||
+      (user.position !== "Manager" && user.company !== companyId)
+    ) {
+      res.json({ msg: "You are not allowed to complete this task" });
+    }
+    await Project.findOneAndRemove({ _id: projectId });
+    const companyProject = await Company.findOne({ _id: companyId });
+
+    // remove the project from the company projects array
+    companyProject.projects = companyProject.projects.filter(
+      (proj) => proj.projectId.toString() !== projectId.toString()
+    );
+    await companyProject.save();
+    res.json({ msg: "Project deleted" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: "Server error" });
+  }
+};
