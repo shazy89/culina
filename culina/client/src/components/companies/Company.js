@@ -7,7 +7,7 @@ import Back from "../reusable/Back";
 import CompanyInfo from "./CompanyInfo";
 import EditCompanyCard from "./forms/EditCompanyCard";
 import { Edit, X } from "react-feather";
-import Alert from "../layout/Alerts";
+import Alert from "components/layout/Alerts";
 import Slider from "components/layout/Slider";
 
 const Company = ({
