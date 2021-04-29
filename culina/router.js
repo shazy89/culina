@@ -18,6 +18,9 @@ module.exports = function (app) {
   app.get("/companies/:id", requireAuth, Company.companyProfile);
   app.delete("/companies/:id", requireAuth, Company.removeCompany);
   app.post("/companies/:id/user/new", requireAuth, CompanyUser.newCompanyUser);
+
+  app.post("/companies/:id/user/signin", CompanyUser.signInCompanyUser);
+
   app.put("/companies/:id/user/edit", requireAuth, CompanyUser.editCompanyUSer);
   app.get(
     "/companies/:companyId/user/:userId",
@@ -29,6 +32,7 @@ module.exports = function (app) {
     requireAuth,
     CompanyUser.removeCompanyUser
   );
+  //projects
   app.post("/culina/:companyId/project/new", requireAuth, Project.newProject);
   app.put("/culina/:companyId/project/edit", requireAuth, Project.editProject);
   app.get(

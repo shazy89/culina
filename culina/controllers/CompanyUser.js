@@ -59,11 +59,12 @@ exports.newCompanyUser = async function (
   }
 };
 // Sign in
-exports.signInCompanyUser = async function ({ email, password }, res) {
+exports.signInCompanyUser = async function (req, res) {
+  const { email, password } = req.body;
   if (!email || !password) {
     return res.status(422).send({ error: "Must provide email and password" });
   }
-  const user = await User.findOne({ email: email });
+  const user = await CompanyUser.findOne({ email: email });
   if (!user) {
     return res.status(422).send({ error: "Invalid password or email" });
   }
