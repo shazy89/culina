@@ -17,21 +17,6 @@ exports.newCompanyUser = async function (
 
   try {
     if (admin || (position === "Manager" && company === id)) {
-      // TODO make sure you handle this on a bettr way
-      // think of posible options that can crash the app
-      // There is shorter way to handle user updates and the new user
-      //  const compUser = await CompanyUser.findOne({ _id });
-      //
-      //  if (compUser) {
-      //    const existingUser = await CompanyUser.findOneAndUpdate(
-      //      { _id: _id }, // filter
-      //      { $set: userFields }, // update
-      //      { new: true }
-      //    );
-      //    //return the updated user
-      //    return res.json(existingUser);
-      //  }
-
       const newUser = await new CompanyUser(userFields);
       const company = await Company.findOne({ _id: id });
 
@@ -64,7 +49,6 @@ exports.editCompanyUSer = async function (
   const { _id, ...rest } = body;
 
   const userFields = {
-    company: id,
     ...rest
   };
   try {
@@ -83,11 +67,12 @@ exports.editCompanyUSer = async function (
         avatar: existingUser.avatar,
         position: existingUser.position
       };
-
-      companyProject.companyusers = companyProject.companyusers.filter(
-        (user) => user.projectId.toString() !== existingUser._id.toString()
-      );
-
+      console.log(company);
+      if (company.users.length) {
+        company.users = company.users.filter(
+          (user) => user.userId.toString() !== existingUser._id.toString()
+        );
+      }
       company.users.unshift(companyUserFields);
 
       await company.save();

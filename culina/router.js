@@ -18,6 +18,7 @@ module.exports = function (app) {
   app.get("/companies/:id", requireAuth, Company.companyProfile);
   app.delete("/companies/:id", requireAuth, Company.removeCompany);
   app.post("/companies/:id/user/new", requireAuth, CompanyUser.newCompanyUser);
+  app.put("/companies/:id/user/edit", requireAuth, CompanyUser.editCompanyUSer);
   app.get(
     "/companies/:companyId/user/:userId",
     requireAuth,
