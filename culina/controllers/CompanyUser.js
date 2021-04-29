@@ -1,7 +1,9 @@
 const CompanyUser = require("../models/CompanyUser");
 const Company = require("../models/newCompany");
 
-// Post - Add a new user to :id company
+// POST
+// Post - new company user
+// companies/:id/user/new
 exports.newCompanyUser = async function (
   { params: { id }, user: { admin, position, company }, body },
   res
@@ -18,22 +20,20 @@ exports.newCompanyUser = async function (
       // TODO make sure you handle this on a bettr way
       // think of posible options that can crash the app
       // There is shorter way to handle user updates and the new user
-      const compUser = await CompanyUser.findOne({ _id });
-
-      if (compUser) {
-        const existingUser = await CompanyUser.findOneAndUpdate(
-          { _id: _id }, // filter
-          { $set: userFields }, // update
-          { new: true }
-        );
-        //return the updated user
-        return res.json(existingUser);
-      }
+      //  const compUser = await CompanyUser.findOne({ _id });
+      //
+      //  if (compUser) {
+      //    const existingUser = await CompanyUser.findOneAndUpdate(
+      //      { _id: _id }, // filter
+      //      { $set: userFields }, // update
+      //      { new: true }
+      //    );
+      //    //return the updated user
+      //    return res.json(existingUser);
+      //  }
 
       const newUser = await new CompanyUser(userFields);
       const company = await Company.findOne({ _id: id });
-
-      await newUser.save();
 
       const companyUserFields = {
         userId: newUser._id,
@@ -45,9 +45,24 @@ exports.newCompanyUser = async function (
 
       company.users.unshift(companyUserFields);
       await company.save();
-      //return the updated company
-      res.json(company);
+      await newUser.save();
+
+      res.json({ newUser, company });
     }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
+// PUT
+// edit the company user
+// /companies/:id/user/edit
+exports.editCompanyUSer = async function (
+  { params: { id }, user: { admin, position, company }, body },
+  res
+) {
+  try {
+    const company = await Company.findOne({ _id: id });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
