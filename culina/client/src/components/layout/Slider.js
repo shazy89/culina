@@ -2,8 +2,10 @@ import React from "react";
 import SlickSlider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { v4 as uuidv4 } from "uuid";
 
-const Slider = ({ component: { Component }, users }) => {
+const Slider = ({ component: Component, info }) => {
+  const id = uuidv4();
   let settings = {
     dots: true,
     infinite: false,
@@ -38,10 +40,12 @@ const Slider = ({ component: { Component }, users }) => {
       }
     ]
   };
-  debugger;
+
+  //  const items = info.map((inf) => <Component key={id} info={inf} />);
+  // <Slider {...settings}>{items}</Slider>
   return (
     <div>
-      <Slider></Slider>
+      <Component />
     </div>
   );
 };

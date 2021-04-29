@@ -28,7 +28,7 @@ const Company = ({
   if (!findCompany) {
     return <Redirect to="/companies" />;
   }
-  debugger;
+
   return (
     <>
       {loading ? (
@@ -72,7 +72,7 @@ const Company = ({
                 {findCompany.users.length && (
                   <Slider
                     component={CompanyUserCard}
-                    users={findCompany.users}
+                    info={findCompany.users}
                   />
                 )}
               </div>
