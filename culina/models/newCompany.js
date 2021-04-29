@@ -21,13 +21,6 @@ const company = new Schema({
       avatar: String
     }
   ],
-  vendors: [
-    {
-      vendorId: Schema.Types.ObjectId,
-      name: String,
-      email: String
-    }
-  ],
   projects: [
     {
       projectId: Schema.Types.ObjectId,
