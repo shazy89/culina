@@ -73,6 +73,7 @@ exports.signInCompanyUser = async function (req, res) {
     if (!ismatch) {
       return res.status(400).json({ error: "Invalid Credentials" });
     }
+
     const token = jwt.sign({ userId: user._id }, process.env.JET_SECRET);
     res.send({ token });
   } catch (err) {

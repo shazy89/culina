@@ -22,7 +22,7 @@ const Company = ({
   const [edit, setEdit] = useState(false);
   const findCompany = companies.find((company) => id === company._id);
   const className = edit ? "display_form" : "";
-  debugger;
+
   if (!findCompany) {
     return <Redirect to="/companies" />;
   }
