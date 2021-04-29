@@ -9,6 +9,7 @@ import EditCompanyCard from "./forms/EditCompanyCard";
 import { Edit, X } from "react-feather";
 import Alert from "components/layout/Alerts";
 import Slider from "components/layout/Slider";
+import CompanyUserCard from "./companyUsers/CompanyUserCard";
 
 const Company = ({
   match: {
@@ -27,7 +28,7 @@ const Company = ({
   if (!findCompany) {
     return <Redirect to="/companies" />;
   }
-
+  debugger;
   return (
     <>
       {loading ? (
@@ -67,7 +68,14 @@ const Company = ({
               )}
             </div>
             <div className="company__display--box-2">
-              <div></div>
+              <div>
+                {findCompany.users.length && (
+                  <Slider
+                    component={CompanyUserCard}
+                    users={findCompany.users}
+                  />
+                )}
+              </div>
               <div></div>
             </div>
           </div>
