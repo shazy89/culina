@@ -371,3 +371,6 @@ body {
 .button-btn {
   width: 40%;
   font-size: 1.4rem; }
+
+.danger {
+  background-color: rgba(248, 94, 94, 0.801); }
