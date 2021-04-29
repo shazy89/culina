@@ -7,7 +7,7 @@ require("dotenv").config();
 
 // POST
 // Post - new company user
-// companies/:id/user/new
+// companies/:id/user/new -- Sign Up
 exports.newCompanyUser = async function (
   { params: { id }, user: { admin, position, company }, body },
   res
@@ -28,7 +28,7 @@ exports.newCompanyUser = async function (
 
   try {
     if (admin || (position === "Manager" && company === id)) {
-      const existingUser = await User.findOne({ email });
+      const existingUser = await CompanyUser.findOne({ email });
       if (existingUser) {
         return res.status(422).send({ error: "Email is in use" });
       }
@@ -58,6 +58,27 @@ exports.newCompanyUser = async function (
     res.status(500).send("Server Error");
   }
 };
+// Sign in
+exports.signInCompanyUser = async function ({ email, password }, res) {
+  if (!email || !password) {
+    return res.status(422).send({ error: "Must provide email and password" });
+  }
+  const user = await User.findOne({ email: email });
+  if (!user) {
+    return res.status(422).send({ error: "Invalid password or email" });
+  }
+  try {
+    const ismatch = await bcrypt.compare(password, user.password);
+    if (!ismatch) {
+      return res.status(400).json({ error: "Invalid Credentials" });
+    }
+    const token = jwt.sign({ userId: user._id }, process.env.JET_SECRET);
+    res.send({ token });
+  } catch (err) {
+    return res.status(422).send({ error: "Invalid password or email" });
+  }
+};
+
 // PUT
 // edit the company user
 // /companies/:id/user/edit
