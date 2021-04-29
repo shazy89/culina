@@ -8,7 +8,6 @@ import CompanyInfo from "./CompanyInfo";
 import EditCompanyCard from "./forms/EditCompanyCard";
 import { Edit, X } from "react-feather";
 import Alert from "../layout/Alerts";
-import Slider from "";
 
 const Company = ({
   match: {
