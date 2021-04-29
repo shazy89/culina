@@ -8,6 +8,7 @@ import CompanyInfo from "./CompanyInfo";
 import EditCompanyCard from "./forms/EditCompanyCard";
 import { Edit, X } from "react-feather";
 import Alert from "../layout/Alerts";
+import Slider from "";
 
 const Company = ({
   match: {
@@ -26,11 +27,6 @@ const Company = ({
   if (!findCompany) {
     return <Redirect to="/companies" />;
   }
-
-  // const getId = () => {
-  //   let id = document.getElementById("hey");
-  //   id.className = "blue";
-  // };
 
   return (
     <>
@@ -70,7 +66,10 @@ const Company = ({
                 />
               )}
             </div>
-            <div className="company__display--box-2"></div>
+            <div className="company__display--box-2">
+              <div></div>
+              <div></div>
+            </div>
           </div>
         </div>
       )}
