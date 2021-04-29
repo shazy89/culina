@@ -61,8 +61,38 @@ exports.editCompanyUSer = async function (
   { params: { id }, user: { admin, position, company }, body },
   res
 ) {
+  const { _id, ...rest } = body;
+
+  const userFields = {
+    company: id,
+    ...rest
+  };
   try {
-    const company = await Company.findOne({ _id: id });
+    if (admin || (position === "Manager" && company === id)) {
+      const company = await Company.findOne({ _id: id });
+
+      const existingUser = await CompanyUser.findOneAndUpdate(
+        { _id: _id }, // filter
+        { $set: userFields }, // update
+        { new: true }
+      );
+      const companyUserFields = {
+        userId: existingUser._id,
+        firstName: existingUser.firstName,
+        lastName: existingUser.lastName,
+        avatar: existingUser.avatar,
+        position: existingUser.position
+      };
+
+      companyProject.companyusers = companyProject.companyusers.filter(
+        (user) => user.projectId.toString() !== existingUser._id.toString()
+      );
+
+      company.users.unshift(companyUserFields);
+
+      await company.save();
+      return res.json({ company, existingUser });
+    }
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
