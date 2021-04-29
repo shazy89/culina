@@ -1,5 +1,9 @@
 const CompanyUser = require("../models/CompanyUser");
 const Company = require("../models/newCompany");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const normalizeData = require("../services/normalizeData");
+require("dotenv").config();
 
 // POST
 // Post - new company user
@@ -8,15 +12,26 @@ exports.newCompanyUser = async function (
   { params: { id }, user: { admin, position, company }, body },
   res
 ) {
-  const { _id, ...rest } = body;
+  const { _id, email, password, ...rest } = body;
 
   const userFields = {
     company: id,
+    email,
+    password,
     ...rest
   };
+  if (!email || !password) {
+    return res
+      .status(422)
+      .send({ error: "You must provide valid email and password" });
+  }
 
   try {
     if (admin || (position === "Manager" && company === id)) {
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        return res.status(422).send({ error: "Email is in use" });
+      }
       const newUser = await new CompanyUser(userFields);
       const company = await Company.findOne({ _id: id });
 
@@ -32,6 +47,10 @@ exports.newCompanyUser = async function (
       await company.save();
       await newUser.save();
 
+      const salt = await bcrypt.genSalt(10);
+      newUser.password = await bcrypt.hash(password, salt);
+
+      // const token = jwt.sign({ userId: newUser.id }, process.env.JET_SECRET);
       res.json({ newUser, company });
     }
   } catch (err) {
@@ -67,7 +86,7 @@ exports.editCompanyUSer = async function (
         avatar: existingUser.avatar,
         position: existingUser.position
       };
-      console.log(company);
+
       if (company.users.length) {
         company.users = company.users.filter(
           (user) => user.userId.toString() !== existingUser._id.toString()
