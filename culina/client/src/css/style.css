@@ -115,12 +115,16 @@ body {
   .company__display {
     height: 82%;
     padding: 1rem;
-    display: flex; }
+    display: flex;
+    justify-content: space-between; }
   .company__display--box-1 {
     height: 100%;
     width: 35%;
     border-radius: 1rem;
     box-shadow: 4px 5px 26px 0px #80808078; }
+  .company__display--box-2 {
+    height: 100%;
+    width: 60%; }
   .company__info {
     padding: 1rem;
     text-align: center; }
@@ -374,3 +378,27 @@ body {
 
 .danger {
   background-color: rgba(248, 94, 94, 0.801); }
+
+.slider--box {
+  width: 100%;
+  display: inline-block; }
+
+.slider--text {
+  background: #5f9ea0;
+  color: #fff;
+  font-size: 36px;
+  line-height: 100px;
+  margin: 10px;
+  padding: 2%;
+  position: relative;
+  text-align: center; }
+
+.user-slider {
+  width: 100%; }
+
+.slick-next:before, .slick-prev:before {
+  color: #000;
+  font-size: 2.3rem; }
+
+.slick-slider {
+  width: 38.5vw; }

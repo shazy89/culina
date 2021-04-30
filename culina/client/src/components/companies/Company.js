@@ -68,7 +68,7 @@ const Company = ({
               )}
             </div>
             <div className="company__display--box-2">
-              <div>
+              <div className="user-slider">
                 {findCompany.users.length && (
                   <Slider
                     component={CompanyUserCard}
