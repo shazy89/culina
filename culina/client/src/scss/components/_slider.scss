@@ -23,7 +23,9 @@
 }
 .user-slider {
 width: 100%;
-      
+      &__header {
+          text-align: center;
+      }
 }
 .slick {
     &-next:before,

@@ -395,6 +395,8 @@ body {
 
 .user-slider {
   width: 100%; }
+  .user-slider__header {
+    text-align: center; }
 
 .slick-next:before, .slick-prev:before {
   color: #000;
