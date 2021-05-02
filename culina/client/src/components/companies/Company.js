@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Spinner from "../layout/Spinner";
@@ -72,11 +73,16 @@ const Company = ({
                 <h2 className="user-slider__header">
                   {findCompany.name} - Employee List
                 </h2>
-                {findCompany.users.length && (
+                {findCompany.users.length ? (
                   <Slider
                     component={CompanyUserCard}
                     info={findCompany.users}
                   />
+                ) : (
+                  <h2>
+                    Please {<Link to="/company/new">add</Link>} users to this
+                    company
+                  </h2>
                 )}
               </div>
               <div></div>
