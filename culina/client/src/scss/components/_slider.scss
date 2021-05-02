@@ -5,7 +5,7 @@
         width: 90%;
         display: inline-block;
         background-image: linear-gradient(to right top, #e4e4e48f, #dfdfdf8c, #dad9da91, #d5d4d4, #d0cfcf8e);
-        height: 12rem;
+        height: 100%;
         border-radius: 3px;
         box-shadow: 7px 5px 9px 2px rgba(179, 179, 179, 0.397);
         padding: 1rem;
@@ -20,9 +20,9 @@
 
 
 &__image {
-   width: 5rem;
+   width: 6rem;
     height: auto;
-    border: 2px solid black;
+
     background: white;
 }
 }
@@ -48,7 +48,7 @@ width: 100%;
 }
 .slick-slider {
  width: 38.5vw;
- height: 14rem;
+ height: 15rem;
 } 
 .slick-list {
     height: 100%;
