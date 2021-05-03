@@ -36,9 +36,11 @@ const Company = ({
         <Spinner />
       ) : (
         <div className="company">
-          <div className="company__features--box">
-            <FeaturesNav />
-          </div>
+          {
+            //    <div className="company__features--box">
+            //     <FeaturesNav />
+            //   </div>
+          }
           <Back history={history} />
           {alerts && <Alert />}
           <div className="company__display">
@@ -85,7 +87,7 @@ const Company = ({
                   </h2>
                 )}
               </div>
-              <div className="u-margin-top-3 slider_company__header">
+              <div className="projects__table u-margin-top-3 slider_company__header">
                 <h2>{findCompany.name} Projects</h2>
                 <ProjectsTable projects={findCompany.projects} />
               </div>
