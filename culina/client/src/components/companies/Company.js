@@ -11,6 +11,7 @@ import { Edit, X } from "react-feather";
 import Alert from "components/layout/Alerts";
 import Slider from "components/layout/Slider";
 import CompanyUserCard from "./companyUsers/CompanyUserCard";
+import ProjectCard from "./project/ProjectUserCard";
 
 const Company = ({
   match: {
@@ -90,10 +91,7 @@ const Company = ({
                   {findCompany.name} - Project List
                 </h2>
                 {findCompany.users.length ? (
-                  <Slider
-                    component={CompanyUserCard}
-                    info={findCompany.users}
-                  />
+                  <Slider component={ProjectCard} info={findCompany.projects} />
                 ) : (
                   <h2>
                     Please {<Link to="/company/new">add</Link>} users to this

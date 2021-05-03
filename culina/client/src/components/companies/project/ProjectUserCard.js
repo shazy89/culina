@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProjectUserCard = ({ projectName, contactName, email }) => {
+const ProjectUserCard = ({ info: { contactName, projectName, email } }) => {
   return (
     <div className="slider--box">
       <h2>{contactName}</h2>
