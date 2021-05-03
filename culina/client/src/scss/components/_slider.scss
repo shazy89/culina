@@ -15,14 +15,15 @@
         align-items: center;
 }
 &--circle {
-    width: 100%;
+
     padding: 1rem;
+
 
 
 &__image {
    width: 6rem;
     height: auto;
-
+    border-radius: 50%;
     background: white;
 }
 }
