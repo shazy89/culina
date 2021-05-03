@@ -25,7 +25,7 @@ const Slider = ({ component: Component, info }) => {
     ]
   };
   const items = info.map((i) => <Component key={id} info={i} />);
-  debugger;
+
   return (
     <SlickSlider className="hey" {...settings}>
       {items}
