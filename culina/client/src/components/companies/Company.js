@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Spinner from "../layout/Spinner";
-import FeaturesNav from "./FeaturesNav";
+
 import Back from "../reusable/Back";
 import CompanyInfo from "./CompanyInfo";
 import EditCompanyCard from "./forms/EditCompanyCard";
