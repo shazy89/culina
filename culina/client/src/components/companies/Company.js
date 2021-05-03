@@ -69,8 +69,8 @@ const Company = ({
               )}
             </div>
             <div className="company__display--box-2">
-              <div className="user-slider">
-                <h2 className="user-slider__header">
+              <div className="slider_company">
+                <h2 className="slider_company__header">
                   {findCompany.name} - Employee List
                 </h2>
                 {findCompany.users.length ? (

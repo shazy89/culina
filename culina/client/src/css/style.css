@@ -400,9 +400,9 @@ body {
     border-radius: 50%;
     background: white; }
 
-.user-slider {
+.slider_company {
   width: 100%; }
-  .user-slider__header {
+  .slider_company__header {
     text-align: center; }
 
 .slick-next:before, .slick-prev:before {
