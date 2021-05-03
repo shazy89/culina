@@ -14,7 +14,7 @@ const ProjectsTable = ({ projects }) => {
     );
   });
   return (
-    <Table striped bordered hover>
+    <Table striped bordered hover size="xl">
       <thead>
         <tr>
           <th>#</th>
@@ -23,7 +23,7 @@ const ProjectsTable = ({ projects }) => {
           <th>Project</th>
         </tr>
       </thead>
-      <tbody>{table}</tbody>
+      <tbody className="font-size-normal">{table}</tbody>
     </Table>
   );
 };
