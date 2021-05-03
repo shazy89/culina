@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Spinner from "../layout/Spinner";
-
+import { Button } from "react-bootstrap";
 import Back from "../reusable/Back";
 import CompanyInfo from "./CompanyInfo";
 import EditCompanyCard from "./forms/EditCompanyCard";
@@ -41,8 +41,13 @@ const Company = ({
             //     <FeaturesNav />
             //   </div>
           }
-          <Back history={history} />
+          <div>
+            <Back history={history} />
+          </div>
           {alerts && <Alert />}
+          <div className="features__">
+            <Button className="btn-features">New User</Button>
+          </div>
           <div className="company__display">
             <div className="company__display--box-1">
               <div className="company__edit">
@@ -85,6 +90,13 @@ const Company = ({
                     Please {<Link to="/company/new">add</Link>} users to this
                     company
                   </h2>
+                )}
+              </div>
+              <div className="view-all">
+                {findCompany.users.length && (
+                  <Button className="u-margin-top " variant="link">
+                    View All
+                  </Button>
                 )}
               </div>
               <div className="projects__table u-margin-top-3 slider_company__header">
