@@ -1,16 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { Modal, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 
 const ProjectsTable = ({ projects }) => {
   const table = projects.map((project, index) => {
     return (
       <tr key={index}>
         <th>{index}</th>
-        <th>{project.projectName}</th>
         <th>{project.contactName}</th>
         <th>{project.email}</th>
+        <th>{project.projectName}</th>
       </tr>
     );
   });
@@ -28,11 +27,8 @@ const ProjectsTable = ({ projects }) => {
     </Table>
   );
 };
-ProjectsTable.propTypes = {};
+ProjectsTable.propTypes = {
+  projects: PropTypes.array.isRequired
+};
 
-const mapStateProps = (state) => ({
-  loading: state.company.loading,
-  companies: state.company.companies,
-  alerts: state.alert
-});
-export default connect(mapStateProps)(ProjectsTable);
+export default ProjectsTable;

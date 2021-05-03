@@ -85,7 +85,7 @@ const Company = ({
                   </h2>
                 )}
               </div>
-              <div className="u-margin-top-3">
+              <div className="u-margin-top-3 slider_company__header">
                 <h2>{findCompany.name} Projects</h2>
                 <ProjectsTable projects={findCompany.projects} />
               </div>
