@@ -11,6 +11,7 @@ import { Edit, X } from "react-feather";
 import Alert from "components/layout/Alerts";
 import Slider from "components/layout/Slider";
 import CompanyUserCard from "./companyUsers/CompanyUserCard";
+import ProjectsTable from "./project/ProjectsTable";
 
 const Company = ({
   match: {
@@ -85,7 +86,8 @@ const Company = ({
                 )}
               </div>
               <div className="u-margin-top-3">
-                <h2>{findCompany.name} Users</h2>
+                <h2>{findCompany.name} Projects</h2>
+                <ProjectsTable projects={findCompany.projects} />
               </div>
             </div>
           </div>
