@@ -151,7 +151,7 @@ body {
 
 .projects__table {
   height: 66%;
-  overflow: scroll; }
+  overflow: auto; }
 
 .culina__content {
   background-color: white;
