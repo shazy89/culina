@@ -13,11 +13,6 @@ const initialState = {
   phone: "",
   timeZone: "",
   logo: ""
-  //  twitter: "",
-  //  facebook: "",
-  //  linkedin: "",
-  //  youtube: "",
-  //  instagram: ""
 };
 
 const EditCompanyCard = ({
