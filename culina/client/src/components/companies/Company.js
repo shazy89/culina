@@ -12,6 +12,7 @@ import Alert from "components/layout/Alerts";
 import Slider from "components/layout/Slider";
 import CompanyUserCard from "./companyUsers/CompanyUserCard";
 import ProjectsTable from "./project/ProjectsTable";
+import AllUsersModal from "./companyUsers/AllUsersModal";
 
 const Company = ({
   match: {
@@ -23,6 +24,7 @@ const Company = ({
   companies
 }) => {
   const [edit, setEdit] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
   const findCompany = companies.find((company) => id === company._id);
   const className = edit ? "display_form" : "";
 
@@ -94,7 +96,11 @@ const Company = ({
               </div>
               <div className="view-all">
                 {findCompany.users.length && (
-                  <Button className="u-margin-top " variant="link">
+                  <Button
+                    onClick={setModalShow(true)}
+                    className="u-margin-top btn-view_all"
+                    variant="link"
+                  >
                     View All
                   </Button>
                 )}
