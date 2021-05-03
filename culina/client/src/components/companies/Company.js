@@ -85,7 +85,22 @@ const Company = ({
                   </h2>
                 )}
               </div>
-              <div></div>
+              <div className="slider_company u-margin-top-big">
+                <h2 className="slider_company__header">
+                  {findCompany.name} - Project List
+                </h2>
+                {findCompany.users.length ? (
+                  <Slider
+                    component={CompanyUserCard}
+                    info={findCompany.users}
+                  />
+                ) : (
+                  <h2>
+                    Please {<Link to="/company/new">add</Link>} users to this
+                    company
+                  </h2>
+                )}
+              </div>
             </div>
           </div>
         </div>
