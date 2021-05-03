@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Spinner from "../layout/Spinner";
@@ -29,7 +29,7 @@ const Company = ({
   if (!findCompany) {
     return <Redirect to="/companies" />;
   }
-
+  debugger;
   return (
     <>
       {loading ? (
