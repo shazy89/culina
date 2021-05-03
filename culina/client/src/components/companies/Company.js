@@ -16,7 +16,6 @@ const Company = ({
   match: {
     params: { id }
   },
-
   loading,
   history,
   alerts,
@@ -29,7 +28,7 @@ const Company = ({
   if (!findCompany) {
     return <Redirect to="/companies" />;
   }
-  debugger;
+
   return (
     <>
       {loading ? (
@@ -84,6 +83,9 @@ const Company = ({
                     company
                   </h2>
                 )}
+              </div>
+              <div className="u-margin-top-3">
+                <h2>{findCompany.name} Users</h2>
               </div>
             </div>
           </div>
