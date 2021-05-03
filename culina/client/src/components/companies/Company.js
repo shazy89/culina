@@ -11,7 +11,6 @@ import { Edit, X } from "react-feather";
 import Alert from "components/layout/Alerts";
 import Slider from "components/layout/Slider";
 import CompanyUserCard from "./companyUsers/CompanyUserCard";
-import ProjectCard from "./project/ProjectUserCard";
 
 const Company = ({
   match: {
