@@ -98,7 +98,9 @@ const Company = ({
               </div>
               <div className="view-all u-margin-top-3">
                 {findCompany.users.length && (
-                  <Button onClick={handleShow}>Small modal</Button>
+                  <Button size="lg" variant="link" onClick={handleShow}>
+                    View All
+                  </Button>
                 )}
                 <AllUsersModal show={show} handleClose={handleClose} />
               </div>

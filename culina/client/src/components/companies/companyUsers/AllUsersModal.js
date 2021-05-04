@@ -4,7 +4,12 @@ import PropTypes from "prop-types";
 
 const AllUsersModal = ({ handleClose, show }) => {
   return (
-    <Modal show={show} onHide={handleClose} animation={false}>
+    <Modal
+      show={show}
+      onHide={handleClose}
+      animation={true}
+      dialogClassName="modal-90w"
+    >
       <Modal.Header closeButton>
         <Modal.Title>Modal heading</Modal.Title>
       </Modal.Header>
