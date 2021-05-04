@@ -175,6 +175,12 @@ body {
   left: 50%;
   transform: translate(-50%, -50%) !important; }
 
+.table--circle__image {
+  width: 3rem;
+  height: auto;
+  border-radius: 50%;
+  background: white; }
+
 .culina__content {
   background-color: white;
   max-width: 150rem;
