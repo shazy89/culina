@@ -8,6 +8,7 @@ import Company from "../companies/Company";
 import Navbar from "../layout/NavBar";
 import SideNav from "../layout/sidebar/SideNav";
 import NotFound from "../NotFound";
+import AddUser from "components/companies/companyUsers/AddUser";
 
 const Routes = () => {
   return (
@@ -21,6 +22,11 @@ const Routes = () => {
             <PrivateRoute exact path="/company/new" component={CompanyForm} />
             <PrivateRoute exact path="/companies" component={AllCompanies} />
             <PrivateRoute exact path="/companies/:id" component={Company} />
+            <PrivateRoute
+              exact
+              path="/companies/:id/user/new"
+              component={AddUser}
+            />
             <Route component={NotFound} />
           </Switch>
         </main>
