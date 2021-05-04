@@ -24,14 +24,15 @@ const Company = ({
   companies
 }) => {
   const [edit, setEdit] = useState(false);
-  const [modalShow, setModalShow] = useState(false);
+  const [show, setShow] = useState(false);
   const findCompany = companies.find((company) => id === company._id);
   const className = edit ? "display_form" : "";
 
   if (!findCompany) {
     return <Redirect to="/companies" />;
   }
-
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <>
       {loading ? (
@@ -50,6 +51,7 @@ const Company = ({
           <div className="features__">
             <Button className="btn-features">New User</Button>
           </div>
+
           <div className="company__display">
             <div className="company__display--box-1">
               <div className="company__edit">
@@ -94,16 +96,11 @@ const Company = ({
                   </h2>
                 )}
               </div>
-              <div className="view-all">
+              <div className="view-all u-margin-top-3">
                 {findCompany.users.length && (
-                  <Button
-                    onClick={setModalShow(true)}
-                    className="u-margin-top btn-view_all"
-                    variant="link"
-                  >
-                    View All
-                  </Button>
+                  <Button onClick={handleShow}>Small modal</Button>
                 )}
+                <AllUsersModal show={show} handleClose={handleClose} />
               </div>
               <div className="projects__table u-margin-top-3 slider_company__header">
                 <h2>{findCompany.name} Projects</h2>
@@ -124,3 +121,7 @@ const mapStateProps = (state) => ({
 });
 
 export default connect(mapStateProps)(Company);
+
+//   <Button className="u-margin-top btn-view_all" variant="link">
+//   View All
+//   </Button>
