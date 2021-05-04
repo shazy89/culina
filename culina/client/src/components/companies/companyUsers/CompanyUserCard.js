@@ -24,13 +24,3 @@ const CompanyUserCard = ({ info: { firstName, lastName, avatar } }) => {
 };
 
 export default CompanyUserCard;
-
-//<div className="slider--circle">
-//<img className="slider--circle__image" src={avatar} alt="user image" />
-//</div>
-//    <RoundedCircle
-//    className="slider--circle__image"
-//    src="https://res.cloudinary.com/dytheecsk/image/upload/v1616517786/Friends/eizimamzohzcdpb3lw2y.jpg"
-//    roundedCircle
-//    thumbnail
-//    />

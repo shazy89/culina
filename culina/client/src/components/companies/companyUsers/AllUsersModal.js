@@ -1,8 +1,9 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
+import CompanyUserCard from "./CompanyUserCard";
 import PropTypes from "prop-types";
 
-const AllUsersModal = ({ handleClose, show }) => {
+const AllUsersModal = ({ handleClose, show, info }) => {
   return (
     <Modal
       show={show}

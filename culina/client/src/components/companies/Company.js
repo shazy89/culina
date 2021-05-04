@@ -102,7 +102,11 @@ const Company = ({
                     View All
                   </Button>
                 )}
-                <AllUsersModal show={show} handleClose={handleClose} />
+                <AllUsersModal
+                  show={show}
+                  handleClose={handleClose}
+                  info={findCompany.users}
+                />
               </div>
               <div className="projects__table u-margin-top-3 slider_company__header">
                 <h2>{findCompany.name} Projects</h2>
