@@ -83,6 +83,9 @@ body {
     opacity: 1;
     transform: translateY(0); } }
 
+.culina_link-1 {
+  color: white; }
+
 .login {
   height: 93vh;
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("./assets/images/LoginRestaurant.jpg");
@@ -171,7 +174,7 @@ body {
   width: 80vw !important;
   max-width: none !important;
   max-height: 50vh;
-  top: 50%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%) !important; }
 

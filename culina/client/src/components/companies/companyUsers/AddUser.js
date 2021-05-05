@@ -10,7 +10,7 @@ const AddUser = (props) => {
     <div>
       <h1>Anywhere in your app!</h1>
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ email: "erdo@gmail.com", password: "123123" }}
         validate={(values) => {
           const errors = {};
           if (!values.email) {
@@ -39,7 +39,7 @@ const AddUser = (props) => {
           isSubmitting
           /* and other goodies */
         }) => {
-          console.log(values);
+          console.log(touched);
           return (
             <form onSubmit={handleSubmit}>
               <input
