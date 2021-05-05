@@ -83,11 +83,6 @@ body {
     opacity: 1;
     transform: translateY(0); } }
 
-.culina__link-1 {
-  color: white; }
-  .culina__link-1:hover {
-    color: white; }
-
 .login {
   height: 93vh;
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("./assets/images/LoginRestaurant.jpg");
@@ -276,6 +271,10 @@ body {
 
 .button__main {
   display: flex; }
+
+.culina__link {
+  font-size: 1.7rem;
+  margin-right: 2rem; }
 
 .alerts {
   text-align: center !important;
