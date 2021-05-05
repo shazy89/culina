@@ -50,7 +50,9 @@ const Company = ({
           {alerts && <Alert />}
           <div className="features__">
             <Button className="btn-features">
-              <Link to={`/companies/${id}/user/new`}>New User</Link>
+              <Link className="culina__link-1" to={`/companies/${id}/user/new`}>
+                New User
+              </Link>
             </Button>
           </div>
 

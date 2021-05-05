@@ -83,8 +83,10 @@ body {
     opacity: 1;
     transform: translateY(0); } }
 
-.culina_link-1 {
+.culina__link-1 {
   color: white; }
+  .culina__link-1:hover {
+    color: white; }
 
 .login {
   height: 93vh;
