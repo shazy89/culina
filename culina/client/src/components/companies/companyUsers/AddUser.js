@@ -1,8 +1,13 @@
 import React from "react";
-import { Formik, Field, Form } from "formik";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import SearchLocationInput from "./SearchLocationInput";
 import PropTypes from "prop-types";
 
-const AddUser = (props) => {
+const AddUser = ({
+  match: {
+    params: { id }
+  }
+}) => {
   const submit = (params) => {
     debugger;
   };
@@ -10,7 +15,22 @@ const AddUser = (props) => {
     <div>
       <h1>Anywhere in your app!</h1>
       <Formik
-        initialValues={{ email: "erdo@gmail.com", password: "123123" }}
+        initialValues={{
+          company: id,
+          email: "",
+          password: "",
+          firstName: "",
+          lastName: "",
+          avatar: "",
+          salary: "",
+          hrRate: "",
+          position: "",
+          state: "",
+          city: "",
+          address: "",
+          birthday: "",
+          gender: ""
+        }}
         validate={(values) => {
           const errors = {};
           if (!values.email) {
@@ -39,36 +59,23 @@ const AddUser = (props) => {
           isSubmitting
           /* and other goodies */
         }) => {
-          console.log(touched);
+          console.log(errors);
           return (
-            <form onSubmit={handleSubmit}>
-              <input
-                type="email"
-                name="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-              />
-              {errors.email && touched.email && errors.email}
-              <input
-                type="password"
-                name="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-              />
-              {errors.password && touched.password && errors.password}
+            <Form>
+              <Field type="email" name="email" placeholder="email" />
+              <ErrorMessage name="email" component="div" />
+              <Field type="password" name="password" placeholder="password" />
+              <ErrorMessage name="password" component="div" />
+              <SearchLocationInput />
               <button type="submit" disabled={isSubmitting}>
                 Submit
               </button>
-            </form>
+            </Form>
           );
         }}
       </Formik>
     </div>
   );
 };
-
-AddUser.propTypes = {};
 
 export default AddUser;
