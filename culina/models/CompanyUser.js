@@ -25,6 +25,7 @@ const companyUserSchema = new Schema({
   state: String,
   city: String,
   address: String,
+  country: String,
   zipCode: String,
   birthday: String,
   gender: String,

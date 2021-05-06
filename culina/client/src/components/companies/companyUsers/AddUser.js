@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import SearchLocationInput from "./SearchLocationInput";
-import PropTypes from "prop-types";
+
+import placeService from "hooks/PlaceService";
 
 const AddUser = ({
   match: {
     params: { id }
   }
 }) => {
+  const [query, setQuery] = useState("");
+  const [address, setAddress] = useState({
+    city: "",
+    state: "",
+    city: ""
+  });
+  const autoCompleteRef = useRef(null);
+  const [loadScript, handleScriptLoad, addressObj] = placeService();
+
+  useEffect(() => {
+    loadScript(
+      `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_API_KEY}&libraries=places`,
+      () => handleScriptLoad(setQuery, autoCompleteRef)
+    );
+  }, []);
+
   const submit = (params) => {
     debugger;
   };
+  console.log(addressObj, "OKKKK");
   return (
     <div>
       <h1>Anywhere in your app!</h1>
@@ -59,14 +76,21 @@ const AddUser = ({
           isSubmitting
           /* and other goodies */
         }) => {
-          console.log(errors);
+          console.log(query);
           return (
             <Form>
               <Field type="email" name="email" placeholder="email" />
               <ErrorMessage name="email" component="div" />
               <Field type="password" name="password" placeholder="password" />
               <ErrorMessage name="password" component="div" />
-              <SearchLocationInput />
+              <div className="search-location-input">
+                <input
+                  ref={autoCompleteRef}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Enter a City"
+                  value={query}
+                />
+              </div>
               <button type="submit" disabled={isSubmitting}>
                 Submit
               </button>
