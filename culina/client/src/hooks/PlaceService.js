@@ -1,6 +1,4 @@
-import react, { useState } from "react";
 export default () => {
-  const [addressObj, setAddressObj] = useState("");
   let autoComplete;
 
   const loadScript = (url, callback) => {
@@ -38,10 +36,9 @@ export default () => {
 
   async function handlePlaceSelect(updateQuery) {
     const addressObject = autoComplete.getPlace();
-    setAddressObj(addressObject);
     const query = addressObject.formatted_address;
     updateQuery(query);
   }
 
-  return [loadScript, handleScriptLoad, addressObj];
+  return [loadScript, handleScriptLoad];
 };

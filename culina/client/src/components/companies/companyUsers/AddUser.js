@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-
+import { Formik, Field, Form, ErrorMessage, useFormik } from "formik";
+import * as Yup from "yup";
 import placeService from "hooks/PlaceService";
 
 const AddUser = ({
@@ -9,13 +9,8 @@ const AddUser = ({
   }
 }) => {
   const [query, setQuery] = useState("");
-  const [address, setAddress] = useState({
-    city: "",
-    state: "",
-    city: ""
-  });
+  const [loadScript, handleScriptLoad] = placeService();
   const autoCompleteRef = useRef(null);
-  const [loadScript, handleScriptLoad, addressObj] = placeService();
 
   useEffect(() => {
     loadScript(
@@ -27,10 +22,22 @@ const AddUser = ({
   const submit = (params) => {
     debugger;
   };
-  console.log(addressObj, "OKKKK");
+  const SignupSchema = Yup.object().shape({
+    firstName: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Required"),
+    lastName: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Required"),
+    email: Yup.string().email("Invalid email").required("Required")
+  });
+
   return (
     <div>
       <h1>Anywhere in your app!</h1>
+
       <Formik
         initialValues={{
           company: id,
@@ -48,55 +55,57 @@ const AddUser = ({
           birthday: "",
           gender: ""
         }}
-        validate={(values) => {
-          const errors = {};
-          if (!values.email) {
-            errors.email = "Required";
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          ) {
-            errors.email = "Invalid email address";
-          }
-          return errors;
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+        validationSchema={SignupSchema}
+        onSubmit={(values) => {
+          // same shape as initial values
+          console.log(values);
         }}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting
-          /* and other goodies */
-        }) => {
-          console.log(query);
-          return (
-            <Form>
-              <Field type="email" name="email" placeholder="email" />
-              <ErrorMessage name="email" component="div" />
-              <Field type="password" name="password" placeholder="password" />
-              <ErrorMessage name="password" component="div" />
-              <div className="search-location-input">
-                <input
-                  ref={autoCompleteRef}
-                  onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Enter a City"
-                  value={query}
-                />
-              </div>
-              <button type="submit" disabled={isSubmitting}>
-                Submit
-              </button>
-            </Form>
-          );
-        }}
+        {({ errors, touched }) => (
+          <Form>
+            <label htmlFor="firstName">First Name</label>
+            <Field id="firstName" name="firstName" placeholder="firstName" />
+            {errors.firstName && touched.firstName ? (
+              <div>{errors.firstName}</div>
+            ) : null}
+            <label htmlFor="lastName">Last Name</label>
+            <Field id="lastName" name="lastName" placeholder="lastName" />
+            {errors.lastName && touched.lastName ? (
+              <div>{errors.lastName}</div>
+            ) : null}
+            <label htmlFor="email">Email</label>
+            <Field
+              id="email"
+              name="email"
+              placeholder="jane@acme.com"
+              type="email"
+            />
+            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+
+            <label htmlFor="lastName">password</label>
+            <Field id="password" name="password" placeholder="password" />
+            {errors.password && touched.password ? (
+              <div>{errors.password}</div>
+            ) : null}
+            <label htmlFor="lastName">Last Name</label>
+            <Field id="lastName" name="lastName" placeholder="lastName" />
+            {errors.lastName && touched.lastName ? (
+              <div>{errors.lastName}</div>
+            ) : null}
+            <label htmlFor="lastName">Last Name</label>
+            <Field id="lastName" name="lastName" placeholder="lastName" />
+            {errors.lastName && touched.lastName ? (
+              <div>{errors.lastName}</div>
+            ) : null}
+            <label htmlFor="lastName">Last Name</label>
+            <Field id="lastName" name="lastName" placeholder="lastName" />
+            {errors.lastName && touched.lastName ? (
+              <div>{errors.lastName}</div>
+            ) : null}
+
+            <button type="submit">Submit</button>
+          </Form>
+        )}
       </Formik>
     </div>
   );
