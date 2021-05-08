@@ -8,7 +8,7 @@ import Company from "../companies/Company";
 import Navbar from "../layout/NavBar";
 import SideNav from "../layout/sidebar/SideNav";
 import NotFound from "../NotFound";
-import AddUser from "components/companies/companyUsers/AddUser";
+import AddUser from "../companies/forms/AddUser";
 
 const Routes = () => {
   return (
