@@ -41,13 +41,14 @@ const AddUser = ({
           salary: "",
           hrRate: "",
           position: "",
+          state: "",
           city: "",
           address: "",
+          country: "United States",
           birthday: ""
         }}
         validationSchema={SignupSchema}
         onSubmit={(values, actions) => {
-          debugger;
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             actions.setSubmitting(false);
@@ -92,36 +93,32 @@ const AddUser = ({
                 </Form.Group>
                 <Form.Group as={Col} md="4" controlId="validationFormik01">
                   <Form.Label>Position</Form.Label>
-                  <InputGroup hasValidation>
-                    <InputGroup.Prepend>
-                      <InputGroup.Text id="inputGroupPrepend">
-                        @
-                      </InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <Form.Control
-                      type="text"
-                      placeholder="Position"
-                      aria-describedby="inputGroupPrepend"
-                      name="position"
-                      value={values.position}
-                      onChange={handleChange}
-                      isInvalid={!!errors.position}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      {errors.position}
-                    </Form.Control.Feedback>
-                  </InputGroup>
+                  <Form.Control
+                    name="position"
+                    onChange={handleChange}
+                    as="select"
+                    custom
+                  >
+                    <option></option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </Form.Control>
                 </Form.Group>
               </Form.Row>
-
-              <label htmlFor="birthday">Birthday</label>
-              <DatePicker
-                selected={values.birthday}
-                dateFormat="MMMM d, yyyy"
-                className="form-control"
-                name="birthday"
-                onChange={(date) => setFieldValue("birthday", date)}
-              />
+              <Form.Row>
+                <div className="date--picker">
+                  <label htmlFor="birthday">Birthday</label>
+                  <DatePicker
+                    selected={values.birthday}
+                    dateFormat="MMMM d, yyyy"
+                    className="form-control"
+                    name="birthday"
+                    onChange={(date) => setFieldValue("birthday", date)}
+                  />
+                </div>
+              </Form.Row>
 
               <Button type="submit">Submit form</Button>
             </Form>

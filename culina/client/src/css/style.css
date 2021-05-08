@@ -415,6 +415,10 @@ body {
   width: 40%;
   font-size: 1.4rem; }
 
+.date--picker {
+  display: flex;
+  flex-direction: column; }
+
 .danger {
   background-color: rgba(248, 94, 94, 0.801); }
 
