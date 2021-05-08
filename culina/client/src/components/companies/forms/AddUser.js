@@ -20,7 +20,11 @@ const AddUser = ({
     lastName: Yup.string()
       .min(2, "Too Short!")
       .max(50, "Too Long!")
-      .required("Required")
+      .required("Required"),
+    password: Yup.string()
+      .min(6, "Too Short!")
+      .max(50, "Too Long!")
+      .required("*")
   });
 
   const submit = (params) => {
@@ -45,7 +49,8 @@ const AddUser = ({
           city: "",
           address: "",
           country: "United States",
-          birthday: ""
+          birthday: "",
+          zipCode: ""
         }}
         validationSchema={SignupSchema}
         onSubmit={(values, actions) => {
@@ -79,7 +84,7 @@ const AddUser = ({
                   />
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group as={Col} md="4" controlId="validationFormik01">
+                <Form.Group as={Col} md="4" controlId="validationFormik02">
                   <Form.Label>Last Name</Form.Label>
                   <Form.Control
                     type="text"
@@ -91,7 +96,7 @@ const AddUser = ({
 
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group as={Col} md="4" controlId="validationFormik01">
+                <Form.Group as={Col} md="4" controlId="validationFormik03">
                   <div className="date--picker">
                     <Form.Label>Birthday </Form.Label>
 
@@ -106,7 +111,7 @@ const AddUser = ({
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md="4" controlId="validationFormik01">
+                <Form.Group as={Col} md="3" controlId="validationFormik04">
                   <Form.Label>Position</Form.Label>
                   <Form.Control
                     name="position"
@@ -115,10 +120,48 @@ const AddUser = ({
                     as="select"
                     custom
                   >
-                    {positions.map((position) => (
-                      <option>{position}</option>
+                    {positions.map((position, index) => (
+                      <option key={index}>{position}</option>
                     ))}
                   </Form.Control>
+                </Form.Group>
+                <Form.Group as={Col} md="3" controlId="validationFormik01">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="email"
+                    placeholder="johnd@cuina.com"
+                    value={values.email}
+                    onChange={handleChange}
+                    isValid={touched.email && !errors.email}
+                  />
+                  <p>{errors.email && errors.email}</p>
+                </Form.Group>
+                <Form.Group as={Col} md="3" controlId="validationFormik02">
+                  <Form.Label>Password </Form.Label>
+                  <Form.Control
+                    type="password"
+                    name="password"
+                    placeholder="*********"
+                    value={values.password}
+                    onChange={handleChange}
+                    isValid={touched.password && !errors.password}
+                  />
+
+                  <p>{errors.password && errors.password}</p>
+                </Form.Group>
+                <Form.Group as={Col} md="3" controlId="validationFormik02">
+                  <Form.Label>Password Confirm</Form.Label>
+                  <Form.Control
+                    type="password"
+                    name="password"
+                    placeholder="*********"
+                    value={values.password}
+                    onChange={handleChange}
+                    isValid={touched.password && !errors.password}
+                  />
+
+                  <p>{errors.password && errors.password}</p>
                 </Form.Group>
               </Form.Row>
 

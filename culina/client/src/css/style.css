@@ -30,6 +30,27 @@ body {
 .text-center {
   text-align: center; }
 
+.font__size-1 {
+  font-size: 1rem; }
+
+.font__size-2 {
+  font-size: 2rem; }
+
+.font__size-3 {
+  font-size: 3rem; }
+
+.font__size-4 {
+  font-size: 4rem; }
+
+.font__size-5 {
+  font-size: 5rem; }
+
+.font__size-6 {
+  font-size: 6rem; }
+
+.font__size-7 {
+  font-size: 7rem; }
+
 .u-center-text {
   text-align: center !important; }
 
