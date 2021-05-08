@@ -3,9 +3,9 @@ import { Formik } from "formik";
 //Field, Form, ErrorMessage, useFormik
 import { Form, Col, InputGroup, Button } from "react-bootstrap";
 import * as Yup from "yup";
-
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { positions } from "./constants";
 
 const AddUser = ({
   match: {
@@ -92,32 +92,34 @@ const AddUser = ({
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md="4" controlId="validationFormik01">
+                  <div className="date--picker">
+                    <Form.Label>Birthday </Form.Label>
+
+                    <DatePicker
+                      selected={values.birthday}
+                      dateFormat="MMMM d, yyyy"
+                      className="form-control"
+                      name="birthday"
+                      onChange={(date) => setFieldValue("birthday", date)}
+                    />
+                  </div>
+                </Form.Group>
+              </Form.Row>
+              <Form.Row>
+                <Form.Group as={Col} md="4" controlId="validationFormik01">
                   <Form.Label>Position</Form.Label>
                   <Form.Control
                     name="position"
                     onChange={handleChange}
+                    value={values.position}
                     as="select"
                     custom
                   >
-                    <option></option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    {positions.map((position) => (
+                      <option>{position}</option>
+                    ))}
                   </Form.Control>
                 </Form.Group>
-              </Form.Row>
-              <Form.Row>
-                <div className="date--picker">
-                  <label htmlFor="birthday">Birthday</label>
-                  <DatePicker
-                    selected={values.birthday}
-                    dateFormat="MMMM d, yyyy"
-                    className="form-control"
-                    name="birthday"
-                    onChange={(date) => setFieldValue("birthday", date)}
-                  />
-                </div>
               </Form.Row>
 
               <Button type="submit">Submit form</Button>
