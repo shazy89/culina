@@ -74,19 +74,23 @@ const AddUser = ({
             <Form onSubmit={handleSubmit}>
               <Form.Row>
                 <Form.Group as={Col} md="4" controlId="validationFormik01">
-                  <Form.Label>First name</Form.Label>
+                  <Form.Label className="font__size-2">First name</Form.Label>
                   <Form.Control
+                    className="font__size-2"
                     type="text"
                     name="firstName"
                     value={values.firstName}
                     onChange={handleChange}
                     isValid={touched.firstName && !errors.firstName}
                   />
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  <Form.Control.Feedback className="font__size-1">
+                    Looks good!
+                  </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group as={Col} md="4" controlId="validationFormik02">
-                  <Form.Label>Last Name</Form.Label>
+                  <Form.Label className="font__size-2">Last Name</Form.Label>
                   <Form.Control
+                    className="font__size-2"
                     type="text"
                     name="lastName"
                     value={values.lastName}
@@ -98,12 +102,12 @@ const AddUser = ({
                 </Form.Group>
                 <Form.Group as={Col} md="4" controlId="validationFormik03">
                   <div className="date--picker">
-                    <Form.Label>Birthday </Form.Label>
+                    <Form.Label className="font__size-2">Birthday </Form.Label>
 
                     <DatePicker
                       selected={values.birthday}
                       dateFormat="MMMM d, yyyy"
-                      className="form-control"
+                      className="form-control font__size-2"
                       name="birthday"
                       onChange={(date) => setFieldValue("birthday", date)}
                     />
@@ -112,8 +116,9 @@ const AddUser = ({
               </Form.Row>
               <Form.Row>
                 <Form.Group as={Col} md="3" controlId="validationFormik04">
-                  <Form.Label>Position</Form.Label>
+                  <Form.Label className="font__size-2">Position</Form.Label>
                   <Form.Control
+                    className="font__size-2"
                     name="position"
                     onChange={handleChange}
                     value={values.position}
@@ -126,8 +131,11 @@ const AddUser = ({
                   </Form.Control>
                 </Form.Group>
                 <Form.Group as={Col} md="3" controlId="validationFormik01">
-                  <Form.Label>Email address</Form.Label>
+                  <Form.Label className="font__size-2">
+                    Email address
+                  </Form.Label>
                   <Form.Control
+                    className="font__size-2"
                     type="text"
                     name="email"
                     placeholder="johnd@cuina.com"
@@ -138,21 +146,9 @@ const AddUser = ({
                   <p>{errors.email && errors.email}</p>
                 </Form.Group>
                 <Form.Group as={Col} md="3" controlId="validationFormik02">
-                  <Form.Label>Password </Form.Label>
+                  <Form.Label className="font__size-2">Password </Form.Label>
                   <Form.Control
-                    type="password"
-                    name="password"
-                    placeholder="*********"
-                    value={values.password}
-                    onChange={handleChange}
-                    isValid={touched.password && !errors.password}
-                  />
-
-                  <p>{errors.password && errors.password}</p>
-                </Form.Group>
-                <Form.Group as={Col} md="3" controlId="validationFormik02">
-                  <Form.Label>Password Confirm</Form.Label>
-                  <Form.Control
+                    className="font__size-2"
                     type="password"
                     name="password"
                     placeholder="*********"
@@ -165,7 +161,9 @@ const AddUser = ({
                 </Form.Group>
               </Form.Row>
 
-              <Button type="submit">Submit form</Button>
+              <Button className="font__size-2" type="submit">
+                Submit form
+              </Button>
             </Form>
           );
         }}

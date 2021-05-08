@@ -20,24 +20,24 @@ body {
 
 .font__size {
    &-1 {
-      font-size: 1rem;
+      font-size: 1rem !important;
    }
    &-2 {
-      font-size: 2rem;
+      font-size: 1.5rem !important;
    }
    &-3 {
-      font-size: 3rem;
+      font-size: 2rem !important;
    }
    &-4 {
-      font-size: 4rem;
+      font-size: 2.5rem !important;
    }
    &-5 {
-      font-size: 5rem;
+      font-size: 3rem !important;
    }
    &-6 {
-      font-size: 6rem;
+      font-size: 3.5rem !important;
    }
    &-7 {
-      font-size: 7rem;
+      font-size: 4rem !important;
    }
 } 
