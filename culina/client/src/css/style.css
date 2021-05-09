@@ -440,6 +440,10 @@ body {
   display: flex;
   flex-direction: column; }
 
+.form-select-img {
+  width: 2rem;
+  height: auto; }
+
 .danger {
   background-color: rgba(248, 94, 94, 0.801); }
 

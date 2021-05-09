@@ -5,7 +5,7 @@ import { Form, Col, InputGroup, Button } from "react-bootstrap";
 import * as Yup from "yup";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { positions } from "./constants";
+import { positions, images } from "./constants";
 
 const AddUser = ({
   match: {
@@ -26,14 +26,15 @@ const AddUser = ({
       .max(50, "Too Long!")
       .required("*")
   });
-
-  const submit = (params) => {
-    debugger;
+  const formatToCurrency = (amount) => {
+    return "$" + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
   };
+
+  const submit = (params) => {};
 
   return (
     <div>
-      <h1>Anywhere in your app!</h1>
+      <h1 className="u-margin-top-3">Anywhere in your app!</h1>
       <Formik
         initialValues={{
           company: id,
@@ -41,7 +42,8 @@ const AddUser = ({
           password: "",
           firstName: "",
           lastName: "",
-          avatar: "",
+          avatar:
+            "https://res.cloudinary.com/dytheecsk/image/upload/v1620505413/culina/depositphotos_59095205-stock-illustration-businessman-profile-icon_yytrhn.jpg",
           salary: "",
           hrRate: "",
           position: "",
@@ -71,7 +73,7 @@ const AddUser = ({
           handleChange
         }) => {
           return (
-            <Form onSubmit={handleSubmit}>
+            <Form className="u-margin-top-big" onSubmit={handleSubmit}>
               <Form.Row>
                 <Form.Group as={Col} md="4" controlId="validationFormik01">
                   <Form.Label className="font__size-2">First name</Form.Label>
@@ -115,7 +117,7 @@ const AddUser = ({
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md="3" controlId="validationFormik04">
+                <Form.Group as={Col} md="4" controlId="validationFormik04">
                   <Form.Label className="font__size-2">Position</Form.Label>
                   <Form.Control
                     className="font__size-2"
@@ -130,7 +132,7 @@ const AddUser = ({
                     ))}
                   </Form.Control>
                 </Form.Group>
-                <Form.Group as={Col} md="3" controlId="validationFormik01">
+                <Form.Group as={Col} md="4" controlId="validationFormik01">
                   <Form.Label className="font__size-2">
                     Email address
                   </Form.Label>
@@ -145,7 +147,7 @@ const AddUser = ({
                   />
                   <p>{errors.email && errors.email}</p>
                 </Form.Group>
-                <Form.Group as={Col} md="3" controlId="validationFormik02">
+                <Form.Group as={Col} md="4" controlId="validationFormik02">
                   <Form.Label className="font__size-2">Password </Form.Label>
                   <Form.Control
                     className="font__size-2"
@@ -160,7 +162,78 @@ const AddUser = ({
                   <p>{errors.password && errors.password}</p>
                 </Form.Group>
               </Form.Row>
-
+              <Form.Row>
+                <Form.Group as={Col} controlId="validationFormik01">
+                  <Form.Label className="font__size-2">Salary</Form.Label>
+                  <Form.Control
+                    className="font__size-2"
+                    type="text"
+                    name="salary"
+                    value={values.salary}
+                    onChange={handleChange}
+                    isValid={touched.salary && !errors.salary}
+                  />
+                  <p>{errors.salary && errors.salary}</p>
+                </Form.Group>
+              </Form.Row>
+              <Form.Row>
+                <Form.Group as={Col} md="4" controlId="validationFormik01">
+                  <Form.Label className="font__size-2">Address</Form.Label>
+                  <Form.Control
+                    className="font__size-2"
+                    type="text"
+                    name="address"
+                    value={values.address}
+                    onChange={handleChange}
+                    isValid={touched.address && !errors.address}
+                  />
+                  <Form.Control.Feedback className="font__size-1">
+                    Looks good!
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group as={Col} md="2" controlId="validationFormik01">
+                  <Form.Label className="font__size-2">City</Form.Label>
+                  <Form.Control
+                    className="font__size-2"
+                    type="text"
+                    name="city"
+                    value={values.city}
+                    onChange={handleChange}
+                    isValid={touched.city && !errors.city}
+                  />
+                  <Form.Control.Feedback className="font__size-1">
+                    Looks good!
+                  </Form.Control.Feedback>
+                </Form.Group>{" "}
+                <Form.Group as={Col} md="2" controlId="validationFormik01">
+                  <Form.Label className="font__size-2">State</Form.Label>
+                  <Form.Control
+                    className="font__size-2"
+                    type="text"
+                    name="state"
+                    value={values.state}
+                    onChange={handleChange}
+                    isValid={touched.state && !errors.state}
+                  />
+                  <Form.Control.Feedback className="font__size-1">
+                    Looks good!
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group as={Col} md="2" controlId="validationFormik01">
+                  <Form.Label className="font__size-2">Zip Code</Form.Label>
+                  <Form.Control
+                    className="font__size-2"
+                    type="text"
+                    name="zipCode"
+                    value={values.zipCode}
+                    onChange={handleChange}
+                    isValid={touched.zipCode && !errors.zipCode}
+                  />
+                  <Form.Control.Feedback className="font__size-1">
+                    Looks good!
+                  </Form.Control.Feedback>
+                </Form.Group>
+              </Form.Row>
               <Button className="font__size-2" type="submit">
                 Submit form
               </Button>
