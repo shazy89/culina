@@ -319,8 +319,11 @@ const AddUser = ({
                   )}
                 </Form.Group>
               </Form.Row>
-              <div>
-                <Button className="font__size-2" type="submit">
+              <div className="button-box">
+                <Button
+                  className="u-margin-top-small button-btn font__size-2"
+                  type="submit"
+                >
                   Submit form
                 </Button>
               </div>
