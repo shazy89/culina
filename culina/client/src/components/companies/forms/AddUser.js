@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { positions, images } from "./constants";
+import Back from "components/reusable/Back";
 
 const AddUser = ({
   match: {
@@ -13,9 +14,10 @@ const AddUser = ({
   },
   location: {
     state: { companyName }
-  }
+  },
+  history
 }) => {
-  const SignupSchema = Yup.object().shape({
+  const newUserSchema = Yup.object().shape({
     firstName: Yup.string()
       .min(2, "Too Short!")
       .max(50, "Too Long!")
@@ -27,14 +29,15 @@ const AddUser = ({
     password: Yup.string()
       .min(6, "Too Short!")
       .max(50, "Too Long!")
-      .required("*"),
+      .required("Required"),
     birthday: Yup.string().required("Required"),
     position: Yup.string().required("Required"),
     email: Yup.string().required("Required"),
     address: Yup.string().required("Required"),
+    salary: Yup.string().required("Required"),
     city: Yup.string().required("Required"),
     state: Yup.string().required("Required"),
-    zip: Yup.string().required("Required")
+    zipCode: Yup.string().required("Required")
   });
   const formatToCurrency = (amount) => {
     return "$" + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
@@ -44,7 +47,10 @@ const AddUser = ({
 
   return (
     <div>
-      <h1 className="u-margin-top-3">New </h1>
+      <div>
+        <Back history={history} />
+      </div>
+      <h1 className="u-margin-top-3 text-center">New {companyName} user</h1>
       <Formik
         initialValues={{
           company: id,
@@ -64,7 +70,7 @@ const AddUser = ({
           birthday: "",
           zipCode: ""
         }}
-        validationSchema={SignupSchema}
+        validationSchema={newUserSchema}
         onSubmit={(values, actions) => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
@@ -85,7 +91,7 @@ const AddUser = ({
           return (
             <Form className="u-margin-top-big" onSubmit={handleSubmit}>
               <Form.Row>
-                <Form.Group as={Col} md="4" controlId="validationFormik01">
+                <Form.Group as={Col} md="4" controlId="firstName">
                   <Form.Label className="font__size-2">First name</Form.Label>
                   <Form.Control
                     className="font__size-2"
@@ -104,7 +110,7 @@ const AddUser = ({
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   )}
                 </Form.Group>
-                <Form.Group as={Col} md="4" controlId="validationFormik02">
+                <Form.Group as={Col} md="4" controlId="lastName">
                   <Form.Label className="font__size-2">Last Name</Form.Label>
                   <Form.Control
                     className="font__size-2"
@@ -124,7 +130,7 @@ const AddUser = ({
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   )}
                 </Form.Group>
-                <Form.Group as={Col} md="4" controlId="validationFormik03">
+                <Form.Group as={Col} md="4" controlId="birthday">
                   <div className="date--picker">
                     <Form.Label className="font__size-2">Birthday </Form.Label>
 
@@ -147,7 +153,7 @@ const AddUser = ({
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md="4" controlId="validationFormik04">
+                <Form.Group as={Col} md="4" controlId="position">
                   <Form.Label className="font__size-2">Position</Form.Label>
                   <Form.Control
                     className="font__size-2"
@@ -170,7 +176,7 @@ const AddUser = ({
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   )}
                 </Form.Group>
-                <Form.Group as={Col} md="4" controlId="validationFormik01">
+                <Form.Group as={Col} md="4" controlId="email">
                   <Form.Label className="font__size-2">
                     Email address
                   </Form.Label>
@@ -192,7 +198,7 @@ const AddUser = ({
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   )}
                 </Form.Group>
-                <Form.Group as={Col} md="4" controlId="validationFormik02">
+                <Form.Group as={Col} md="4" controlId="password">
                   <Form.Label className="font__size-2">Password </Form.Label>
                   <Form.Control
                     className="font__size-2"
@@ -215,7 +221,7 @@ const AddUser = ({
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} controlId="validationFormik01">
+                <Form.Group as={Col} controlId="salary">
                   <Form.Label className="font__size-2">Salary</Form.Label>
                   <Form.Control
                     className="font__size-2"
@@ -236,7 +242,7 @@ const AddUser = ({
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} md="4" controlId="validationFormik01">
+                <Form.Group as={Col} md="4" controlId="address">
                   <Form.Label className="font__size-2">Address</Form.Label>
                   <Form.Control
                     className="font__size-2"
@@ -255,7 +261,7 @@ const AddUser = ({
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   )}
                 </Form.Group>
-                <Form.Group as={Col} md="2" controlId="validationFormik01">
+                <Form.Group as={Col} md="2" controlId="city">
                   <Form.Label className="font__size-2">City</Form.Label>
                   <Form.Control
                     className="font__size-2"
@@ -274,7 +280,7 @@ const AddUser = ({
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   )}
                 </Form.Group>{" "}
-                <Form.Group as={Col} md="2" controlId="validationFormik01">
+                <Form.Group as={Col} md="2" controlId="state">
                   <Form.Label className="font__size-2">State</Form.Label>
                   <Form.Control
                     className="font__size-2"
@@ -293,7 +299,7 @@ const AddUser = ({
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   )}
                 </Form.Group>
-                <Form.Group as={Col} md="2" controlId="validationFormik01">
+                <Form.Group as={Col} md="2" controlId="zipCode">
                   <Form.Label className="font__size-2">Zip Code</Form.Label>
                   <Form.Control
                     className="font__size-2"
@@ -313,9 +319,11 @@ const AddUser = ({
                   )}
                 </Form.Group>
               </Form.Row>
-              <Button className="font__size-2" type="submit">
-                Submit form
-              </Button>
+              <div>
+                <Button className="font__size-2" type="submit">
+                  Submit form
+                </Button>
+              </div>
             </Form>
           );
         }}
