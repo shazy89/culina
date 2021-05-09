@@ -49,7 +49,12 @@ const Company = ({
           </div>
           {alerts && <Alert />}
           <div className="features__">
-            <Link to={`/companies/${id}/user/new`}>
+            <Link
+              to={{
+                pathname: `/companies/${id}/user/new`,
+                state: { companyName: findCompany.name }
+              }}
+            >
               <Button className="culina__link">New User</Button>
             </Link>
           </div>

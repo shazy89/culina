@@ -34,7 +34,7 @@ const AddUser = ({
 
   return (
     <div>
-      <h1 className="u-margin-top-3">Anywhere in your app!</h1>
+      <h1 className="u-margin-top-3">New </h1>
       <Formik
         initialValues={{
           company: id,
