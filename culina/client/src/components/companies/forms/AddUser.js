@@ -10,6 +10,9 @@ import { positions, images } from "./constants";
 const AddUser = ({
   match: {
     params: { id }
+  },
+  location: {
+    state: { companyName }
   }
 }) => {
   const SignupSchema = Yup.object().shape({
