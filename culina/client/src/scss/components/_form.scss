@@ -85,3 +85,11 @@ justify-content: center;
     width: 2rem;
     height: auto;
 }
+.form_input {
+    &-danger {
+        color: rgb(236, 109, 109)
+    }
+    &-success {
+        color: rgb(21, 192, 21)
+    }
+}

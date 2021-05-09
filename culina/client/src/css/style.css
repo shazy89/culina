@@ -444,6 +444,12 @@ body {
   width: 2rem;
   height: auto; }
 
+.form_input-danger {
+  color: #ec6d6d; }
+
+.form_input-success {
+  color: #15c015; }
+
 .danger {
   background-color: rgba(248, 94, 94, 0.801); }
 

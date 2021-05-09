@@ -27,7 +27,14 @@ const AddUser = ({
     password: Yup.string()
       .min(6, "Too Short!")
       .max(50, "Too Long!")
-      .required("*")
+      .required("*"),
+    birthday: Yup.string().required("Required"),
+    position: Yup.string().required("Required"),
+    email: Yup.string().required("Required"),
+    address: Yup.string().required("Required"),
+    city: Yup.string().required("Required"),
+    state: Yup.string().required("Required"),
+    zip: Yup.string().required("Required")
   });
   const formatToCurrency = (amount) => {
     return "$" + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
@@ -88,9 +95,14 @@ const AddUser = ({
                     onChange={handleChange}
                     isValid={touched.firstName && !errors.firstName}
                   />
-                  <Form.Control.Feedback className="font__size-1">
-                    Looks good!
-                  </Form.Control.Feedback>
+                  {errors.firstName ? (
+                    <p className="font__size-1 form_input-danger">
+                      {" "}
+                      {errors.firstName}{" "}
+                    </p>
+                  ) : (
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  )}
                 </Form.Group>
                 <Form.Group as={Col} md="4" controlId="validationFormik02">
                   <Form.Label className="font__size-2">Last Name</Form.Label>
@@ -103,7 +115,14 @@ const AddUser = ({
                     isValid={touched.lastName && !errors.lastName}
                   />
 
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  {errors.lastName ? (
+                    <p className="font__size-1 form_input-danger">
+                      {" "}
+                      {errors.lastName}{" "}
+                    </p>
+                  ) : (
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  )}
                 </Form.Group>
                 <Form.Group as={Col} md="4" controlId="validationFormik03">
                   <div className="date--picker">
@@ -117,6 +136,14 @@ const AddUser = ({
                       onChange={(date) => setFieldValue("birthday", date)}
                     />
                   </div>
+                  {errors.birthday ? (
+                    <p className="font__size-1 form_input-danger">
+                      {" "}
+                      {errors.birthday}{" "}
+                    </p>
+                  ) : (
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  )}
                 </Form.Group>
               </Form.Row>
               <Form.Row>
@@ -134,6 +161,14 @@ const AddUser = ({
                       <option key={index}>{position}</option>
                     ))}
                   </Form.Control>
+                  {errors.position ? (
+                    <p className="font__size-1 form_input-danger">
+                      {" "}
+                      {errors.position}{" "}
+                    </p>
+                  ) : (
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  )}
                 </Form.Group>
                 <Form.Group as={Col} md="4" controlId="validationFormik01">
                   <Form.Label className="font__size-2">
@@ -148,7 +183,14 @@ const AddUser = ({
                     onChange={handleChange}
                     isValid={touched.email && !errors.email}
                   />
-                  <p>{errors.email && errors.email}</p>
+                  {errors.email ? (
+                    <p className="font__size-1 form_input-danger">
+                      {" "}
+                      {errors.email}{" "}
+                    </p>
+                  ) : (
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  )}
                 </Form.Group>
                 <Form.Group as={Col} md="4" controlId="validationFormik02">
                   <Form.Label className="font__size-2">Password </Form.Label>
@@ -162,7 +204,14 @@ const AddUser = ({
                     isValid={touched.password && !errors.password}
                   />
 
-                  <p>{errors.password && errors.password}</p>
+                  {errors.password ? (
+                    <p className="font__size-1 form_input-danger">
+                      {" "}
+                      {errors.password}{" "}
+                    </p>
+                  ) : (
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  )}
                 </Form.Group>
               </Form.Row>
               <Form.Row>
@@ -176,7 +225,14 @@ const AddUser = ({
                     onChange={handleChange}
                     isValid={touched.salary && !errors.salary}
                   />
-                  <p>{errors.salary && errors.salary}</p>
+                  {errors.salary ? (
+                    <p className="font__size-1 form_input-danger">
+                      {" "}
+                      {errors.salary}{" "}
+                    </p>
+                  ) : (
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  )}
                 </Form.Group>
               </Form.Row>
               <Form.Row>
@@ -190,9 +246,14 @@ const AddUser = ({
                     onChange={handleChange}
                     isValid={touched.address && !errors.address}
                   />
-                  <Form.Control.Feedback className="font__size-1">
-                    Looks good!
-                  </Form.Control.Feedback>
+                  {errors.address ? (
+                    <p className="font__size-1 form_input-danger">
+                      {" "}
+                      {errors.address}{" "}
+                    </p>
+                  ) : (
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  )}
                 </Form.Group>
                 <Form.Group as={Col} md="2" controlId="validationFormik01">
                   <Form.Label className="font__size-2">City</Form.Label>
@@ -204,9 +265,14 @@ const AddUser = ({
                     onChange={handleChange}
                     isValid={touched.city && !errors.city}
                   />
-                  <Form.Control.Feedback className="font__size-1">
-                    Looks good!
-                  </Form.Control.Feedback>
+                  {errors.city ? (
+                    <p className="font__size-1 form_input-danger">
+                      {" "}
+                      {errors.city}{" "}
+                    </p>
+                  ) : (
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  )}
                 </Form.Group>{" "}
                 <Form.Group as={Col} md="2" controlId="validationFormik01">
                   <Form.Label className="font__size-2">State</Form.Label>
@@ -218,9 +284,14 @@ const AddUser = ({
                     onChange={handleChange}
                     isValid={touched.state && !errors.state}
                   />
-                  <Form.Control.Feedback className="font__size-1">
-                    Looks good!
-                  </Form.Control.Feedback>
+                  {errors.state ? (
+                    <p className="font__size-1 form_input-danger">
+                      {" "}
+                      {errors.state}{" "}
+                    </p>
+                  ) : (
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  )}
                 </Form.Group>
                 <Form.Group as={Col} md="2" controlId="validationFormik01">
                   <Form.Label className="font__size-2">Zip Code</Form.Label>
@@ -232,9 +303,14 @@ const AddUser = ({
                     onChange={handleChange}
                     isValid={touched.zipCode && !errors.zipCode}
                   />
-                  <Form.Control.Feedback className="font__size-1">
-                    Looks good!
-                  </Form.Control.Feedback>
+                  {errors.zipCode ? (
+                    <p className="font__size-1 form_input-danger">
+                      {" "}
+                      {errors.zipCode}{" "}
+                    </p>
+                  ) : (
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  )}
                 </Form.Group>
               </Form.Row>
               <Button className="font__size-2" type="submit">
