@@ -1,11 +1,6 @@
 import React from "react";
 
-import {
-  Image as CloudinaryImage,
-  Video,
-  Transformation,
-  CloudinaryContext
-} from "cloudinary-react";
+import { Image as CloudinaryImage, Transformation } from "cloudinary-react";
 
 const CompanyUserCard = ({ info: { firstName, lastName, avatar } }) => {
   return (

@@ -1,5 +1,6 @@
 const Company = require("../models/newCompany");
 const normalizeData = require("../services/normalizeData");
+const CompanyUser = require("../models/CompanyUser");
 
 exports.newOrUpdate = async function (req, res) {
   const { _id, name, adress, phone, email, timeZone, logo } = req.body;
@@ -71,6 +72,7 @@ exports.companyProfile = async function ({ params: { id } }, res) {
 exports.removeCompany = async function ({ params: { id } }, res) {
   try {
     await Company.findOneAndRemove({ _id: id });
+    await CompanyUser.deleteMany({ company: _id });
     res.json({ msg: "Comopany deleted" });
   } catch (err) {
     console.error(err);

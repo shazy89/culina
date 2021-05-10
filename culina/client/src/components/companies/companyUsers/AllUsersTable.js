@@ -1,12 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import {
-  Image as CloudinaryImage,
-  Video,
-  Transformation,
-  CloudinaryContext
-} from "cloudinary-react";
-import PropTypes from "prop-types";
+import { Image as CloudinaryImage, Transformation } from "cloudinary-react";
 
 const AllUsersTable = ({ info }) => {
   const table = info.map((user, index) => {

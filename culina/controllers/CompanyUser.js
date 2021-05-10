@@ -35,7 +35,43 @@ exports.newCompanyUser = async function (
     hourlyWage: formatHrWage(annualSalary),
     ...rest
   };
+  if (!email || !password) {
+    return res
+      .status(422)
+      .send({ error: "You must provide valid email and password" });
+  }
   res.json(userFields);
+  try {
+    if (admin || (position === "Manager" && company === id)) {
+      const existingUser = await CompanyUser.findOne({ email });
+      if (existingUser) {
+        return res.status(422).send({ error: "Email is in use" });
+      }
+      const newUser = await new CompanyUser(userFields);
+      const company = await Company.findOne({ _id: id });
+
+      const companyUserFields = {
+        userId: newUser._id,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        avatar: newUser.avatar,
+        position: newUser.position
+      };
+
+      company.users.unshift(companyUserFields);
+      await company.save();
+      await newUser.save();
+
+      const salt = await bcrypt.genSalt(10);
+      newUser.password = await bcrypt.hash(password, salt);
+
+      // const token = jwt.sign({ userId: newUser.id }, process.env.JET_SECRET);
+      res.json({ newUser, company });
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
 };
 // Sign in
 exports.signInCompanyUser = async function (req, res) {
@@ -153,43 +189,7 @@ exports.removeCompanyUser = async function (
 };
 
 /*
-  if (!email || !password) {
-    return res
-      .status(422)
-      .send({ error: "You must provide valid email and password" });
-  }
-  res.json(userFields);
-  try {
-    if (admin || (position === "Manager" && company === id)) {
-      const existingUser = await CompanyUser.findOne({ email });
-      if (existingUser) {
-        return res.status(422).send({ error: "Email is in use" });
-      }
-      const newUser = await new CompanyUser(userFields);
-      const company = await Company.findOne({ _id: id });
 
-      const companyUserFields = {
-        userId: newUser._id,
-        firstName: newUser.firstName,
-        lastName: newUser.lastName,
-        avatar: newUser.avatar,
-        position: newUser.position
-      };
-
-      company.users.unshift(companyUserFields);
-      await company.save();
-      await newUser.save();
-
-      const salt = await bcrypt.genSalt(10);
-      newUser.password = await bcrypt.hash(password, salt);
-
-      // const token = jwt.sign({ userId: newUser.id }, process.env.JET_SECRET);
-      res.json({ newUser, company });
-    }
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
-  }
 
 
 

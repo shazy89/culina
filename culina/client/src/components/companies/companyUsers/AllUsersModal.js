@@ -1,7 +1,6 @@
 import React from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import AllUsersTable from "./AllUsersTable";
-import PropTypes from "prop-types";
 
 const AllUsersModal = ({ handleClose, show, info }) => {
   return (

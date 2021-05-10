@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import FormInput from "./FormInput";
-import { v4 as uuidv4 } from "uuid";
+
 import { Button } from "react-bootstrap";
 import { createOrUpdate } from "../../../actions/companies";
 import Alert from "../../layout/Alerts";
