@@ -26,5 +26,21 @@ exports.formatSalary = {
         .toFixed(2)
         .replace(/\d(?=(\d{3})+\.)/g, "$&,")
     );
+  },
+  formatWeeklyWage: function (amount) {
+    return (
+      "$" +
+      parseInt(amount / 52)
+        .toFixed(2)
+        .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+    );
+  },
+  formatHrWage: function (amount) {
+    return (
+      "$" +
+      parseInt(amount / 2, 087)
+        .toFixed(2)
+        .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+    );
   }
 };
