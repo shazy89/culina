@@ -10,11 +10,21 @@ exports.normalizePhoneNumber = (number) => {
   return null;
 };
 
-exports.formatToCurrency = (amount) => {
-  return (
-    "$" +
-    parseInt(amount)
-      .toFixed(2)
-      .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-  );
+exports.formatSalary = {
+  formatAnnualSalary: function (amount) {
+    return (
+      "$" +
+      parseInt(amount)
+        .toFixed(2)
+        .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+    );
+  },
+  formatMonthlyWage: function (amount) {
+    return (
+      "$" +
+      parseInt(amount / 12)
+        .toFixed(2)
+        .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+    );
+  }
 };

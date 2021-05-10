@@ -4,8 +4,9 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const {
   normalizePhoneNumber,
-  formatToCurrency
+  formatSalary: { formatAnnualSalary, formatMonthlyWage }
 } = require("../services/normalizeData");
+
 require("dotenv").config();
 
 // POST
@@ -22,7 +23,8 @@ exports.newCompanyUser = async function (
     company: companyId,
     email,
     password,
-
+    annualSalary: formatAnnualSalary(annualSalary),
+    monthlyWage: formatMonthlyWage(annualSalary),
     ...rest
   };
   res.json(userFields);
