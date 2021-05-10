@@ -40,15 +40,15 @@ exports.newCompanyUser = async function (
       .status(422)
       .send({ error: "You must provide valid email and password" });
   }
-  res.json(userFields);
+
   try {
-    if (admin || (position === "Manager" && company === id)) {
+    if (admin || (position === "Manager" && company === companyId)) {
       const existingUser = await CompanyUser.findOne({ email });
       if (existingUser) {
         return res.status(422).send({ error: "Email is in use" });
       }
       const newUser = await new CompanyUser(userFields);
-      const company = await Company.findOne({ _id: id });
+      const company = await Company.findOne({ _id: companyId });
 
       const companyUserFields = {
         userId: newUser._id,
@@ -58,7 +58,7 @@ exports.newCompanyUser = async function (
         position: newUser.position
       };
 
-      company.users.unshift(companyUserFields);
+      await company.users.unshift(companyUserFields);
       await company.save();
       await newUser.save();
 

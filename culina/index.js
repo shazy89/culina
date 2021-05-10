@@ -16,6 +16,14 @@ const app = express();
 app.use(morgan("combined"));
 app.use(bodyParser.json());
 
+//const corsOptions = {
+//  origin: "http://localhost:3000/",
+//  optionsSuccessStatus: 200,
+//};
+
+// app.use(cors(corsOptions));
+
+router(app);
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -28,14 +36,6 @@ app.use(function (req, res, next) {
   );
   next();
 });
-//const corsOptions = {
-//  origin: "http://localhost:3000/",
-//  optionsSuccessStatus: 200,
-//};
-
-// app.use(cors(corsOptions));
-
-router(app);
 
 //DB Setup
 const mongoUri = `${process.env.MONGO_URI}`;
