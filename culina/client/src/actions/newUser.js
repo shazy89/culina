@@ -2,7 +2,7 @@ import api from "../utils/api";
 import { setAlert } from "./alert";
 import { NEW_COMPANY_USER } from "./types";
 
-export const newCompanyUser = (formData) => async (dispatch) => {
+export const newCompanyUser = (formData, history) => async (dispatch) => {
   try {
     const res = await api.post(`/culina/${formData.company}/newuser`, formData);
     dispatch({

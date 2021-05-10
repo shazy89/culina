@@ -39,7 +39,7 @@ export default function (state = initialState, action) {
         loading: false
       };
     case NEW_COMPANY_USER:
-      const company = state.companies
+      state.companies
         .find((company) => company._id === payload.company)
         .users.push(payload);
 

@@ -13,7 +13,7 @@ const CompanyUserCard = ({ info: { firstName, lastName, avatar } }) => {
       <CloudinaryImage
         className="slider--circle__image"
         cloudName="dytheecsk"
-        publicId="portfolio/me_ocryct.jpg"
+        publicId={avatar}
       >
         <Transformation width="130" crop="scale" />
       </CloudinaryImage>

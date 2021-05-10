@@ -56,7 +56,7 @@ const AddUser = ({
           firstName: "",
           lastName: "",
           avatar:
-            "https://res.cloudinary.com/dytheecsk/image/upload/v1620505413/culina/depositphotos_59095205-stock-illustration-businessman-profile-icon_yytrhn.jpg",
+            "culina/depositphotos_59095205-stock-illustration-businessman-profile-icon_yytrhn.jpg",
           annualSalary: "",
           hrRate: "",
           position: "",
