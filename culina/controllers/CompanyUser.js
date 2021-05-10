@@ -4,7 +4,13 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const {
   normalizePhoneNumber,
-  formatSalary: { formatAnnualSalary, formatMonthlyWage }
+  formatSalary: {
+    formatAnnualSalary,
+    formatMonthlyWage,
+    formatWeeklyWage,
+    formatDailyWage,
+    formatHrWage
+  }
 } = require("../services/normalizeData");
 
 require("dotenv").config();
@@ -24,6 +30,9 @@ exports.newCompanyUser = async function (
     password,
     annualSalary: formatAnnualSalary(annualSalary),
     monthlyWage: formatMonthlyWage(annualSalary),
+    weeklyWage: formatWeeklyWage(annualSalary),
+    dailyWage: formatDailyWage(annualSalary),
+    hourlyWage: formatHrWage(annualSalary),
     ...rest
   };
   res.json(userFields);

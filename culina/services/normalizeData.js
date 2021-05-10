@@ -46,7 +46,7 @@ exports.formatSalary = {
   formatHrWage: function (amount) {
     return (
       "$" +
-      parseInt(amount / 2, 087)
+      parseInt(amount / 52 / 40)
         .toFixed(2)
         .replace(/\d(?=(\d{3})+\.)/g, "$&,")
     );
