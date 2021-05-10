@@ -39,12 +39,15 @@ export default function (state = initialState, action) {
         loading: false
       };
     case NEW_COMPANY_USER:
-      state.companies
-        .find((company) => company._id === payload.company)
-        .users.push(payload);
+      //    state.companies
+      //      .find((company) => company._id === payload.company)
+      //      .users.push(payload);
 
       return {
         ...state,
+        companies: state.companies.map((company) =>
+          company._id === payload._id ? payload : company
+        ),
         loading: false
       };
 

@@ -5,12 +5,12 @@ import { NEW_COMPANY_USER } from "./types";
 export const newCompanyUser = (formData, history) => async (dispatch) => {
   try {
     const res = await api.post(`/culina/${formData.company}/newuser`, formData);
-    debugger;
+
     dispatch({
       type: NEW_COMPANY_USER,
-      payload: res.data
+      payload: res.data.company
     });
-    await history.push(`/companies/${formData.company}`);
+    history.push(`/companies/${formData.company}`);
     dispatch(setAlert("Sucsess", "success"));
   } catch (err) {
     if (err) {
