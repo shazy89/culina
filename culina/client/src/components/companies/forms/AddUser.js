@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
 import { connect } from "react-redux";
-import { Form, Col, InputGroup, Button } from "react-bootstrap";
+import { Form, Col, Button } from "react-bootstrap";
 import * as Yup from "yup";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -42,11 +42,6 @@ const AddUser = ({
     zipCode: Yup.string().required("Required")
   });
 
-  const submit = (values, actions) => {
-    newCompanyUser(values);
-    actions.resetForm();
-  };
-
   return (
     <div>
       <div>
@@ -73,7 +68,10 @@ const AddUser = ({
           zipCode: ""
         }}
         validationSchema={newUserSchema}
-        onSubmit={(values, actions) => submit(values, actions)}
+        onSubmit={(values, actions) => {
+          newCompanyUser(values);
+          //  actions.resetForm();
+        }}
       >
         {({
           handleSubmit,
@@ -81,8 +79,6 @@ const AddUser = ({
           touched,
           values,
           setFieldValue,
-          isValid,
-          handleBlur,
           handleChange
         }) => {
           return (

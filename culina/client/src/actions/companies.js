@@ -20,6 +20,7 @@ export const getCompanies = () => async (dispatch) => {
 export const createOrUpdate = (formData, edit, history) => async (dispatch) => {
   try {
     const res = await api.post("/companies", formData);
+    debugger;
     if (edit) {
       dispatch({
         type: COMPANIES,

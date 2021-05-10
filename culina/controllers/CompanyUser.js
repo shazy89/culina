@@ -10,56 +10,22 @@ require("dotenv").config();
 
 // POST
 // Post - new company user
-// companies/:id/user/new -- Sign Up
+// companies/:id/newuser -- Sign Up
 exports.newCompanyUser = async function (
-  { params: { id }, user: { admin, position, company }, body },
+  { params: { companyId }, user: { admin, position, company }, body },
   res
 ) {
-  const { _id, email, password, ...rest } = body;
+  console.log(body);
+  const { _id, email, password, annualSalary, ...rest } = body;
 
   const userFields = {
-    company: id,
+    company: companyId,
     email,
     password,
+
     ...rest
   };
-  if (!email || !password) {
-    return res
-      .status(422)
-      .send({ error: "You must provide valid email and password" });
-  }
-
-  try {
-    if (admin || (position === "Manager" && company === id)) {
-      const existingUser = await CompanyUser.findOne({ email });
-      if (existingUser) {
-        return res.status(422).send({ error: "Email is in use" });
-      }
-      const newUser = await new CompanyUser(userFields);
-      const company = await Company.findOne({ _id: id });
-
-      const companyUserFields = {
-        userId: newUser._id,
-        firstName: newUser.firstName,
-        lastName: newUser.lastName,
-        avatar: newUser.avatar,
-        position: newUser.position
-      };
-
-      company.users.unshift(companyUserFields);
-      await company.save();
-      await newUser.save();
-
-      const salt = await bcrypt.genSalt(10);
-      newUser.password = await bcrypt.hash(password, salt);
-
-      // const token = jwt.sign({ userId: newUser.id }, process.env.JET_SECRET);
-      res.json({ newUser, company });
-    }
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
-  }
+  res.json(userFields);
 };
 // Sign in
 exports.signInCompanyUser = async function (req, res) {
@@ -175,3 +141,46 @@ exports.removeCompanyUser = async function (
     res.status(500).send({ error: "Server error" });
   }
 };
+
+/*
+  if (!email || !password) {
+    return res
+      .status(422)
+      .send({ error: "You must provide valid email and password" });
+  }
+  res.json(userFields);
+  try {
+    if (admin || (position === "Manager" && company === id)) {
+      const existingUser = await CompanyUser.findOne({ email });
+      if (existingUser) {
+        return res.status(422).send({ error: "Email is in use" });
+      }
+      const newUser = await new CompanyUser(userFields);
+      const company = await Company.findOne({ _id: id });
+
+      const companyUserFields = {
+        userId: newUser._id,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        avatar: newUser.avatar,
+        position: newUser.position
+      };
+
+      company.users.unshift(companyUserFields);
+      await company.save();
+      await newUser.save();
+
+      const salt = await bcrypt.genSalt(10);
+      newUser.password = await bcrypt.hash(password, salt);
+
+      // const token = jwt.sign({ userId: newUser.id }, process.env.JET_SECRET);
+      res.json({ newUser, company });
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+
+
+
+*/
