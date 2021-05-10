@@ -35,6 +35,14 @@ exports.formatSalary = {
         .replace(/\d(?=(\d{3})+\.)/g, "$&,")
     );
   },
+  formatDailyWage: function (amount) {
+    return (
+      "$" +
+      parseInt(amount / 262)
+        .toFixed(2)
+        .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+    );
+  },
   formatHrWage: function (amount) {
     return (
       "$" +

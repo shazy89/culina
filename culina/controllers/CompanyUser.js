@@ -16,7 +16,6 @@ exports.newCompanyUser = async function (
   { params: { companyId }, user: { admin, position, company }, body },
   res
 ) {
-  console.log(body);
   const { _id, email, password, annualSalary, ...rest } = body;
 
   const userFields = {
