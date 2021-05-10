@@ -36,7 +36,7 @@ const AddUser = ({
     position: Yup.string().required("Required"),
     email: Yup.string().required("Required"),
     address: Yup.string().required("Required"),
-    salary: Yup.string().required("Required"),
+    annualSalary: Yup.string().required("Required"),
     city: Yup.string().required("Required"),
     state: Yup.string().required("Required"),
     zipCode: Yup.string().required("Required")
@@ -50,13 +50,9 @@ const AddUser = ({
     );
   };
 
-  const submit = async (values, actions) => {
-    const { annualSalary, hrRate, ...rest } = values;
-    const userData = {
-      annualSalary: await formatToCurrency(annualSalary),
-      ...rest
-    };
-    console.log(userData);
+  const submit = (values, actions) => {
+    newCompanyUser(values);
+    actions.resetForm();
   };
 
   return (

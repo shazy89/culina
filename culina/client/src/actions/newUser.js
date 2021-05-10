@@ -1,6 +1,6 @@
 import api from "../utils/api";
 import { setAlert } from "./alert";
-import {} from "./types";
+import { NEW_COMPANY_USER } from "./types";
 
 export const newCompanyUser = (formData) => async (dispatch) => {
   try {
