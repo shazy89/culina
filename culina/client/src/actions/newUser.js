@@ -1,12 +1,29 @@
-export const newUser = (userInfo) => async (dispatch) => {
+import api from "../utils/api";
+import { setAlert } from "./alert";
+import {} from "./types";
+
+export const newCompanyUser = (formData) => async (dispatch) => {
   try {
-  } catch (error) {}
+    const res = await api.post(
+      `/companies/${formData.company}/user/new`,
+      formData
+    );
+  } catch (err) {
+    if (err) {
+      dispatch(setAlert("Please try again", "danger"));
+    }
+  }
 };
+
 export const a = (userInfo) => async (dispatch) => {
   try {
   } catch (error) {}
 };
 export const b = (userInfo) => async (dispatch) => {
   try {
-  } catch (error) {}
+  } catch (err) {
+    if (err) {
+      dispatch(setAlert("Please try again", "danger"));
+    }
+  }
 };

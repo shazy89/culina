@@ -1,12 +1,13 @@
 import React from "react";
 import { Formik } from "formik";
-//Field, Form, ErrorMessage, useFormik
+import { connect } from "react-redux";
 import { Form, Col, InputGroup, Button } from "react-bootstrap";
 import * as Yup from "yup";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { positions, images } from "./constants";
+import { positions } from "./constants";
 import Back from "components/reusable/Back";
+import { newCompanyUser } from "actions/newUser";
 
 const AddUser = ({
   match: {
@@ -15,7 +16,8 @@ const AddUser = ({
   location: {
     state: { companyName }
   },
-  history
+  history,
+  newCompanyUser
 }) => {
   const newUserSchema = Yup.object().shape({
     firstName: Yup.string()
@@ -335,4 +337,4 @@ const AddUser = ({
   );
 };
 
-export default AddUser;
+export default connect(null, { newCompanyUser })(AddUser);
