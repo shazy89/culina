@@ -98,16 +98,28 @@ const Company = ({
                   />
                 ) : (
                   <h2>
-                    Please {<Link to="/company/new">add</Link>} users to this
-                    company
+                    Please{" "}
+                    {
+                      <Link
+                        to={{
+                          pathname: `/companies/${id}/user/new`,
+                          state: { companyName: findCompany.name }
+                        }}
+                      >
+                        add
+                      </Link>
+                    }{" "}
+                    users to this company
                   </h2>
                 )}
               </div>
               <div className="view-all u-margin-top-3">
-                {findCompany.users.length && (
+                {findCompany.users.length ? (
                   <Button size="lg" variant="link" onClick={handleShow}>
                     View All
                   </Button>
+                ) : (
+                  ""
                 )}
                 <AllUsersModal
                   show={show}
