@@ -12,4 +12,5 @@ export const NEW_COMPANY = "NEW_COMPANY";
 export const COMPANIES = "COMPANIES"; //create or update
 export const DELETE_COMPANY = "DELETE_COMPANY";
 export const HANDLE_ADDRESS = "HANDLE_ADDRESS";
+
 export const NEW_COMPANY_USER = "NEW_COMPANY_USER";

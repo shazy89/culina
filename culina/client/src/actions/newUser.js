@@ -1,13 +1,14 @@
-import axios from "axios";
 import api from "../utils/api";
 import { setAlert } from "./alert";
 import { NEW_COMPANY_USER } from "./types";
 
 export const newCompanyUser = (formData) => async (dispatch) => {
-  console.log(formData);
   try {
     const res = await api.post(`/culina/${formData.company}/newuser`, formData);
-    debugger;
+    dispatch({
+      type: NEW_COMPANY_USER,
+      payload: res.data
+    });
   } catch (err) {
     if (err) {
       dispatch(setAlert("Please try again", "danger"));

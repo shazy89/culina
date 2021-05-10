@@ -2,7 +2,8 @@ import {
   GET_COMPANIES,
   COMPANIES,
   NEW_COMPANY,
-  DELETE_COMPANY
+  DELETE_COMPANY,
+  NEW_COMPANY_USER
 } from "../actions/types";
 const initialState = { companies: [], loading: true };
 
@@ -35,6 +36,15 @@ export default function (state = initialState, action) {
       return {
         ...state,
         companies: state.companies.filter((company) => company._id !== payload),
+        loading: false
+      };
+    case NEW_COMPANY_USER:
+      const company = state.companies
+        .find((company) => company._id === payload.company)
+        .users.push(payload);
+
+      return {
+        ...state,
         loading: false
       };
 
