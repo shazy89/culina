@@ -9,6 +9,8 @@ export const newCompanyUser = (formData, history) => async (dispatch) => {
       type: NEW_COMPANY_USER,
       payload: res.data
     });
+    await history.push(`/companies/${formData.company}`);
+    dispatch(setAlert("Sucsess", "success"));
   } catch (err) {
     if (err) {
       dispatch(setAlert("Please try again", "danger"));

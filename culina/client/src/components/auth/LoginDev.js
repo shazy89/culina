@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Redirect, useLocation } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";

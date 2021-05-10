@@ -56,7 +56,7 @@ export const createOrUpdate = (formData, edit, history) => async (dispatch) => {
 export const deleteCopany = (id, history) => async (dispatch) => {
   if (window.confirm("Are you sure? This can NOT be undone!")) {
     try {
-      const res = await api.delete(`/companies/${id}`);
+      await api.delete(`/companies/${id}`);
 
       dispatch({ type: DELETE_COMPANY, payload: id });
       history.push("/companies");

@@ -69,7 +69,7 @@ const AddUser = ({
         }}
         validationSchema={newUserSchema}
         onSubmit={(values, actions) => {
-          newCompanyUser(values);
+          newCompanyUser(values, history);
           //  actions.resetForm();
         }}
       >
