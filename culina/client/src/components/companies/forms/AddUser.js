@@ -41,14 +41,6 @@ const AddUser = ({
     state: Yup.string().required("Required"),
     zipCode: Yup.string().required("Required")
   });
-  const formatToCurrency = (amount) => {
-    return (
-      "$" +
-      parseInt(amount)
-        .toFixed(2)
-        .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-    );
-  };
 
   const submit = (values, actions) => {
     newCompanyUser(values);

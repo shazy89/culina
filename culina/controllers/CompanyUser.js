@@ -2,7 +2,10 @@ const CompanyUser = require("../models/CompanyUser");
 const Company = require("../models/newCompany");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const normalizeData = require("../services/normalizeData");
+const {
+  normalizePhoneNumber,
+  formatToCurrency
+} = require("../services/normalizeData");
 require("dotenv").config();
 
 // POST
