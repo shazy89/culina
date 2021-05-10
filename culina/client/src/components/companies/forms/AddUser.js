@@ -42,10 +42,22 @@ const AddUser = ({
     zipCode: Yup.string().required("Required")
   });
   const formatToCurrency = (amount) => {
-    return "$" + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+    return (
+      "$" +
+      parseInt(amount)
+        .toFixed(2)
+        .replace(/\d(?=(\d{3})+\.)/g, "$&,")
+    );
   };
 
-  const submit = (params) => {};
+  const submit = async (values, actions) => {
+    const { annualSalary, hrRate, ...rest } = values;
+    const userData = {
+      annualSalary: await formatToCurrency(annualSalary),
+      ...rest
+    };
+    console.log(userData);
+  };
 
   return (
     <div>
@@ -62,7 +74,7 @@ const AddUser = ({
           lastName: "",
           avatar:
             "https://res.cloudinary.com/dytheecsk/image/upload/v1620505413/culina/depositphotos_59095205-stock-illustration-businessman-profile-icon_yytrhn.jpg",
-          salary: "",
+          annualSalary: "",
           hrRate: "",
           position: "",
           state: "",
@@ -73,12 +85,7 @@ const AddUser = ({
           zipCode: ""
         }}
         validationSchema={newUserSchema}
-        onSubmit={(values, actions) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            actions.setSubmitting(false);
-          }, 1000);
-        }}
+        onSubmit={(values, actions) => submit(values, actions)}
       >
         {({
           handleSubmit,
@@ -223,20 +230,22 @@ const AddUser = ({
                 </Form.Group>
               </Form.Row>
               <Form.Row>
-                <Form.Group as={Col} controlId="salary">
-                  <Form.Label className="font__size-2">Salary</Form.Label>
+                <Form.Group as={Col} controlId="annualSalary">
+                  <Form.Label className="font__size-2">
+                    Annual Salary
+                  </Form.Label>
                   <Form.Control
                     className="font__size-2"
                     type="text"
-                    name="salary"
-                    value={values.salary}
+                    name="annualSalary"
+                    value={values.annualSalary}
                     onChange={handleChange}
-                    isValid={touched.salary && !errors.salary}
+                    isValid={touched.annualSalary && !errors.annualSalary}
                   />
-                  {errors.salary ? (
+                  {errors.annualSalary ? (
                     <p className="font__size-1 form_input-danger">
                       {" "}
-                      {errors.salary}{" "}
+                      {errors.annualSalary}{" "}
                     </p>
                   ) : (
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>

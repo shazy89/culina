@@ -19,7 +19,7 @@ const companyUserSchema = new Schema({
   lastName: String,
   avatar: String,
   userType: String,
-  salary: String,
+  annualSalary: String,
   hrRate: String,
   position: String,
   state: String,
