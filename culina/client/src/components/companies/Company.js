@@ -9,8 +9,7 @@ import CompanyInfo from "./CompanyInfo";
 import CompanyLeft from "./CompanyLeft";
 import { Edit, X } from "react-feather";
 import Alert from "components/layout/Alerts";
-import Slider from "components/layout/Slider";
-import CompanyUserCard from "./companyUsers/CompanyUserCard";
+import CompanyRight from "./CompanyRight";
 import ProjectsTable from "./project/ProjectsTable";
 import AllUsersModal from "./companyUsers/AllUsersModal";
 
@@ -65,32 +64,7 @@ const Company = ({
               />
             </div>
             <div className="company__display--box-2">
-              <div className="slider_company">
-                <h2 className="slider_company__header">
-                  {findCompany.name} - Employee List
-                </h2>
-                {findCompany.users.length ? (
-                  <Slider
-                    component={CompanyUserCard}
-                    info={findCompany.users}
-                  />
-                ) : (
-                  <h2>
-                    Please{" "}
-                    {
-                      <Link
-                        to={{
-                          pathname: `/companies/${id}/user/new`,
-                          state: { companyName: findCompany.name }
-                        }}
-                      >
-                        add
-                      </Link>
-                    }{" "}
-                    users to this company
-                  </h2>
-                )}
-              </div>
+              <CompanyRight id={id} company={findCompany} />
               <div className="view-all u-margin-top-3">
                 {findCompany.users.length ? (
                   <Button size="lg" variant="link" onClick={handleShow}>
