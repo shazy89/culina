@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import api from "utils/api";
+import { Link } from "react-router-dom";
 import Back from "components/reusable/Back";
 import Spinner from "components/layout/Spinner";
 import UserPersonalInfo from "./userProfile/UserInfo";
 import UserAdress from "./userProfile/UserAdress";
 import UserSalary from "./userProfile/UserSalary";
+import { Edit, X } from "react-feather";
 const UserProfile = ({
   match: {
     params: { id, userId }
@@ -13,7 +15,7 @@ const UserProfile = ({
 }) => {
   const [profileInfo, setprofileInfo] = useState("");
   const [loading, setLoading] = useState(true);
-
+  const [edit, setEdit] = useState(false);
   useEffect(() => {
     const fetchUserInfo = async () => {
       const res = await api.get(`/companies/${id}/user/${userId}`);
@@ -22,7 +24,7 @@ const UserProfile = ({
     };
     fetchUserInfo();
   }, [id, userId]);
-  console.log(profileInfo);
+
   return (
     <>
       <div>
@@ -37,6 +39,9 @@ const UserProfile = ({
             <UserAdress profileInfo={profileInfo} />
           </div>
           <div className="w-50 padding--1">
+            <h4 className="user__profile-edit">
+              Edit <Edit className="company__edit--button" />
+            </h4>
             <UserSalary profileInfo={profileInfo} />
           </div>
         </div>

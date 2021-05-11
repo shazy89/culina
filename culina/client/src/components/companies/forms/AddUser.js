@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import { connect } from "react-redux";
 import { Form, Col, Button } from "react-bootstrap";
@@ -43,7 +43,7 @@ const AddUser = ({
   });
 
   return (
-    <div>
+    <>
       <div>
         <Back history={history} />
       </div>
@@ -326,7 +326,7 @@ const AddUser = ({
           );
         }}
       </Formik>
-    </div>
+    </>
   );
 };
 

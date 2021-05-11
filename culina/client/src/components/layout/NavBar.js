@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+
 import { Navbar, NavDropdown, Nav } from "react-bootstrap";
 import { logout } from "../../actions/auth";
 import PropTypes from "prop-types";

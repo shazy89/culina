@@ -226,6 +226,10 @@ body {
   display: flex;
   justify-content: space-between; }
 
+.user__profile-edit {
+  display: flex;
+  flex-direction: row-reverse; }
+
 .culina__content {
   background-color: white;
   max-width: 150rem;
