@@ -15,7 +15,11 @@ const CompanyRight = ({ company, id, show, handleClose, handleShow }) => {
           {company.name} - Employee List
         </h2>
         {company.users.length ? (
-          <Slider component={CompanyUserCard} info={company.users} />
+          <Slider
+            companyId={company._id}
+            component={CompanyUserCard}
+            info={company.users}
+          />
         ) : (
           <h2>
             Please{" "}

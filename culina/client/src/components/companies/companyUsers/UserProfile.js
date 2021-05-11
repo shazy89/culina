@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const UserProfile = ({}) => {
+const UserProfile = ({ match }) => {
   return <div>HEY USER</div>;
 };
 

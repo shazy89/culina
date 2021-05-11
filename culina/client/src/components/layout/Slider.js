@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { v4 as uuidv4 } from "uuid";
 
-const Slider = ({ component: Component, info }) => {
+const Slider = ({ companyId, component: Component, info }) => {
   const id = uuidv4();
   var settings = {
     dots: true,
@@ -25,7 +25,12 @@ const Slider = ({ component: Component, info }) => {
       }
     ]
   };
-  const items = info.map((i) => <Component key={id} info={i} />);
+
+  const items = info.map((i) => (
+    <Link to={`/companies/${companyId}/user/${i.userId}`}>
+      <Component key={id} info={i} />
+    </Link>
+  ));
 
   return (
     <SlickSlider className="hey" {...settings}>
