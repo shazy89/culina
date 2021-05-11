@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, ListGroup } from "react-bootstrap";
 
 const UserSalary = ({
   profileInfo: { annualSalary, dailyWage, hourlyWage, monthlyWage, weeklyWage }
@@ -7,12 +7,16 @@ const UserSalary = ({
   return (
     <Card className="user__personal user__shadow u-margin-top-small">
       <Card.Body className="font__size-3 u-center-text">
-        <h1>Salary to Hourly - Paycheck</h1>
-        <h3>Annual salary {annualSalary}</h3>
-        <h3>Monthly wage {monthlyWage}</h3>
-        <h3>Weekly wage {weeklyWage}</h3>
-        <h3>Daily Wage {dailyWage}</h3>
-        <h3>Hourly wage {hourlyWage}</h3>
+        <ListGroup variant="flush">
+          <Card.Header className="font__size-4">
+            Salary to Hourly - Paycheck
+          </Card.Header>
+          <ListGroup.Item>Annual salary {annualSalary}</ListGroup.Item>
+          <ListGroup.Item>Monthly wage {monthlyWage}</ListGroup.Item>
+          <ListGroup.Item>Weekly wage {weeklyWage}</ListGroup.Item>
+          <ListGroup.Item>Daily Wage {dailyWage}</ListGroup.Item>
+          <ListGroup.Item>Hourly wage {hourlyWage}</ListGroup.Item>
+        </ListGroup>
       </Card.Body>
     </Card>
   );
