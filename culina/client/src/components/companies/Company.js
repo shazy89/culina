@@ -43,7 +43,7 @@ const Company = ({
           <div className="features__">
             <Link
               to={{
-                pathname: `/companies/${id}/user/new`,
+                pathname: `/companies/${id}/newuser`,
                 state: { companyName: findCompany.name }
               }}
             >

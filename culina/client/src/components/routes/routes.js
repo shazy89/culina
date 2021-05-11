@@ -29,7 +29,7 @@ const Routes = () => {
             />
             <PrivateRoute
               exact
-              path="/companies/:id/user/new"
+              path="/companies/:id/newuser"
               component={AddUser}
             />
             <PrivateRoute exact path="/companies/:id" component={Company} />
