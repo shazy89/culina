@@ -6,7 +6,7 @@ import Spinner from "../layout/Spinner";
 import { Button } from "react-bootstrap";
 import Back from "../reusable/Back";
 import CompanyInfo from "./CompanyInfo";
-import EditCompanyCard from "./forms/EditCompanyCard";
+import CompanyLeft from "./CompanyLeft";
 import { Edit, X } from "react-feather";
 import Alert from "components/layout/Alerts";
 import Slider from "components/layout/Slider";
@@ -56,32 +56,12 @@ const Company = ({
           </div>
 
           <div className="company__display">
-            <div className="company__display--box-1">
-              <div className="company__edit">
-                {!edit && (
-                  <Edit
-                    className="company__edit--button"
-                    onClick={() => setEdit(true)}
-                  ></Edit>
-                )}
-
-                {edit && (
-                  <X
-                    className="company__edit--button"
-                    onClick={() => setEdit(false)}
-                  ></X>
-                )}
-              </div>
-              {!edit ? (
-                <CompanyInfo company={findCompany} />
-              ) : (
-                <EditCompanyCard
-                  company={findCompany}
-                  className={className}
-                  setEdit={setEdit}
-                />
-              )}
-            </div>
+            <CompanyLeft
+              edit={edit}
+              setEdit={setEdit}
+              company={findCompany}
+              className={className}
+            />
             <div className="company__display--box-2">
               <div className="slider_company">
                 <h2 className="slider_company__header">
