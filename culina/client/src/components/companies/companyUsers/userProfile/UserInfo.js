@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-
 import { Image as CloudinaryImage, Transformation } from "cloudinary-react";
+
 const UserInfo = ({
   profileInfo: { avatar, firstName, lastName, email, position }
 }) => {

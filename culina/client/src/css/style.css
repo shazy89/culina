@@ -222,6 +222,10 @@ body {
   border-radius: 50%;
   background: white; }
 
+.user__profile-box {
+  display: flex;
+  justify-content: space-between; }
+
 .culina__content {
   background-color: white;
   max-width: 150rem;
@@ -311,7 +315,7 @@ body {
   flex-wrap: wrap; }
 
 .user__personal {
-  width: 50%; }
+  width: 100%; }
 
 .user__shadow {
   box-shadow: 3px 5px 13px rgba(105, 105, 105, 0.493); }
@@ -324,7 +328,7 @@ body {
 
 .user__card-box {
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-evenly; }
 
 .user__card-header {
   align-self: center; }

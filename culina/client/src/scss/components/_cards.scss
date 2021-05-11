@@ -102,7 +102,7 @@
 
 .user {
     &__personal {
-        width: 50%;
+        width: 100%;
     }
     &__shadow {
         box-shadow: 3px 5px 13px rgba(105, 105, 105, 0.493);
@@ -116,7 +116,7 @@
     &__card {
         &-box {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-evenly;
         }
         &-header {
             align-self: center;

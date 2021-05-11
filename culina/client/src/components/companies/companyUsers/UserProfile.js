@@ -3,6 +3,8 @@ import api from "utils/api";
 import Back from "components/reusable/Back";
 import Spinner from "components/layout/Spinner";
 import UserPersonalInfo from "./userProfile/UserInfo";
+import UserAdress from "./userProfile/UserAdress";
+import UserSalary from "./userProfile/UserSalary";
 const UserProfile = ({
   match: {
     params: { id, userId }
@@ -29,8 +31,14 @@ const UserProfile = ({
       {loading ? (
         <Spinner />
       ) : (
-        <div className="u-margin-top">
-          <UserPersonalInfo profileInfo={profileInfo} />
+        <div className="u-margin-top user__profile-box">
+          <div className="w-50">
+            <UserPersonalInfo profileInfo={profileInfo} />
+            <UserAdress profileInfo={profileInfo} />
+          </div>
+          <div className="w-50 padding--1">
+            <UserSalary profileInfo={profileInfo} />
+          </div>
         </div>
       )}
     </>
