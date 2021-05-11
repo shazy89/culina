@@ -104,6 +104,13 @@ body {
     opacity: 1;
     transform: translateY(0); } }
 
+.culina--link:link, .culina--link:visited {
+  text-decoration: none !important;
+  color: rgba(0, 0, 0, 0.726); }
+
+.culina--link:hover, .culina--link:active {
+  text-decoration: none !important; }
+
 .login {
   height: 93vh;
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("./assets/images/LoginRestaurant.jpg");
@@ -290,6 +297,18 @@ body {
   /* justify-content: space-between; */
   flex-wrap: wrap; }
 
+.user__personal {
+  width: 50%; }
+
+.user__shadow {
+  box-shadow: 3px 5px 13px rgba(105, 105, 105, 0.493); }
+
+.user__image {
+  width: 12rem;
+  height: 13rem;
+  border-radius: 50%;
+  background: white; }
+
 .button__main {
   display: flex; }
 
@@ -469,8 +488,8 @@ body {
 .slider--circle {
   padding: 1rem; }
   .slider--circle__image {
-    width: 5.7rem;
-    height: 6rem;
+    width: 5rem;
+    height: 6.3rem;
     border-radius: 50%;
     background: white; }
 

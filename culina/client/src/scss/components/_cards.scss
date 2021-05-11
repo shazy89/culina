@@ -99,3 +99,19 @@
     /* justify-content: space-between; */
     flex-wrap: wrap;
 }
+
+.user {
+    &__personal {
+        width: 50%;
+    }
+    &__shadow {
+        box-shadow: 3px 5px 13px rgba(105, 105, 105, 0.493);
+    }
+    &__image {
+        width: 12rem;
+        height: 13rem;
+        border-radius: 50%;
+        background: white;
+    }
+    
+}

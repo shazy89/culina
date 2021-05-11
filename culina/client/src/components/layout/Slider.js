@@ -27,7 +27,11 @@ const Slider = ({ companyId, component: Component, info }) => {
   };
 
   const items = info.map((i) => (
-    <Link key={id} to={`/companies/${companyId}/user/${i.userId}`}>
+    <Link
+      className="culina--link"
+      key={id}
+      to={`/companies/${companyId}/user/${i.userId}`}
+    >
       <Component key={id} info={i} />
     </Link>
   ));
