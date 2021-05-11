@@ -23,7 +23,7 @@ exports.newCompanyUser = async function (
   res
 ) {
   const { _id, email, password, annualSalary, ...rest } = body;
-
+  console.log(companyId);
   const userFields = {
     company: companyId,
     email,
@@ -48,7 +48,7 @@ exports.newCompanyUser = async function (
         return res.status(422).send({ error: "Email is in use" });
       }
       const newUser = await new CompanyUser(userFields);
-      const company = await Company.findOne({ _id: id });
+      const company = await Company.findOne({ _id: companyId });
 
       const companyUserFields = {
         userId: newUser._id,

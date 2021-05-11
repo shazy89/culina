@@ -26,7 +26,7 @@ const CompanyRight = ({ company, id, show, handleClose, handleShow }) => {
             {
               <Link
                 to={{
-                  pathname: `/companies/${id}/user/new`,
+                  pathname: `/companies/${id}/newuser`,
                   state: { companyName: company.name }
                 }}
               >
