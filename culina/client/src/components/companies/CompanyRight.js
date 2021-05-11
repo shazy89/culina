@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Slider from "components/layout/Slider";
 import CompanyUserCard from "./companyUsers/CompanyUserCard";
+import { Button } from "react-bootstrap";
+import AllUsersModal from "./companyUsers/AllUsersModal";
 import PropTypes from "prop-types";
 
-const CompanyRight = ({ company, id }) => {
+const CompanyRight = ({ company, id, show, handleClose, handleShow }) => {
   return (
     <>
       <div className="slider_company">
@@ -29,6 +31,20 @@ const CompanyRight = ({ company, id }) => {
             users to this company
           </h2>
         )}
+      </div>
+      <div className="view-all u-margin-top-3">
+        {company.users.length ? (
+          <Button size="lg" variant="link" onClick={handleShow}>
+            View All
+          </Button>
+        ) : (
+          ""
+        )}
+        <AllUsersModal
+          show={show}
+          handleClose={handleClose}
+          info={company.users}
+        />
       </div>
     </>
   );

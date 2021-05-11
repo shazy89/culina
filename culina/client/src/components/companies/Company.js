@@ -64,21 +64,14 @@ const Company = ({
               />
             </div>
             <div className="company__display--box-2">
-              <CompanyRight id={id} company={findCompany} />
-              <div className="view-all u-margin-top-3">
-                {findCompany.users.length ? (
-                  <Button size="lg" variant="link" onClick={handleShow}>
-                    View All
-                  </Button>
-                ) : (
-                  ""
-                )}
-                <AllUsersModal
-                  show={show}
-                  handleClose={handleClose}
-                  info={findCompany.users}
-                />
-              </div>
+              <CompanyRight
+                id={id}
+                company={findCompany}
+                show={show}
+                handleClose={handleClose}
+                handleShow={handleShow}
+              />
+
               <div className="projects__table u-margin-top-3 slider_company__header">
                 <h2>{findCompany.name} Projects</h2>
                 <ProjectsTable projects={findCompany.projects} />
