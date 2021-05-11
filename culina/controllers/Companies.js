@@ -72,7 +72,7 @@ exports.companyProfile = async function ({ params: { id } }, res) {
 exports.removeCompany = async function ({ params: { id } }, res) {
   try {
     await Company.findOneAndRemove({ _id: id });
-    await CompanyUser.deleteMany({ company: _id });
+    await CompanyUser.deleteMany({ company: id });
     res.json({ msg: "Comopany deleted" });
   } catch (err) {
     console.error(err);

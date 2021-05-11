@@ -25,6 +25,7 @@ const Company = ({
 }) => {
   const [edit, setEdit] = useState(false);
   const [show, setShow] = useState(false);
+  const [showSelectedUserInfo, setShowSelectedUserInfo] = useState(false);
   const findCompany = companies.find((company) => id === company._id);
   const className = edit ? "display_form" : "";
 
@@ -39,11 +40,6 @@ const Company = ({
         <Spinner />
       ) : (
         <div className="company">
-          {
-            //    <div className="company__features--box">
-            //     <FeaturesNav />
-            //   </div>
-          }
           <div>
             <Back history={history} />
           </div>
