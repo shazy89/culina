@@ -21,7 +21,7 @@ const App = ({ loadUser, logout }) => {
       <Fragment>
         <Switch>
           <Route exact path="/" component={LoginDev} />
-          {<Route component={Routes} />}
+          <Route component={Routes} />
         </Switch>
       </Fragment>
     </Router>

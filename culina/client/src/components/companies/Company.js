@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Spinner from "../layout/Spinner";
@@ -56,12 +56,14 @@ const Company = ({
           </div>
 
           <div className="company__display">
-            <CompanyLeft
-              edit={edit}
-              setEdit={setEdit}
-              company={findCompany}
-              className={className}
-            />
+            <div className="company__display--box-1">
+              <CompanyLeft
+                edit={edit}
+                setEdit={setEdit}
+                company={findCompany}
+                className={className}
+              />
+            </div>
             <div className="company__display--box-2">
               <div className="slider_company">
                 <h2 className="slider_company__header">

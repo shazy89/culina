@@ -5,7 +5,7 @@ import EditCompanyCard from "./forms/EditCompanyCard";
 import { Edit, X } from "react-feather";
 const CompanyLeft = ({ edit, setEdit, company, className }) => {
   return (
-    <div className="company__display--box-1">
+    <>
       <div className="company__edit">
         {!edit && (
           <Edit
@@ -30,7 +30,7 @@ const CompanyLeft = ({ edit, setEdit, company, className }) => {
           setEdit={setEdit}
         />
       )}
-    </div>
+    </>
   );
 };
 
