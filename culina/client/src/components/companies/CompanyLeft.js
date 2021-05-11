@@ -34,6 +34,8 @@ const CompanyLeft = ({ edit, setEdit, company, className }) => {
   );
 };
 
-CompanyLeft.propTypes = {};
+CompanyLeft.propTypes = {
+  company: PropTypes.object.isRequired
+};
 
 export default CompanyLeft;
