@@ -9,6 +9,7 @@ import Navbar from "../layout/NavBar";
 import SideNav from "../layout/sidebar/SideNav";
 import NotFound from "../NotFound";
 import AddUser from "../companies/forms/AddUser";
+import UserProfile from "components/companies/companyUsers/UserProfile";
 
 const Routes = () => {
   return (
@@ -21,12 +22,17 @@ const Routes = () => {
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/company/new" component={CompanyForm} />
             <PrivateRoute exact path="/companies" component={AllCompanies} />
-            <PrivateRoute exact path="/companies/:id" component={Company} />
+            <PrivateRoute
+              exact
+              path="/companies/:id/user/:userId"
+              component={UserProfile}
+            />
             <PrivateRoute
               exact
               path="/companies/:id/user/new"
               component={AddUser}
             />
+            <PrivateRoute exact path="/companies/:id" component={Company} />
             <Route component={NotFound} />
           </Switch>
         </main>

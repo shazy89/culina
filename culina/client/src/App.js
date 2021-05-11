@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginDev from "./components/auth/LoginDev";
@@ -18,12 +18,12 @@ const App = ({ loadUser, logout }) => {
 
   return (
     <Router>
-      <Fragment>
+      <>
         <Switch>
           <Route exact path="/" component={LoginDev} />
           <Route component={Routes} />
         </Switch>
-      </Fragment>
+      </>
     </Router>
   );
 };

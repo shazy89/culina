@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Spinner from "../layout/Spinner";
@@ -10,7 +10,6 @@ import CompanyLeft from "./CompanyLeft";
 
 import Alert from "components/layout/Alerts";
 import CompanyRight from "./CompanyRight";
-import TestRouter from "./TestRouter";
 
 const Company = ({
   match: {
@@ -23,7 +22,6 @@ const Company = ({
 }) => {
   const [edit, setEdit] = useState(false);
   const [show, setShow] = useState(false);
-  const [showSelectedUserInfo, setShowSelectedUserInfo] = useState(false);
   const findCompany = companies.find((company) => id === company._id);
   const className = edit ? "display_form" : "";
 

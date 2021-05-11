@@ -1,5 +1,6 @@
 import React from "react";
 import SlickSlider from "react-slick";
+import { Link } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { v4 as uuidv4 } from "uuid";
