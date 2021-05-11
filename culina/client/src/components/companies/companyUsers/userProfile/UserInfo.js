@@ -22,11 +22,12 @@ const UserInfo = ({
             {firstName + " " + lastName}
             <br />
             <span className="user__card-position font__size-3">{position}</span>
+            <br />
+            <span className="font__size-2">
+              {" "}
+              <Card.Link href={`mailto:${email}`}>{email}</Card.Link>
+            </span>
           </h2>
-        </div>
-
-        <div className="u-margin-top">
-          <Card.Link href={`mailto:${email}`}>{email}</Card.Link>
         </div>
       </Card.Body>
     </Card>

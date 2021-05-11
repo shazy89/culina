@@ -50,4 +50,16 @@
 
   .w-60 {
     width: 60%;
+    
   }
+.padding {
+  &--1 {
+   padding: 1rem;
+  }
+  &--2 {
+   padding: 2rem;
+  }
+  &--3 {
+   padding: 3rem;
+  }
+}
