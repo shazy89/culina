@@ -1,3 +1,4 @@
+import * as Yup from "yup";
 export const positions = [
   "Select ...",
   "Manager",
@@ -13,3 +14,25 @@ export const images = [
   "https://res.cloudinary.com/dytheecsk/image/upload/v1620505388/culina/flat-business-woman-user-profile-avatar-icon-vector-4334111_ym6qle.jpg",
   "https://res.cloudinary.com/dytheecsk/image/upload/v1620505385/culina/computer-icons-user-profile-person-thumbnail_bxdnq2.jpg"
 ];
+export const newUserSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  lastName: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  password: Yup.string()
+    .min(6, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  birthday: Yup.string().required("Required"),
+  position: Yup.string().required("Required"),
+  email: Yup.string().required("Required"),
+  address: Yup.string().required("Required"),
+  annualSalary: Yup.string().required("Required"),
+  city: Yup.string().required("Required"),
+  state: Yup.string().required("Required"),
+  zipCode: Yup.string().required("Required")
+});
