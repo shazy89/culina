@@ -48,7 +48,7 @@ exports.newCompanyUser = async function (
         return res.status(422).send({ error: "Email is in use" });
       }
       const newUser = await new CompanyUser(userFields);
-      const company = await Company.findOne({ _id: companyId });
+      const company = await Company.findOne({ _id: id });
 
       const companyUserFields = {
         userId: newUser._id,
@@ -66,6 +66,7 @@ exports.newCompanyUser = async function (
       newUser.password = await bcrypt.hash(password, salt);
 
       // const token = jwt.sign({ userId: newUser.id }, process.env.JET_SECRET);
+
       res.json({ newUser, company });
     }
   } catch (err) {

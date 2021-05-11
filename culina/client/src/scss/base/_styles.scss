@@ -13,3 +13,9 @@
  } 
 
 }
+.child {
+    &__left {
+        display: flex;
+        align-items: flex-end;
+    }
+}

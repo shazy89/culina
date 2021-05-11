@@ -113,5 +113,21 @@
         border-radius: 50%;
         background: white;
     }
+    &__card {
+        &-box {
+            display: flex;
+            justify-content: space-around;
+        }
+        &-header {
+            align-self: center;
+        }
+        &-position {
+            color: rgba(146, 140, 140, 0.87);
+        }
+        &-text {
+            padding: 1rem;
+            width: 95%;
+        }
+    }
     
 }

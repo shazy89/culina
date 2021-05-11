@@ -111,6 +111,10 @@ body {
 .culina--link:hover, .culina--link:active {
   text-decoration: none !important; }
 
+.child__left {
+  display: flex;
+  align-items: flex-end; }
+
 .login {
   height: 93vh;
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("./assets/images/LoginRestaurant.jpg");
@@ -308,6 +312,20 @@ body {
   height: 13rem;
   border-radius: 50%;
   background: white; }
+
+.user__card-box {
+  display: flex;
+  justify-content: space-around; }
+
+.user__card-header {
+  align-self: center; }
+
+.user__card-position {
+  color: rgba(146, 140, 140, 0.87); }
+
+.user__card-text {
+  padding: 1rem;
+  width: 95%; }
 
 .button__main {
   display: flex; }

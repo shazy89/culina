@@ -2,12 +2,14 @@ import React from "react";
 import { Card } from "react-bootstrap";
 
 import { Image as CloudinaryImage, Transformation } from "cloudinary-react";
-const UserInfo = ({ profileInfo: { avatar } }) => {
+const UserInfo = ({
+  profileInfo: { avatar, firstName, lastName, email, position }
+}) => {
   console.log(avatar);
   return (
     <Card className="user__personal user__shadow">
       <Card.Body className="font__size-3">
-        <Card.Title className="font__size-3">
+        <div className="user__card-box">
           {" "}
           <CloudinaryImage
             className="user__image"
@@ -16,13 +18,16 @@ const UserInfo = ({ profileInfo: { avatar } }) => {
           >
             <Transformation width="140" crop="scale" />
           </CloudinaryImage>
-        </Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Card.Link href="#">Card Link</Card.Link>
+          <h2 className="user__card-header font__size-4">
+            {firstName + " " + lastName}
+            <br />
+            <span className="user__card-position font__size-3">{position}</span>
+          </h2>
+        </div>
+
+        <div className="u-margin-top">
+          <Card.Link href={`mailto:${email}`}>{email}</Card.Link>
+        </div>
       </Card.Body>
     </Card>
   );

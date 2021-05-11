@@ -29,8 +29,7 @@ const UserProfile = ({
       {loading ? (
         <Spinner />
       ) : (
-        <div>
-          <h1> HEY {profileInfo.firstName}</h1>
+        <div className="u-margin-top">
           <UserPersonalInfo profileInfo={profileInfo} />
         </div>
       )}
