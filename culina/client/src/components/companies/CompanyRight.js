@@ -4,6 +4,7 @@ import Slider from "components/layout/Slider";
 import CompanyUserCard from "./companyUsers/CompanyUserCard";
 import { Button } from "react-bootstrap";
 import AllUsersModal from "./companyUsers/AllUsersModal";
+import ProjectsTable from "./project/ProjectsTable";
 import PropTypes from "prop-types";
 
 const CompanyRight = ({ company, id, show, handleClose, handleShow }) => {
@@ -46,10 +47,16 @@ const CompanyRight = ({ company, id, show, handleClose, handleShow }) => {
           info={company.users}
         />
       </div>
+      <div className="projects__table u-margin-top-3 slider_company__header">
+        <h2>{company.name} Projects</h2>
+        <ProjectsTable projects={company.projects} />
+      </div>
     </>
   );
 };
 
-CompanyRight.propTypes = {};
+CompanyRight.propTypes = {
+  company: PropTypes.object.isRequired
+};
 
 export default CompanyRight;

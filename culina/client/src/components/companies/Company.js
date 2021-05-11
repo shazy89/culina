@@ -5,13 +5,12 @@ import { Redirect } from "react-router-dom";
 import Spinner from "../layout/Spinner";
 import { Button } from "react-bootstrap";
 import Back from "../reusable/Back";
-import CompanyInfo from "./CompanyInfo";
+
 import CompanyLeft from "./CompanyLeft";
-import { Edit, X } from "react-feather";
+
 import Alert from "components/layout/Alerts";
 import CompanyRight from "./CompanyRight";
-import ProjectsTable from "./project/ProjectsTable";
-import AllUsersModal from "./companyUsers/AllUsersModal";
+import TestRouter from "./TestRouter";
 
 const Company = ({
   match: {
@@ -71,11 +70,6 @@ const Company = ({
                 handleClose={handleClose}
                 handleShow={handleShow}
               />
-
-              <div className="projects__table u-margin-top-3 slider_company__header">
-                <h2>{findCompany.name} Projects</h2>
-                <ProjectsTable projects={findCompany.projects} />
-              </div>
             </div>
           </div>
         </div>
@@ -91,7 +85,3 @@ const mapStateProps = (state) => ({
 });
 
 export default connect(mapStateProps)(Company);
-
-//   <Button className="u-margin-top btn-view_all" variant="link">
-//   View All
-//   </Button>
