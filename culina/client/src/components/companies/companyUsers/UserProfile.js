@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import api from "utils/api";
-import PropTypes from "prop-types";
-
+import Back from "components/reusable/Back";
 const UserProfile = ({
   match: {
     params: { id, userId }
-  }
+  },
+  history
 }) => {
   const [profileInfo, setprofileInfo] = useState("");
-  console.log(profileInfo);
+
   useEffect(() => {
     const fetchUserInfo = async () => {
       const res = await api.get(`/companies/${id}/user/${userId}`);
@@ -16,9 +16,16 @@ const UserProfile = ({
     };
     fetchUserInfo();
   }, []);
-  return <div>HEY USER</div>;
+  return (
+    <>
+      <div>
+        <div>
+          <Back history={history} />
+        </div>
+        <h1> HEY {profileInfo.firstName}</h1>
+      </div>
+    </>
+  );
 };
-
-UserProfile.propTypes = {};
 
 export default UserProfile;

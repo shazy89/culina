@@ -27,7 +27,7 @@ const Slider = ({ companyId, component: Component, info }) => {
   };
 
   const items = info.map((i) => (
-    <Link to={`/companies/${companyId}/user/${i.userId}`}>
+    <Link key={id} to={`/companies/${companyId}/user/${i.userId}`}>
       <Component key={id} info={i} />
     </Link>
   ));
