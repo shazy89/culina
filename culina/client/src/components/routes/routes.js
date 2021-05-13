@@ -10,6 +10,7 @@ import SideNav from "../layout/sidebar/SideNav";
 import NotFound from "../NotFound";
 import AddUser from "../companies/forms/AddUser";
 import UserProfile from "components/companies/companyUsers/UserProfile";
+import EditUser from "components/companies/companyUsers/EditUser";
 
 const Routes = () => {
   return (
@@ -26,6 +27,11 @@ const Routes = () => {
               exact
               path="/companies/:id/user/:userId"
               component={UserProfile}
+            />
+            <PrivateRoute
+              exact
+              path="/companies/:id/user/:userId/edit"
+              component={EditUser}
             />
             <PrivateRoute
               exact

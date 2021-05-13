@@ -39,9 +39,17 @@ const UserProfile = ({
             <UserAdress profileInfo={profileInfo} />
           </div>
           <div className="w-50 padding--1">
-            <h4 className="user__profile-edit">
-              Edit <Edit className="company__edit--button" />
-            </h4>
+            <Link
+              to={{
+                pathname: `/companies/${id}/user/${userId}/edit`,
+                state: { profileInfo }
+              }}
+            >
+              {" "}
+              <h4 className="user__profile-edit">
+                Edit <Edit className="company__edit--button" />
+              </h4>
+            </Link>
             <UserSalary profileInfo={profileInfo} />
           </div>
         </div>

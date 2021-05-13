@@ -6,27 +6,54 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { positions } from "./constants";
 
-const AddUserFormFields = ({ id, newUserSchema, newCompanyUser, history }) => {
+const AddUserFormFields = ({
+  id,
+  newUserSchema,
+  newCompanyUser,
+  history,
+  profileInfo
+}) => {
   return (
     <Formik
-      initialValues={{
-        company: id,
-        email: "",
-        password: "",
-        firstName: "",
-        lastName: "",
-        avatar:
-          "culina/depositphotos_59095205-stock-illustration-businessman-profile-icon_yytrhn.jpg",
-        annualSalary: "",
-        hrRate: "",
-        position: "",
-        state: "",
-        city: "",
-        address: "",
-        country: "United States",
-        birthday: "",
-        zipCode: ""
-      }}
+      initialValues={
+        profileInfo
+          ? {
+              company: id,
+              email: profileInfo.email,
+              password: "",
+              firstName: profileInfo.firstName,
+              lastName: profileInfo.lastName,
+              avatar:
+                "culina/depositphotos_59095205-stock-illustration-businessman-profile-icon_yytrhn.jpg",
+              annualSalary: "",
+              hrRate: "",
+              position: "",
+              state: "",
+              city: "",
+              address: "",
+              country: "United States",
+              birthday: new Date(profileInfo.birthday),
+              zipCode: ""
+            }
+          : {
+              company: id,
+              email: "",
+              password: "",
+              firstName: "",
+              lastName: "",
+              avatar:
+                "culina/depositphotos_59095205-stock-illustration-businessman-profile-icon_yytrhn.jpg",
+              annualSalary: "",
+              hrRate: "",
+              position: "",
+              state: "",
+              city: "",
+              address: "",
+              country: "United States",
+              birthday: "",
+              zipCode: ""
+            }
+      }
       validationSchema={newUserSchema}
       onSubmit={(values, actions) => {
         newCompanyUser(values, history);
