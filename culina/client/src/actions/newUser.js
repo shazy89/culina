@@ -2,16 +2,24 @@ import api from "../utils/api";
 import { setAlert } from "./alert";
 import { NEW_COMPANY_USER } from "./types";
 
-export const newCompanyUser = (formData, history) => async (dispatch) => {
+//new or edit
+export const newCompanyUser = (formData, edit, history) => async (dispatch) => {
   try {
-    const res = await api.post(`/culina/${formData.company}/newuser`, formData);
+    if (edit) {
+    }
+    if (!edit) {
+      const res = await api.post(
+        `/culina/${formData.company}/newuser`,
+        formData
+      );
 
-    dispatch({
-      type: NEW_COMPANY_USER,
-      payload: res.data.company
-    });
-    history.push(`/companies/${formData.company}`);
-    dispatch(setAlert("Sucsess", "success"));
+      dispatch({
+        type: NEW_COMPANY_USER,
+        payload: res.data.company
+      });
+      history.push(`/companies/${formData.company}`);
+      dispatch(setAlert("Sucsess", "success"));
+    }
   } catch (err) {
     if (err) {
       dispatch(setAlert("Please try again", "danger"));
@@ -19,7 +27,8 @@ export const newCompanyUser = (formData, history) => async (dispatch) => {
   }
 };
 
-export const a = (userInfo) => async (dispatch) => {
+export const editCompanyUser = (userInfo, history) => async (dispatch) => {
+  debugger;
   try {
   } catch (error) {}
 };

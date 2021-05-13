@@ -1,17 +1,19 @@
 import React from "react";
 import { Formik } from "formik";
-import * as Yup from "yup";
+import { connect } from "react-redux";
 import { Form, Col, Button } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { positions } from "./constants";
-
+import { newCompanyUser, editCompanyUser } from "actions/newUser";
+import { newUserSchema, editUserSchema } from "./constants";
 const AddUserFormFields = ({
   id,
-  newUserSchema,
-  newCompanyUser,
+  edit,
   history,
-  profileInfo
+  profileInfo,
+  newCompanyUser,
+  editCompanyUser
 }) => {
   return (
     <Formik
@@ -52,10 +54,11 @@ const AddUserFormFields = ({
               zipCode: ""
             }
       }
-      validationSchema={newUserSchema}
+      validationSchema={profileInfo ? editUserSchema : newUserSchema}
       onSubmit={(values, actions) => {
-        newCompanyUser(values, history);
-        actions.resetForm();
+        newCompanyUser(values, edit, history);
+
+        !profileInfo && actions.resetForm();
       }}
     >
       {({
@@ -312,4 +315,6 @@ const AddUserFormFields = ({
   );
 };
 
-export default AddUserFormFields;
+export default connect(null, { newCompanyUser, editCompanyUser })(
+  AddUserFormFields
+);

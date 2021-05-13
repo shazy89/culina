@@ -36,3 +36,21 @@ export const newUserSchema = Yup.object().shape({
   state: Yup.string().required("Required"),
   zipCode: Yup.string().required("Required")
 });
+export const editUserSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  lastName: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  birthday: Yup.string().required("Required"),
+  position: Yup.string().required("Required"),
+  email: Yup.string().required("Required"),
+  address: Yup.string().required("Required"),
+  annualSalary: Yup.string().required("Required"),
+  city: Yup.string().required("Required"),
+  state: Yup.string().required("Required"),
+  zipCode: Yup.string().required("Required")
+});
