@@ -15,11 +15,13 @@ const AddUserFormFields = ({
   newCompanyUser,
   editCompanyUser
 }) => {
+  console.log(profileInfo);
   return (
     <Formik
       initialValues={
         profileInfo
           ? {
+              id: profileInfo._id,
               company: id,
               email: profileInfo.email,
               firstName: profileInfo.firstName,

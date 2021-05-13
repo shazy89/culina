@@ -101,20 +101,20 @@ exports.signInCompanyUser = async function (req, res) {
 // edit the company user
 // /companies/:id/user/edit
 exports.editCompanyUSer = async function (
-  { params: { id }, user: { admin, position, company }, body },
+  { params, user: { admin, position, company }, body },
   res
 ) {
-  const { _id, ...rest } = body;
+  const { id, ...rest } = body;
 
   const userFields = {
     ...rest
   };
   try {
-    if (admin || (position === "Manager" && company === id)) {
-      const company = await Company.findOne({ _id: id });
+    if (admin || (position === "Manager" && company === params.id)) {
+      const company = await Company.findOne({ _id: params.id });
 
       const existingUser = await CompanyUser.findOneAndUpdate(
-        { _id: _id }, // filter
+        { _id: id }, // filter
         { $set: userFields }, // update
         { new: true }
       );

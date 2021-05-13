@@ -6,6 +6,7 @@ import { NEW_COMPANY_USER } from "./types";
 export const newCompanyUser = (formData, edit, history) => async (dispatch) => {
   try {
     if (edit) {
+      debugger;
     }
     if (!edit) {
       const res = await api.post(
@@ -28,7 +29,6 @@ export const newCompanyUser = (formData, edit, history) => async (dispatch) => {
 };
 
 export const editCompanyUser = (userInfo, history) => async (dispatch) => {
-  debugger;
   try {
   } catch (error) {}
 };
