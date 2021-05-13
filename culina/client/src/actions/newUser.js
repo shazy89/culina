@@ -1,12 +1,22 @@
 import api from "../utils/api";
 import { setAlert } from "./alert";
-import { NEW_COMPANY_USER } from "./types";
+import { NEW_COMPANY_USER, EDIT_COMPANY_USER } from "./types";
 
 //new or edit
 export const newCompanyUser = (formData, edit, history) => async (dispatch) => {
   try {
     if (edit) {
-      debugger;
+      const res = await api.put(
+        `/companies/${formData.company}/editcurrent/user`,
+        formData
+      );
+      dispatch({
+        type: EDIT_COMPANY_USER,
+        payload: res.data.company
+      });
+
+      history.push(`/companies/${formData.company}`);
+      dispatch(setAlert("Sucsess", "success"));
     }
     if (!edit) {
       const res = await api.post(

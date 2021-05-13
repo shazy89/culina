@@ -25,7 +25,11 @@ module.exports = function (app) {
 
   app.post("/companies/:id/user/signin", CompanyUser.signInCompanyUser);
 
-  app.put("/companies/:id/user/edit", requireAuth, CompanyUser.editCompanyUSer);
+  app.put(
+    "/companies/:companyId/editcurrent/user",
+    requireAuth,
+    CompanyUser.editCompanyUSer
+  );
   app.get(
     "/companies/:companyId/user/:userId",
     requireAuth,

@@ -109,15 +109,17 @@ exports.editCompanyUSer = async function (
   const userFields = {
     ...rest
   };
+  console.log(body);
   try {
-    if (admin || (position === "Manager" && company === params.id)) {
-      const company = await Company.findOne({ _id: params.id });
+    if (admin || (position === "Manager" && company === params.companyId)) {
+      const company = await Company.findOne({ _id: params.companyId });
 
       const existingUser = await CompanyUser.findOneAndUpdate(
         { _id: id }, // filter
         { $set: userFields }, // update
         { new: true }
       );
+
       const companyUserFields = {
         userId: existingUser._id,
         firstName: existingUser.firstName,
