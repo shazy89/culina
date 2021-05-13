@@ -23,7 +23,7 @@ exports.newCompanyUser = async function (
   res
 ) {
   const { _id, email, password, annualSalary, ...rest } = body;
-  console.log(companyId);
+
   const userFields = {
     company: companyId,
     email,
@@ -104,12 +104,20 @@ exports.editCompanyUSer = async function (
   { params, user: { admin, position, company }, body },
   res
 ) {
-  const { id, ...rest } = body;
+  const { id, email, password, annualSalary, ...rest } = body;
 
   const userFields = {
+    company: params.companyId,
+    email,
+    password,
+    annualSalary: formatAnnualSalary(annualSalary),
+    monthlyWage: formatMonthlyWage(annualSalary),
+    weeklyWage: formatWeeklyWage(annualSalary),
+    dailyWage: formatDailyWage(annualSalary),
+    hourlyWage: formatHrWage(annualSalary),
     ...rest
   };
-  console.log(body);
+
   try {
     if (admin || (position === "Manager" && company === params.companyId)) {
       const company = await Company.findOne({ _id: params.companyId });
