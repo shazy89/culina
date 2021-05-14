@@ -1,6 +1,10 @@
 import api from "../utils/api";
 import { setAlert } from "./alert";
-import { NEW_COMPANY_USER, EDIT_COMPANY_USER } from "./types";
+import {
+  NEW_COMPANY_USER,
+  EDIT_COMPANY_USER,
+  REMOVE_COMPANY_USER
+} from "./types";
 
 //new or edit
 export const newCompanyUser = (formData, edit, history) => async (dispatch) => {
@@ -37,16 +41,24 @@ export const newCompanyUser = (formData, edit, history) => async (dispatch) => {
     }
   }
 };
+//Delete
+// Delete company
+export const deleteCopany = (id, history) => async (dispatch) => {
+  if (window.confirm("Are you sure? This cannot be undone!")) {
+    try {
+      await api.delete(`/companies/:companyId/user/:userId`);
 
-export const editCompanyUser = (userInfo, history) => async (dispatch) => {
-  try {
-  } catch (error) {}
-};
-export const b = (userInfo) => async (dispatch) => {
-  try {
-  } catch (err) {
-    if (err) {
-      dispatch(setAlert("Please try again", "danger"));
+      dispatch({ type: REMOVE_COMPANY_USER, payload: id });
+      history.push("/companies/:companyId");
+      //   dispatch({ type: ACCOUNT_DELETED });
+
+      dispatch(setAlert("User Removed", "danger"));
+    } catch (err) {
+      console.error(err);
+      //   dispatch({
+      //     type: PROFILE_ERROR,
+      //     payload: { msg: err.response.statusText, status: err.response.status }
+      //   });
     }
   }
 };

@@ -5,17 +5,15 @@ import { Form, Col, Button } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { positions } from "./constants";
-import { newCompanyUser, editCompanyUser } from "actions/newUser";
+import { newCompanyUser } from "actions/newUser";
 import { newUserSchema, editUserSchema } from "./constants";
 const AddUserFormFields = ({
   id,
   edit,
   history,
   profileInfo,
-  newCompanyUser,
-  editCompanyUser
+  newCompanyUser
 }) => {
-  console.log(profileInfo);
   return (
     <Formik
       initialValues={
@@ -317,6 +315,4 @@ const AddUserFormFields = ({
   );
 };
 
-export default connect(null, { newCompanyUser, editCompanyUser })(
-  AddUserFormFields
-);
+export default connect(null, { newCompanyUser })(AddUserFormFields);

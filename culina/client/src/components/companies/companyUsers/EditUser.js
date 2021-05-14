@@ -17,7 +17,12 @@ const EditUser = ({
   const edit = true;
   return (
     <>
-      <h2>Edit</h2>
+      <div>
+        <Back history={history} />
+      </div>
+      <h2 className="text-center">
+        Edit {profileInfo.firstName + " " + profileInfo.lastName}'s profile
+      </h2>
       <AddUserFormFields
         id={id}
         profileInfo={profileInfo}

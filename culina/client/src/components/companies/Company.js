@@ -47,7 +47,9 @@ const Company = ({
                 state: { companyName: findCompany.name }
               }}
             >
-              <Button className="culina__link">New User</Button>
+              <Button variant="secondary" className="culina__link">
+                New User
+              </Button>
             </Link>
           </div>
 

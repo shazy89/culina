@@ -40,6 +40,7 @@ const UserProfile = ({
           </div>
           <div className="w-50 padding--1">
             <Link
+              className="culina--link"
               to={{
                 pathname: `/companies/${id}/user/${userId}/edit`,
                 state: { profileInfo }
