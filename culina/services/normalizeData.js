@@ -9,6 +9,10 @@ exports.normalizePhoneNumber = (number) => {
 
   return null;
 };
+exports.handleEditSalary = (amount) => {
+  let cleaned = ("" + amount).replace(/..$/g, "").replace(/\D/g, "");
+  return parseInt(cleaned);
+};
 
 exports.formatSalary = {
   formatAnnualSalary: function (amount) {

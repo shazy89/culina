@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const {
   normalizePhoneNumber,
+  handleEditSalary,
   formatSalary: {
     formatAnnualSalary,
     formatMonthlyWage,
@@ -105,16 +106,19 @@ exports.editCompanyUSer = async function (
   res
 ) {
   const { id, email, password, annualSalary, ...rest } = body;
+  let formatSalary = annualSalary.match(/\D/g)
+    ? handleEditSalary(annualSalary)
+    : annualSalary;
 
   const userFields = {
     company: params.companyId,
     email,
     password,
-    annualSalary: formatAnnualSalary(annualSalary),
-    monthlyWage: formatMonthlyWage(annualSalary),
-    weeklyWage: formatWeeklyWage(annualSalary),
-    dailyWage: formatDailyWage(annualSalary),
-    hourlyWage: formatHrWage(annualSalary),
+    annualSalary: formatAnnualSalary(formatSalary),
+    monthlyWage: formatMonthlyWage(formatSalary),
+    weeklyWage: formatWeeklyWage(formatSalary),
+    dailyWage: formatDailyWage(formatSalary),
+    hourlyWage: formatHrWage(formatSalary),
     ...rest
   };
 
