@@ -41,24 +41,19 @@ export const newCompanyUser = (formData, edit, history) => async (dispatch) => {
     }
   }
 };
-//Delete
-// Delete company
-export const deleteCopany = (id, history) => async (dispatch) => {
+//Remove user
+
+export const removeUser = (companyId, userId, history) => async (dispatch) => {
   if (window.confirm("Are you sure? This cannot be undone!")) {
     try {
-      await api.delete(`/companies/:companyId/user/:userId`);
+      const res = await api.delete(`/companies/${companyId}/user/${userId}`);
 
-      dispatch({ type: REMOVE_COMPANY_USER, payload: id });
-      history.push("/companies/:companyId");
-      //   dispatch({ type: ACCOUNT_DELETED });
+      dispatch({ type: REMOVE_COMPANY_USER, payload: res.data });
+      history.push(`/companies/${companyId}`);
 
       dispatch(setAlert("User Removed", "danger"));
     } catch (err) {
       console.error(err);
-      //   dispatch({
-      //     type: PROFILE_ERROR,
-      //     payload: { msg: err.response.statusText, status: err.response.status }
-      //   });
     }
   }
 };

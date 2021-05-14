@@ -169,30 +169,31 @@ exports.companyUserById = async function (
   }
 };
 
-// Remove Company profile by id
+// Remove Company user by id
 exports.removeCompanyUser = async function (
-  { params: { companyId, userId }, user: { admin, position, company }, body },
+  { params: { companyId, userId }, user: { admin, position }, body },
   res
 ) {
   try {
     // NOTE: only amin user can remove users and Manager user
     // Check if admin or manager
-    if (!admin || (position !== "Manager" && company !== companyId)) {
-      res.json({ msg: "You are not allowed to complete this task" });
-    }
+    const company = await Company.findById({ _id: companyId });
+    //  console.log(!admin, "HEYYY");
+    //  if (!admin || (position !== "Manager" && company !== companyId)) {
+    //    res.json({ msg: "You are not allowed to complete this task" });
+    //  }
 
     await CompanyUser.findOneAndRemove({ _id: userId });
-    const company = await Company.findById({ _id: companyId });
 
     if (!company) {
       return res.status(404).json({ msg: "Company does not exist" });
     }
 
-    company.users = company.users.filter((user) => user.userId != userId);
+    company.users = await company.users.filter((user) => user.userId != userId);
 
     await company.save();
 
-    res.json({ msg: "USER deleted" });
+    res.json(company);
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Server error" });
