@@ -51,6 +51,12 @@ const Company = ({
                 New User
               </Button>
             </Link>
+            <Link to="#">
+              {" "}
+              <Button variant="secondary" className="culina__link">
+                New Project
+              </Button>
+            </Link>
           </div>
 
           <div className="company__display">

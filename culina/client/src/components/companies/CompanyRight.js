@@ -52,6 +52,7 @@ const CompanyRight = ({ company, id, show, handleClose, handleShow }) => {
           companyId={company._id}
         />
       </div>
+
       <div className="projects__table u-margin-top-3 slider_company__header">
         <h2>{company.name} Projects</h2>
         <ProjectsTable projects={company.projects} />
