@@ -22,7 +22,9 @@ const projectSchema = new Schema({
   email: String,
   contactName: String,
   contactCompanyName: String,
-  contactNumber: String
+  contactNumber: String,
+  description: String,
+  notes: String
 });
 
 module.exports = ProjectSchema = mongoose.model("project", projectSchema);
