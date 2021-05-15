@@ -51,7 +51,7 @@ const Company = ({
                 New User
               </Button>
             </Link>
-            <Link to="#">
+            <Link to={`/companies/${id}/newproject`}>
               {" "}
               <Button variant="secondary" className="culina__link">
                 New Project

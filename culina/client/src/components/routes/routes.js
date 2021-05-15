@@ -11,6 +11,7 @@ import NotFound from "../NotFound";
 import AddUser from "../companies/forms/AddUser";
 import UserProfile from "components/companies/companyUsers/UserProfile";
 import EditUser from "components/companies/companyUsers/EditUser";
+import AddProject from "../companies/forms/AddProject";
 
 const Routes = () => {
   return (
@@ -37,6 +38,11 @@ const Routes = () => {
               exact
               path="/companies/:id/newuser"
               component={AddUser}
+            />
+            <PrivateRoute
+              exact
+              path="/companies/:id/newproject"
+              component={AddProject}
             />
             <PrivateRoute exact path="/companies/:id" component={Company} />
             <Route component={NotFound} />
