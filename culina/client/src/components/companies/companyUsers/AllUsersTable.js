@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { Image as CloudinaryImage, Transformation } from "cloudinary-react";
 
-const AllUsersTable = ({ info }) => {
+const AllUsersTable = ({ info, companyId }) => {
   const table = info.map((user, index) => {
     return (
       <tr key={index}>
@@ -17,7 +18,12 @@ const AllUsersTable = ({ info }) => {
             <Transformation width="80" crop="scale" />
           </CloudinaryImage>
         </th>
-        <th>{user.firstName + " " + user.firstName}</th>
+        <Link
+          className="culina--link"
+          to={`/companies/${companyId}/user/${user.userId}`}
+        >
+          <th>{user.firstName + " " + user.firstName}</th>
+        </Link>
       </tr>
     );
   });

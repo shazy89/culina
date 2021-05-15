@@ -2,7 +2,7 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 import AllUsersTable from "./AllUsersTable";
 
-const AllUsersModal = ({ handleClose, show, info }) => {
+const AllUsersModal = ({ handleClose, show, info, companyId }) => {
   return (
     <Modal
       show={show}
@@ -14,7 +14,7 @@ const AllUsersModal = ({ handleClose, show, info }) => {
         <Modal.Title>All Employees</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <AllUsersTable info={info} />
+        <AllUsersTable info={info} companyId={companyId} />
       </Modal.Body>
     </Modal>
   );
